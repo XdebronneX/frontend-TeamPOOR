@@ -1,0 +1,100 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.sidebar-wrapper {
+  height: 100%;
+  position: fixed;
+}
+
+#sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  height: 100%;
+  background: #343a40;
+  color: #fff;
+  transition: all 0.3s;
+}
+
+#sidebar ul.components {
+  padding: 20px 0;
+  border-bottom: 1px solid #bdbdbd;
+}
+
+#sidebar ul p {
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+}
+
+#sidebar ul li a {
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+  color: #fff;
+}
+
+#sidebar ul li a:hover {
+  color: #007bff;
+  text-decoration: none;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+  color: #fff;
+  background: #007bff;
+}
+
+#sidebar a[aria-expanded="false"]::before,
+a[aria-expanded="true"]::before {
+  content: '\f107';
+  display: inline-block;
+  font-family: 'FontAwesome';
+  margin-right: 10px;
+}
+
+#sidebar a[aria-expanded="true"]::before {
+  content: '\f106';
+}
+
+#sidebar ul ul a {
+  font-size: 0.9em !important;
+  padding-left: 30px;
+  background: #007bff;
+}
+
