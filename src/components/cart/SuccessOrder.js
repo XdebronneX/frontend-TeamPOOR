@@ -1,34 +1,15 @@
-import React, { useEffect } from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import {
-    Box,
     Button,
-    Container,
     Heading,
     Icon,
-    useColorModeValue,
 } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
-import TruckAnimation from "./TruckAnimation"; // I
 
 const SuccessOrder = () => {
-    const navigate = useNavigate();
-    useEffect(() => {
-        sessionStorage.clear();
-        localStorage.clear();
-
-        // Delay redirection by 1 second (adjust the timeout value as needed)
-        const redirectTimeout = setTimeout(() => {
-            // Redirect to /orders/me after delay
-            navigate("/orders/me");
-        }, 2000);
-
-        // Clear the timeout when the component unmounts
-        return () => clearTimeout(redirectTimeout);
-    }, []);
-
-
+    sessionStorage.clear();
+    localStorage.clear();
     return (
         <div className="bg-zinc-100 min-h-screen flex justify-center items-center">
             <div className="bg-white p-4 justify-center flex flex-col items-center rounded-xl space-y-5 mb-20">
