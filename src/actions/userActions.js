@@ -189,7 +189,6 @@ export const LoadUser = () => async (dispatch) => {
 //     }
 // };
 
-
 // Update information
 export const updateProfile = (userData) => async (dispatch) => {
   try {
@@ -469,7 +468,9 @@ export const Logout = () => async (dispatch) => {
     });
 
     localStorage.removeItem("token");
-    
+
+    window.location.href = "/login";
+
     dispatch({
       type: LOGOUT_SUCCESS,
     });
