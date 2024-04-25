@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
     Box,
     Button,
@@ -12,6 +13,7 @@ import { CheckCircleIcon } from "@chakra-ui/icons";
 import TruckAnimation from "./TruckAnimation"; // I
 
 const SuccessOrder = () => {
+    const navigate = useNavigate();
     useEffect(() => {
         sessionStorage.clear();
         localStorage.clear();
@@ -19,7 +21,7 @@ const SuccessOrder = () => {
         // Delay redirection by 1 second (adjust the timeout value as needed)
         const redirectTimeout = setTimeout(() => {
             // Redirect to /orders/me after delay
-            history.push("/orders/me");
+            navigate("/orders/me");
         }, 2000);
 
         // Clear the timeout when the component unmounts
