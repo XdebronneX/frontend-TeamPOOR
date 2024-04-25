@@ -12,7 +12,10 @@ import { CheckCircleIcon } from "@chakra-ui/icons";
 import TruckAnimation from "./TruckAnimation"; // I
 
 const SuccessOrder = () => {
+    console.log("Clearing sessionStorage");
     sessionStorage.clear();
+
+    console.log("Clearing localStorage");
     localStorage.clear();
     return (
         <div className="bg-zinc-100 min-h-screen flex justify-center items-center">
