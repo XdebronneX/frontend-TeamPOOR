@@ -153,6 +153,7 @@ export const LoadUser = () => async (dispatch) => {
         const config = {
             headers: {
                 "Content-Type": "application/json",
+                "exposedHeaders": "Access-Control-Allow-Origin",
             },
             withCredentials: true
         }
