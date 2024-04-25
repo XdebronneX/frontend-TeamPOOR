@@ -59,6 +59,7 @@ const ConfirmOrder = () => {
                 window.location.href = checkoutUrl;
             } else {
                 navigate("/success");
+                dispatch(clearCart());
             }
         }
     }, [dispatch, error, success, navigate, isSuccess]);
