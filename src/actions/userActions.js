@@ -469,7 +469,7 @@ export const Logout = () => async (dispatch) => {
 
     localStorage.removeItem("token");
 
-    window.location.href = "/login";
+    window.location.href = "/products";
 
     dispatch({
       type: LOGOUT_SUCCESS,
