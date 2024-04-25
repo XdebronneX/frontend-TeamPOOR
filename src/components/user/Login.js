@@ -50,8 +50,7 @@ const Login = () => {
         }
     }, [dispatch, isAuthenticated, error, navigate, redirect, buttonClicked]);
 
-    const submitHandler = (e) => {
-        e.preventDefault();
+    const submitHandler = () => {
         setButtonClicked(true);
         dispatch(LoginUsers(email,password));
     };
