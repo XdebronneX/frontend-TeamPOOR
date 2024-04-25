@@ -65,7 +65,7 @@ const Login = () => {
 
     return (
         <>
-            {!loading ? (
+            {loading ? (
                 <Loader />
             ) : (
                 <>
