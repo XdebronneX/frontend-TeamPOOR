@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
     Box,
@@ -12,8 +12,11 @@ import { CheckCircleIcon } from "@chakra-ui/icons";
 import TruckAnimation from "./TruckAnimation"; // I
 
 const SuccessOrder = () => {
-    sessionStorage.clear();
-    localStorage.clear();
+    useEffect(() => {
+        sessionStorage.clear();
+        localStorage.clear();
+    }, []);
+
     return (
         <div className="bg-zinc-100 min-h-screen flex justify-center items-center">
             <div className="bg-white p-4 justify-center flex flex-col items-center rounded-xl space-y-5 mb-20">
