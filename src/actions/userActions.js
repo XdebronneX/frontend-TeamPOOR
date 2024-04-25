@@ -150,14 +150,7 @@ export const LoadUser = () => async (dispatch) => {
         dispatch({
             type: LOAD_USER_REQUEST
         })
-        const config = {
-            headers: {
-                "Content-Type": "application/json",
-                "exposedHeaders": "Access-Control-Allow-Origin",
-            },
-            withCredentials: true
-        }
-        const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/me`,config)
+        const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/me`, { withCredentials: true })
         dispatch({
             type: LOAD_USER_SUCCESS,
             payload: data.user
