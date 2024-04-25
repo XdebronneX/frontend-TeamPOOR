@@ -93,13 +93,13 @@ const Products = () => {
                         cover="contain"
                         className={product.stock <= 0 ? "grayscale" : ""}
                       />
-                      {product.stock <= 0 && (
+                      {/*{product.stock <= 0 && ( */}
                         <Image
                           src="https://png.pngtree.com/png-vector/20221012/ourmid/pngtree-out-of-stock-supply-exhausted-concept-vector-png-image_14991028.png"
                           alt={`Picture of ${product.name}`}
                           className="absolute inset-0"
                         />
-                      )}
+                      {/*)}*/}
                     </Link>
                   ) : (
                     <div className="relative items-center justify-center">
@@ -111,13 +111,11 @@ const Products = () => {
                         cover="contain"
                         className="grayscale"
                       />
-                        {product.stock <= 0 && (
-                          <Image
-                            src="https://png.pngtree.com/png-vector/20221012/ourmid/pngtree-out-of-stock-supply-exhausted-concept-vector-png-image_14991028.png"
-                            alt={`Picture of ${product.name}`}
-                            className="absolute inset-0"
-                          />
-                        )}
+                      <Image
+                        src="https://png.pngtree.com/png-vector/20221012/ourmid/pngtree-out-of-stock-supply-exhausted-concept-vector-png-image_14991028.png"
+                        alt={`Picture of ${product.name}`}
+                        className="absolute inset-0"
+                      />
                     </div>
                   )}
                   <div className="px-3 mt-2 h-32">
