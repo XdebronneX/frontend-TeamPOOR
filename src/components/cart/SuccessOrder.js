@@ -13,9 +13,6 @@ const SuccessOrder = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        // Clear session storage, local storage, and cart after component mounts
-        sessionStorage.clear();
-        localStorage.clear();
         dispatch(clearCart());
     }, [dispatch]);
 
