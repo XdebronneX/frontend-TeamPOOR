@@ -6,16 +6,9 @@ import {
     Icon,
 } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
-import { useDispatch } from "react-redux";
-import { clearCart } from "../../actions/cartActions";
 
 const SuccessOrder = () => {
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(clearCart());
-    }, [dispatch]);
-
+localStorage.removeItem("cartItems","shippingInfo", "paymentInfo");
     return (
         <div className="bg-zinc-100 min-h-screen flex justify-center items-center">
             <div className="bg-white p-4 justify-center flex flex-col items-center rounded-xl space-y-5 mb-20">
