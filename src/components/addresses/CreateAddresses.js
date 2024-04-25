@@ -217,7 +217,7 @@ const CreateAddresses = () => {
                     </Select>
                 </FormControl>
 
-                <Button mt="4" colorScheme="teal" isLoading={loading} type="submit">
+                <Button mt="4" colorScheme="teal" type="submit">
                     Submit
                 </Button>
             </form>
