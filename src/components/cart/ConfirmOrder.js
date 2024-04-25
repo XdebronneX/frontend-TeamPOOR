@@ -54,7 +54,7 @@ const ConfirmOrder = () => {
             toast.success("Your order has been placed successfully!", {
                 position: toast.POSITION.BOTTOM_CENTER,
             });
-            // dispatch(clearCart());
+            dispatch(clearCart());
             if (checkoutUrl) {
                 window.location.href = checkoutUrl;
             } else {
@@ -86,7 +86,6 @@ const ConfirmOrder = () => {
         const checkoutBtn = document.getElementById("checkout_btn");
         if (checkoutBtn) checkoutBtn.disabled = true;
         dispatch(createOrder(order));
-        dispatch(clearCart());
         setIsSuccess(true);
     };
 
