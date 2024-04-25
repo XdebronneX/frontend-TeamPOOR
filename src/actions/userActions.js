@@ -469,11 +469,12 @@ export const Logout = () => async (dispatch) => {
 
     localStorage.removeItem("token");
 
-    window.location.href = "/products";
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 
     dispatch({
       type: LOGOUT_SUCCESS,
     });
+
   } catch (error) {
     dispatch({
       type: LOGIN_FAIL,
