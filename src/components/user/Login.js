@@ -50,9 +50,9 @@ const Login = () => {
         }
     }, [dispatch, isAuthenticated, error, navigate, redirect, buttonClicked]);
 
-    const submitHandler = () => {
+    const submitHandler = (data) => {
         setButtonClicked(true);
-        dispatch(LoginUsers(email,password));
+        dispatch(LoginUsers(data.email,data.password));
     };
 
     const RegisterHandler = () => {
