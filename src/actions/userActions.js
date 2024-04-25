@@ -146,52 +146,52 @@ export const LoginUsers = (email, password) => async (dispatch) => {
 }
 
 // Load user profile
-// export const LoadUser = () => async (dispatch) => {
-//     try {
-//         dispatch({
-//             type: LOAD_USER_REQUEST
-//         })
-//         const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/me`, { withCredentials: true })
-//         dispatch({
-//             type: LOAD_USER_SUCCESS,
-//             payload: data.user
-//         })
-//     } catch (error) {
-//         dispatch({
-//             type: LOAD_USER_FAIL,
-//             payload: error.response.data.message
-//         })
-//     }
-// }
-
 export const LoadUser = () => async (dispatch) => {
     try {
         dispatch({
             type: LOAD_USER_REQUEST
-        });
-
-        const token = localStorage.getItem('token'); // Assuming you store the token in localStorage
-
-        const config = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}` // Include the token in the Authorization header
-            },
-            withCredentials: true
-        };
-
-        const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/me`, config);
+        })
+        const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/me`, { withCredentials: true })
         dispatch({
             type: LOAD_USER_SUCCESS,
             payload: data.user
-        });
+        })
     } catch (error) {
         dispatch({
             type: LOAD_USER_FAIL,
             payload: error.response.data.message
-        });
+        })
     }
-};
+}
+
+// export const LoadUser = () => async (dispatch) => {
+//     try {
+//         dispatch({
+//             type: LOAD_USER_REQUEST
+//         });
+
+//         const token = localStorage.getItem('token'); // Assuming you store the token in localStorage
+
+//         const config = {
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 'Authorization': `Bearer ${token}` // Include the token in the Authorization header
+//             },
+//             withCredentials: true
+//         };
+
+//         const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/me`, config);
+//         dispatch({
+//             type: LOAD_USER_SUCCESS,
+//             payload: data.user
+//         });
+//     } catch (error) {
+//         dispatch({
+//             type: LOAD_USER_FAIL,
+//             payload: error.response.data.message
+//         });
+//     }
+// };
 
 
 // Update information
