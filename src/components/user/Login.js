@@ -21,6 +21,8 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const { handleSubmit, control, formState: { errors } } = useForm();
     const [buttonClicked, setButtonClicked] = useState(false);
+    const [email, setEmail]  = useState("")
+    const [password, setPassword] = useState("")
     const redirect = location.search ? location.search.split("=")[1] : "";
 
     const handleSuccess = (message = "") =>
@@ -48,9 +50,10 @@ const Login = () => {
         }
     }, [dispatch, isAuthenticated, error, navigate, redirect, buttonClicked]);
 
-    const submitHandler = (data) => {
+    const submitHandler = (e) => {
+        e.preventDefault();
         setButtonClicked(true);
-        dispatch(LoginUsers(data.email, data.password));
+        dispatch(LoginUsers(email,password));
     };
 
     const RegisterHandler = () => {
