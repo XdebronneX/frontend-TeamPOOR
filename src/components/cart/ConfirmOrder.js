@@ -57,6 +57,7 @@ const ConfirmOrder = () => {
             dispatch(clearCart());
             if (checkoutUrl) {
                 window.location.href = checkoutUrl;
+                dispatch(clearCart());
             } else {
                 navigate("/success");
             }
