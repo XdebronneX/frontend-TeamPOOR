@@ -1,14 +1,19 @@
-import React, { useEffect } from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import {
+    Box,
     Button,
+    Container,
     Heading,
     Icon,
+    useColorModeValue,
 } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
+import TruckAnimation from "./TruckAnimation"; // I
 
 const SuccessOrder = () => {
-localStorage.removeItem("cartItems","shippingInfo", "paymentInfo");
+    sessionStorage.clear();
+    localStorage.clear();
     return (
         <div className="bg-zinc-100 min-h-screen flex justify-center items-center">
             <div className="bg-white p-4 justify-center flex flex-col items-center rounded-xl space-y-5 mb-20">
