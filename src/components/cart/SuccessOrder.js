@@ -12,8 +12,21 @@ import { CheckCircleIcon } from "@chakra-ui/icons";
 import TruckAnimation from "./TruckAnimation"; // I
 
 const SuccessOrder = () => {
+    useEffect(() => {
         sessionStorage.clear();
         localStorage.clear();
+
+        // Delay redirection by 1 second (adjust the timeout value as needed)
+        const redirectTimeout = setTimeout(() => {
+            // Redirect to /orders/me after delay
+            history.push("/orders/me");
+        }, 2000);
+
+        // Clear the timeout when the component unmounts
+        return () => clearTimeout(redirectTimeout);
+    }, []);
+
+
     return (
         <div className="bg-zinc-100 min-h-screen flex justify-center items-center">
             <div className="bg-white p-4 justify-center flex flex-col items-center rounded-xl space-y-5 mb-20">
