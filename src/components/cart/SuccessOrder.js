@@ -7,7 +7,7 @@ import {
 } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
 import { useDispatch } from "react-redux";
-import { clearCart } from "../actions/cartActions"; // Import clearCart action
+import { clearCart } from "../../actions/cartActions";
 
 const SuccessOrder = () => {
     const dispatch = useDispatch();
