@@ -103,7 +103,7 @@ const Header = () => {
 
   const LogoutHandler = () => {
     dispatch(Logout());
-    navigate("/");
+    // navigate("/");
   };
 
   const ProfileHandler = () => {
