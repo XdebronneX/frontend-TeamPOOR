@@ -124,7 +124,7 @@ const ListOfAddresses = () => {
             <MetaData  title="My Addresses"></MetaData>
             <Button onClick={handleAddresses} colorScheme="teal" mb={2} leftIcon={<FaPlusCircle />}>New Address</Button>
             <Heading as="h1" size="lg" textAlign="center" mb={4}>List of My Addresses</Heading>
-            {!loading && (
+            {loading && (
                 <Flex justifyContent="center" alignItems="center" height="200px">
                     <Loader />
                 </Flex>
