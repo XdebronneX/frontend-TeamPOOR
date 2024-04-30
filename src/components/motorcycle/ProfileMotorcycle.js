@@ -147,7 +147,7 @@ const ProfileMotorcycle = () => {
           Register Motorcycle
         </Button>
       </Flex>
-      {!loading ? (
+      {loading ? (
         <Loader />
       ) : (
         <Fragment>

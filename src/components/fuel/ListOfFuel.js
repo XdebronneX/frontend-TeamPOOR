@@ -168,7 +168,7 @@ const ListOfFuel = () => {
                     Log fuel
                 </Button>
             </Flex>
-            {!loading ? (
+            {loading ? (
                 <Loader />
             ) : (
                 <Fragment>
