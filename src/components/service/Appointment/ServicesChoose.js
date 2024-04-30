@@ -76,7 +76,7 @@ const ServicesChoose = () => {
         </div>
       </div>
 
-      {!loading ? (
+      {loading ? (
         <p>Loading...</p>
       ) : error ? (
         <p>{error}</p>
