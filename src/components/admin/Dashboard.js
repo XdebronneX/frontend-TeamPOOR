@@ -108,7 +108,7 @@ const Dashboard = () => {
       </nav>
 
       <div className="w-full col-span-4">
-        {!isLoading ? (
+        {isLoading ? (
           <Flex justify="center" align="center" minH="100%">
             <Loader />
           </Flex>
