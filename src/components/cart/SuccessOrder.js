@@ -1,11 +1,15 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import {
+    Box,
     Button,
+    Container,
     Heading,
     Icon,
+    useColorModeValue,
 } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
+import TruckAnimation from "./TruckAnimation"; // I
 
 const SuccessOrder = () => {
     sessionStorage.clear();

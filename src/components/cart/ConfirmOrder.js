@@ -61,7 +61,7 @@ const ConfirmOrder = () => {
                 navigate("/success");
             }
         }
-    }, [dispatch, error, success, navigate, isSuccess, checkoutUrl]);
+    }, [dispatch, error, success, navigate, isSuccess]);
 
     const order = {
         orderItems: cartItems,
