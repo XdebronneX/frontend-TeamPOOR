@@ -168,7 +168,7 @@ const ProductsList = () => {
           <Stack>
             <Heading> All Products</Heading>{" "}
           </Stack>
-          {!loading ? (
+          {loading ? (
             <Loader />
           ) : (
             <MDBDataTable

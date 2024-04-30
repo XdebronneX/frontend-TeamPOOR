@@ -166,7 +166,7 @@ const TodayTask = () => {
                     </Heading>
                 </Box>
             </Flex>
-            {!loading ? (
+            {loading ? (
                 <Loader />
             ) : (
                 <Fragment>

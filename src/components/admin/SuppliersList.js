@@ -136,7 +136,7 @@ const SuppliersList = () => {
           <Stack>
             <Heading> All Suppliers</Heading>{" "}
           </Stack>
-          {!loading ? (
+          {loading ? (
             <Loader />
           ) : (
             <MDBDataTable

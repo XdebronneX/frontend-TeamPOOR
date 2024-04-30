@@ -158,7 +158,7 @@ const ServiceList = () => {
           <Stack>
             <Heading> All Services</Heading>{" "}
           </Stack>
-          {!loading ? (
+          {loading ? (
             <Loader />
           ) : (
             <MDBDataTable

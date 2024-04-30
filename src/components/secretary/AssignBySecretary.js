@@ -108,7 +108,7 @@ const AssignBySecretary = () => {
             <div className="row">
                 <div className="col-12 col-md-10">
                     <Fragment>
-                        {!loading ? <Loader /> : (
+                        {loading ? <Loader /> : (
                             <div className="row d-flex justify-content-around">
                                 <div className="col-12 col-lg-7 order-details">
                                     <h2 className="my-5">Appointment # {booking._id}</h2>

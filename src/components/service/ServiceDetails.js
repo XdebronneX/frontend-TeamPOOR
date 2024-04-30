@@ -27,7 +27,7 @@ const ServiceDetails = () => {
 
     return (
         <Container maxW="container.xl" py="6">
-            {!loading ? (
+            {loading ? (
                 <Center>
                     <Spinner size="xl" />
                 </Center>

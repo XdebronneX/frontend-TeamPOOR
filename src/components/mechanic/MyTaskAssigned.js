@@ -164,7 +164,7 @@ const MyTaskAssigned = () => {
                     </Heading>
                 </Box>
             </Flex>
-            {!loading ? (
+            {loading ? (
                 <Loader />
             ) : (
                 <Fragment>

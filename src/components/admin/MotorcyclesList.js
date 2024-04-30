@@ -148,7 +148,7 @@ const MotorcyclesList = () => {
         <MetaData title={"All motorcycles"} />
         <div className="w-full bg-white rounded-xl p-3 space-y-3">
           <Heading> All Motorcycles</Heading>
-          {!loading ? (
+          {loading ? (
             <Loader />
           ) : (
             <MDBDataTable

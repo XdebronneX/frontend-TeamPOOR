@@ -125,7 +125,7 @@ const AssignTasks = () => {
       <Fragment>
         <MetaData title={`Assign task`} />
         <div className="w-full">
-          {!loading ? (
+          {loading ? (
             <Loader /> 
           ) : (
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">

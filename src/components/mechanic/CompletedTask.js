@@ -167,7 +167,7 @@ const CompletedTask = () => {
                     </Heading>
                 </Box>
             </Flex>
-            {!loading ? (
+            {loading ? (
                 <Loader />
             ) : (
                 <Fragment>

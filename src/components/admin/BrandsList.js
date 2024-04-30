@@ -122,7 +122,7 @@ const BrandsList = () => {
           <Stack>
             <Heading> All Brands</Heading>{" "}
           </Stack>
-          {!loading ? (
+          {loading ? (
             <Loader />
           ) : (
             <MDBDataTable

@@ -122,7 +122,7 @@ const CategoryList = () => {
           <Stack>
             <Heading> All Categories</Heading>{" "}
           </Stack>
-          {!loading ? (
+          {loading ? (
             <Loader />
           ) : (
             <MDBDataTable

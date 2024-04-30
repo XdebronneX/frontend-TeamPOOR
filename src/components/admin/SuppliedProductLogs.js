@@ -125,7 +125,7 @@ const SuppliedProductLogs = () => {
           <Stack>
             <Heading>Supplied Product Logs History</Heading>{" "}
           </Stack>
-          {!loading ? (
+          {loading ? (
             <Loader />
           ) : (
             <MDBDataTable

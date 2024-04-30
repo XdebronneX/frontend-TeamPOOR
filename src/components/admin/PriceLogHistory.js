@@ -124,7 +124,7 @@ const PriceLogHistory = () => {
           <Stack>
             <Heading>Price Logs History</Heading>{" "}
           </Stack>
-          {!loading ? (
+          {loading ? (
             <Loader />
           ) : (
             <MDBDataTable

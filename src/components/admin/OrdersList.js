@@ -198,7 +198,7 @@ const OrdersList = () => {
           <Stack>
             <Heading> All Orders</Heading>
           </Stack>
-          {!loading ? (
+          {loading ? (
             <Loader />
           ) : (
             <MDBDataTable

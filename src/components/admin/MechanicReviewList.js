@@ -101,7 +101,7 @@ const MechanicReviewList = () => {
           <Heading as="h1" size="lg">
             All Mechanic Reviews
           </Heading>
-          {!loading ? (
+          {loading ? (
             <Loader />
           ) : (
             <MDBDataTable

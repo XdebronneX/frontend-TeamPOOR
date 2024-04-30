@@ -402,7 +402,7 @@ const ListAppointments = () => {
 
     return (
         <Container maxW="container.xl">
-            {!loading ? (
+            {loading ? (
                 <Loader />
             ) : (
                 <Fragment>

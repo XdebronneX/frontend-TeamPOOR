@@ -216,7 +216,7 @@ const SecretaryAppointmentList = () => {
                 <Box flex="1" p="10">
                     <Fragment>
                         <Stack><Heading> All Appointments</Heading></Stack>
-                        {!loading ? (
+                        {loading ? (
                             <Loader />
                         ) : (
                             <MDBDataTable

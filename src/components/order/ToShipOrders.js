@@ -111,7 +111,7 @@ const ToShipOrders = () => {
         <div className='container'>
             <StatusSteps />
             <h1 className='my-5'>My Orders</h1>
-            {!loading ? (
+            {loading ? (
                 <Loader />
             ) : (
                 <MDBDataTable

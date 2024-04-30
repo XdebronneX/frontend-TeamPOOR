@@ -159,7 +159,7 @@ const ProductStockList = () => {
           <Stack>
             <Heading>All Stocks</Heading>{" "}
           </Stack>
-          {!loading ? (
+          {loading ? (
             <Loader />
           ) : (
             <MDBDataTable

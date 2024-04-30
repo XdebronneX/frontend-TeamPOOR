@@ -155,7 +155,7 @@ const UsersList = () => {
             <Stack>
               <Heading> All Users</Heading>{" "}
             </Stack>
-            {!loading ? (
+            {loading ? (
               <Flex justify="center" align="center" minH="100vh">
                 <Loader />
               </Flex>

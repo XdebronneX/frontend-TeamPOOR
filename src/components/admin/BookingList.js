@@ -239,7 +239,7 @@ const BookingList = () => {
           <Stack>
             <Heading> All Appointments</Heading>
           </Stack>
-          {!loading ? (
+          {loading ? (
             <Loader />
           ) : (
             <MDBDataTable

@@ -183,7 +183,7 @@ const ProductReviews = () => {
               </form>
             </div>
           </div>
-          {!loading ? (
+          {loading ? (
             <Loader />
           ) : reviews && reviews.length > 0 ? (
             <MDBDataTable

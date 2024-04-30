@@ -166,7 +166,7 @@ const UpcomingTask = () => {
                     </Heading>
                 </Box>
             </Flex>
-            {!loading ? (
+            {loading ? (
                 <Loader />
             ) : (
                 <Fragment>

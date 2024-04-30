@@ -146,7 +146,7 @@ const SecretaryOrders = () => {
     return (
         <Fragment>
             <h1>List of Orders</h1>
-            {!loading ? <Loader /> : (
+            {loading ? <Loader /> : (
                 <MDBDataTable
                     data={setOrders()}
                     className="px-3"
