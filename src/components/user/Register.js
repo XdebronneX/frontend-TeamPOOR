@@ -335,7 +335,6 @@ const Registers = () => {
     const { handleSubmit, control, formState: { errors }, register } = useForm();
     const [showPassword, setShowPassword] = useState(false);
     const [showModal1, setShowModal1] = useState(false);
-    const [showModal2, setShowModal2] = useState(false);
     const [isChecked, setIsChecked] = useState(false);
 
     const handleSuccess = (message = '') => {
@@ -384,10 +383,6 @@ const Registers = () => {
 
     const toggleModal1 = () => {
         setShowModal1(!showModal1);
-    };
-
-    const toggleModal2 = () => {
-        setShowModal2(!showModal2);
     };
 
     const handleCheckboxChange = (e) => {
@@ -591,9 +586,6 @@ const Registers = () => {
                                 <Checkbox onChange={handleCheckboxChange}>
                                     I agree to the <Link onClick={toggleModal1} color="blue.400">Terms and Conditions - Section 1</Link>.
                                 </Checkbox>
-                                <Checkbox onChange={handleCheckboxChange}>
-                                    I agree to the <Link onClick={toggleModal2} color="blue.400">Terms and Conditions - Section 2</Link>.
-                                </Checkbox>
                                 <Button
                                     type="submit"
                                     color={'white'}
@@ -617,7 +609,7 @@ const Registers = () => {
             </Flex>
 
             {/* Terms and Conditions Modal */}
-            <Modal isOpen={showModal} onClose={toggleModal} size="xl">
+            <Modal isOpen={showModal1} onClose={toggleModal1} size="xl">
                 <ModalOverlay />
                 <ModalContent>
                     <ModalHeader fontSize="2xl">Terms and Conditions</ModalHeader>
@@ -673,11 +665,10 @@ const Registers = () => {
                         </Stack>
                     </ModalBody>
                     <ModalFooter>
-                        <Button colorScheme="blue" onClick={toggleModal}>Close</Button>
+                        <Button colorScheme="blue" onClick={toggleModal1}>Close</Button>
                     </ModalFooter>
                 </ModalContent>
             </Modal>
-
         </Stack>
     );
 };
