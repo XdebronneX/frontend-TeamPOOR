@@ -584,7 +584,7 @@ const Registers = () => {
                                     )}
                                 </FormControl>
                                 <Checkbox onChange={handleCheckboxChange}>
-                                    I agree to the <Link onClick={toggleModal1} color="blue.400">Terms and Conditions - Section 1</Link>.
+                                    I agree to the <Link onClick={toggleModal1} color="blue.400" style={{ textDecoration: 'underline', fontWeight: 'bold' }}>Terms and Conditions</Link>.
                                 </Checkbox>
                                 <Button
                                     type="submit"
@@ -593,6 +593,9 @@ const Registers = () => {
                                     _hover={{
                                         bg: 'blue.700',
                                     }}
+                                    // Set opacity based on isChecked state
+                                    opacity={!isChecked ? 0.5 : 1}
+                                    // Disable the button when isChecked is false
                                     disabled={!isChecked}
                                 >
                                     Sign up
@@ -661,6 +664,9 @@ const Registers = () => {
                                 <strong>6. Changes to Terms and Conditions</strong>
                                 <br />
                                 6.1. The TEAM POOR: System for Managing Motorcycle Parts and Services reserves the right to modify or replace these Terms and Conditions at any time without prior notice. Your continued use of the Platform after any such changes constitutes your acceptance of the new Terms and Conditions.
+                            </Text>
+                            <Text fontSize="lg">
+                                By engaging in TEAM POOR: System for Managing Motorcycle Parts and Services reserves, you acknowledge that you have read, understood, and agreed to abide by these terms and conditions. <br/>If you have any questions or concerns, please contact us before clicking the 'Agree' button to proceed. <br/>If you do not agree with the terms and conditions, please click the 'Disagree' button. <br/>Your continued use or acceptance of the agreement implies your understanding and acceptance of the terms and conditions.
                             </Text>
                         </Stack>
                     </ModalBody>
