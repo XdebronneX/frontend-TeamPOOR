@@ -604,7 +604,7 @@ const Registers = () => {
                         </form>
                         <Stack pt={6}>
                             <Text align={'center'}>
-                                Already a user? <Link onClick={LoginHandler} color="blue.400">Login</Link>
+                                Already a user? <Link onClick={LoginHandler} color="blue.400" style={{ textDecoration: 'underline', fontWeight: 'bold' }}>Login</Link>
                             </Text>
                         </Stack>
                     </Box>

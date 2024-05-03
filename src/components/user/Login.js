@@ -123,7 +123,7 @@ const Login = () => {
                                                     Forgot Password?
                                                 </Link>
                                                 <Text>
-                                                    Don't have an account? <Link onClick={RegisterHandler} color={'blue.400'}>Signup here</Link>
+                                                        Don't have an account? <Link onClick={RegisterHandler} color={'blue.400'} style={{ textDecoration: 'underline', fontWeight: 'bold' }}>Signup here</Link>
                                                 </Text>
                                             </Stack>
                                                 <Button type="submit" bg={'blue.500'}
