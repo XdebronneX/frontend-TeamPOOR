@@ -112,172 +112,172 @@
 //                         p={8}
 //                         w={'full'}>
 //                         {/* {message && <SuccessMessage>{message}</SuccessMessage>} */}
-//                         <form onSubmit={handleSubmit(onSubmit)}>
-//                             <Stack spacing={4}>
-//                                 <FormControl id="firstname">
-//                                     <FormLabel>First Name</FormLabel>
-//                                     <Controller
-//                                         name="firstname"
-//                                         control={control}
-//                                         defaultValue=""
-//                                         rules={{
-//                                             required: 'First Name is required',
-//                                             minLength: {
-//                                                 value: 4,
-//                                                 message: 'First Name must be at least 4 characters long',
-//                                             },
-//                                             maxLength: {
-//                                                 value: 30,
-//                                                 message: 'First Name must not exceed 30 characters',
-//                                             },
-//                                         }}
-//                                         render={({ field }) => (
-//                                             <>
-//                                                 <Input {...field} type="text" placeholder="First Name" aria-invalid={errors.firstname ? 'true' : 'false'} />
-//                                                 {errors.firstname && (
-//                                                     <Text color="red" fontSize="sm">
-//                                                         {errors.firstname.message}
-//                                                     </Text>
-//                                                 )}
-//                                             </>
-//                                         )}
-//                                     />
-//                                 </FormControl>
-//                                 <FormControl id="lastname">
-//                                     <FormLabel>Last Name</FormLabel>
-//                                     <Controller
-//                                         name="lastname"
-//                                         control={control}
-//                                         defaultValue=""
-//                                         rules={{
-//                                             required: 'Last Name is required',
-//                                             minLength: {
-//                                                 value: 4,
-//                                                 message: 'Last Name must be at least 4 characters long',
-//                                             },
-//                                             maxLength: {
-//                                                 value: 30,
-//                                                 message: 'Last Name must not exceed 30 characters',
-//                                             },
-//                                         }}
-//                                         render={({ field }) => (
-//                                             <>
-//                                                 <Input {...field} type="text" placeholder="Last Name" aria-invalid={errors.lastname ? 'true' : 'false'} />
-//                                                 {errors.lastname && (
-//                                                     <Text color="red" fontSize="sm">
-//                                                         {errors.lastname.message}
-//                                                     </Text>
-//                                                 )}
-//                                             </>
-//                                         )}
-//                                     />
-//                                 </FormControl>
-//                                 <FormControl id="phone">
-//                                     <FormLabel>Mobile Number</FormLabel>
-//                                     <Controller
-//                                         name="phone"
-//                                         control={control}
-//                                         defaultValue=""
-//                                         rules={{
-//                                             required: 'Mobile number is required',
-//                                             pattern: {
-//                                                 value: /^9\d{9}$/,
-//                                                 message: 'Invalid mobile number',
-//                                             },
-//                                         }}
-//                                         render={({ field }) => (
-//                                             <>
-//                                                 <InputGroup>
-//                                                     <InputLeftAddon children="+63" />
-//                                                     <Input
-//                                                         {...field}
-//                                                         type="text"
-//                                                         placeholder="Mobile number"
-//                                                         aria-invalid={errors.phone ? 'true' : 'false'}
-//                                                         onChange={(e) => {
-//                                                             let inputValue = e.target.value;
-//                                                             const formattedNumber = inputValue.replace(/[^0-9]/g, ''); // Remove non-numeric characters
-//                                                             const maxLength = 10; // Maximum length of formatted number (10 digits)
-//                                                             if (formattedNumber.length <= maxLength) {
-//                                                                 field.onChange(formattedNumber); // Update the field value with only numeric characters
-//                                                             }
-//                                                         }}
-//                                                     />
-//                                                 </InputGroup>
-//                                                 {errors.phone && (
-//                                                     <Text color="red" fontSize="sm">
-//                                                         {errors.phone.message}
-//                                                     </Text>
-//                                                 )}
-//                                             </>
-//                                         )}
-//                                     />
-//                                 </FormControl>
-//                                 <FormControl id="email">
-//                                     <FormLabel>Email address</FormLabel>
-//                                     <Controller
-//                                         name="email"
-//                                         control={control}
-//                                         defaultValue=""
-//                                         rules={{
-//                                             required: 'Email is required',
-//                                             pattern: {
-//                                                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-//                                                 message: 'Invalid email address',
-//                                             },
-//                                         }}
-//                                         render={({ field }) => (
-//                                             <>
-//                                                 <Input {...field} type="email" placeholder="Email Address" aria-invalid={errors.email ? 'true' : 'false'} />
-//                                                 {errors.email && (
-//                                                     <Text color="red" fontSize="sm">
-//                                                         {errors.email.message}
-//                                                     </Text>
-//                                                 )}
-//                                             </>
-//                                         )}
-//                                     />
-//                                 </FormControl>
-//                                 <FormControl id="password">
-//                                     <FormLabel>Password</FormLabel>
-//                                     <Stack spacing={1} direction={{ base: 'column', sm: 'row' }}>
-//                                         <Input
-//                                             {...register('password', {
-//                                                 required: 'Password is required',
-//                                                 minLength: {
-//                                                     value: 6,
-//                                                     message: 'Password must be at least 6 characters long',
-//                                                 },
-//                                             })}
-//                                             type={showPassword ? 'text' : 'password'}
-//                                             placeholder="Password"
-//                                             aria-invalid={errors.password ? 'true' : 'false'}
-//                                         />
-//                                         <Button
-//                                             variant={'ghost'}
-//                                             onClick={() => setShowPassword(!showPassword)}
-//                                             aria-label={showPassword ? 'Hide password' : 'Show password'}>
-//                                             {showPassword ? <ViewOffIcon /> : <ViewIcon />}
-//                                         </Button>
-//                                     </Stack>
-//                                     {errors.password && (
-//                                         <Text color="red" fontSize="sm">
-//                                             {errors.password.message}
-//                                         </Text>
-//                                     )}
-//                                 </FormControl>
-//                                 <Button
-//                                     type="submit"
-//                                     color={'white'}
-//                                     bg={'blue.500'}
-//                                     _hover={{
-//                                         bg: 'blue.700',
-//                                     }}
-//                                 >
-//                                     Sign up
-//                                 </Button>
-//                             </Stack>
-//                         </form>
+                        // <form onSubmit={handleSubmit(onSubmit)}>
+                        //     <Stack spacing={4}>
+                        //         <FormControl id="firstname">
+                        //             <FormLabel>First Name</FormLabel>
+                        //             <Controller
+                        //                 name="firstname"
+                        //                 control={control}
+                        //                 defaultValue=""
+                        //                 rules={{
+                        //                     required: 'First Name is required',
+                        //                     minLength: {
+                        //                         value: 4,
+                        //                         message: 'First Name must be at least 4 characters long',
+                        //                     },
+                        //                     maxLength: {
+                        //                         value: 30,
+                        //                         message: 'First Name must not exceed 30 characters',
+                        //                     },
+                        //                 }}
+                        //                 render={({ field }) => (
+                        //                     <>
+                        //                         <Input {...field} type="text" placeholder="First Name" aria-invalid={errors.firstname ? 'true' : 'false'} />
+                        //                         {errors.firstname && (
+                        //                             <Text color="red" fontSize="sm">
+                        //                                 {errors.firstname.message}
+                        //                             </Text>
+                        //                         )}
+                        //                     </>
+                        //                 )}
+                        //             />
+                        //         </FormControl>
+                        //         <FormControl id="lastname">
+                        //             <FormLabel>Last Name</FormLabel>
+                        //             <Controller
+                        //                 name="lastname"
+                        //                 control={control}
+                        //                 defaultValue=""
+                        //                 rules={{
+                        //                     required: 'Last Name is required',
+                        //                     minLength: {
+                        //                         value: 4,
+                        //                         message: 'Last Name must be at least 4 characters long',
+                        //                     },
+                        //                     maxLength: {
+                        //                         value: 30,
+                        //                         message: 'Last Name must not exceed 30 characters',
+                        //                     },
+                        //                 }}
+                        //                 render={({ field }) => (
+                        //                     <>
+                        //                         <Input {...field} type="text" placeholder="Last Name" aria-invalid={errors.lastname ? 'true' : 'false'} />
+                        //                         {errors.lastname && (
+                        //                             <Text color="red" fontSize="sm">
+                        //                                 {errors.lastname.message}
+                        //                             </Text>
+                        //                         )}
+                        //                     </>
+                        //                 )}
+                        //             />
+                        //         </FormControl>
+                        //         <FormControl id="phone">
+                        //             <FormLabel>Mobile Number</FormLabel>
+                        //             <Controller
+                        //                 name="phone"
+                        //                 control={control}
+                        //                 defaultValue=""
+                        //                 rules={{
+                        //                     required: 'Mobile number is required',
+                        //                     pattern: {
+                        //                         value: /^9\d{9}$/,
+                        //                         message: 'Invalid mobile number',
+                        //                     },
+                        //                 }}
+                        //                 render={({ field }) => (
+                        //                     <>
+                        //                         <InputGroup>
+                        //                             <InputLeftAddon children="+63" />
+                        //                             <Input
+                        //                                 {...field}
+                        //                                 type="text"
+                        //                                 placeholder="Mobile number"
+                        //                                 aria-invalid={errors.phone ? 'true' : 'false'}
+                        //                                 onChange={(e) => {
+                        //                                     let inputValue = e.target.value;
+                        //                                     const formattedNumber = inputValue.replace(/[^0-9]/g, ''); // Remove non-numeric characters
+                        //                                     const maxLength = 10; // Maximum length of formatted number (10 digits)
+                        //                                     if (formattedNumber.length <= maxLength) {
+                        //                                         field.onChange(formattedNumber); // Update the field value with only numeric characters
+                        //                                     }
+                        //                                 }}
+                        //                             />
+                        //                         </InputGroup>
+                        //                         {errors.phone && (
+                        //                             <Text color="red" fontSize="sm">
+                        //                                 {errors.phone.message}
+                        //                             </Text>
+                        //                         )}
+                        //                     </>
+                        //                 )}
+                        //             />
+                        //         </FormControl>
+                        //         <FormControl id="email">
+                        //             <FormLabel>Email address</FormLabel>
+                        //             <Controller
+                        //                 name="email"
+                        //                 control={control}
+                        //                 defaultValue=""
+                        //                 rules={{
+                        //                     required: 'Email is required',
+                        //                     pattern: {
+                        //                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                        //                         message: 'Invalid email address',
+                        //                     },
+                        //                 }}
+                        //                 render={({ field }) => (
+                        //                     <>
+                        //                         <Input {...field} type="email" placeholder="Email Address" aria-invalid={errors.email ? 'true' : 'false'} />
+                        //                         {errors.email && (
+                        //                             <Text color="red" fontSize="sm">
+                        //                                 {errors.email.message}
+                        //                             </Text>
+                        //                         )}
+                        //                     </>
+                        //                 )}
+                        //             />
+                        //         </FormControl>
+                        //         <FormControl id="password">
+                        //             <FormLabel>Password</FormLabel>
+                        //             <Stack spacing={1} direction={{ base: 'column', sm: 'row' }}>
+                        //                 <Input
+                        //                     {...register('password', {
+                        //                         required: 'Password is required',
+                        //                         minLength: {
+                        //                             value: 6,
+                        //                             message: 'Password must be at least 6 characters long',
+                        //                         },
+                        //                     })}
+                        //                     type={showPassword ? 'text' : 'password'}
+                        //                     placeholder="Password"
+                        //                     aria-invalid={errors.password ? 'true' : 'false'}
+                        //                 />
+                        //                 <Button
+                        //                     variant={'ghost'}
+                        //                     onClick={() => setShowPassword(!showPassword)}
+                        //                     aria-label={showPassword ? 'Hide password' : 'Show password'}>
+                        //                     {showPassword ? <ViewOffIcon /> : <ViewIcon />}
+                        //                 </Button>
+                        //             </Stack>
+                        //             {errors.password && (
+                        //                 <Text color="red" fontSize="sm">
+                        //                     {errors.password.message}
+                        //                 </Text>
+                        //             )}
+                        //         </FormControl>
+                        //         <Button
+                        //             type="submit"
+                        //             color={'white'}
+                        //             bg={'blue.500'}
+                        //             _hover={{
+                        //                 bg: 'blue.700',
+                        //             }}
+                        //         >
+                        //             Sign up
+                        //         </Button>
+                        //     </Stack>
+                        // </form>
 //                         <Stack pt={6}>
 //                             <Text align={'center'}>
 //                                 Already a user? <Link onClick={LoginHandler} color="blue.400">Login</Link>
@@ -334,7 +334,8 @@ const Registers = () => {
     const { error, success, loading, message } = useSelector((state) => state.authUser);
     const { handleSubmit, control, formState: { errors }, register } = useForm();
     const [showPassword, setShowPassword] = useState(false);
-    const [showModal, setShowModal] = useState(false);
+    const [showModal1, setShowModal1] = useState(false);
+    const [showModal2, setShowModal2] = useState(false);
     const [isChecked, setIsChecked] = useState(false);
 
     const handleSuccess = (message = '') => {
@@ -381,8 +382,12 @@ const Registers = () => {
         navigate('/login');
     };
 
-    const toggleModal = () => {
-        setShowModal(!showModal);
+    const toggleModal1 = () => {
+        setShowModal1(!showModal1);
+    };
+
+    const toggleModal2 = () => {
+        setShowModal2(!showModal2);
     };
 
     const handleCheckboxChange = (e) => {
@@ -460,9 +465,134 @@ const Registers = () => {
                                         )}
                                     />
                                 </FormControl>
-                                {/* Other form fields */}
+                                <FormControl id="lastname">
+                                    <FormLabel>Last Name</FormLabel>
+                                    <Controller
+                                        name="lastname"
+                                        control={control}
+                                        defaultValue=""
+                                        rules={{
+                                            required: 'Last Name is required',
+                                            minLength: {
+                                                value: 4,
+                                                message: 'Last Name must be at least 4 characters long',
+                                            },
+                                            maxLength: {
+                                                value: 30,
+                                                message: 'Last Name must not exceed 30 characters',
+                                            },
+                                        }}
+                                        render={({ field }) => (
+                                            <>
+                                                <Input {...field} type="text" placeholder="Last Name" aria-invalid={errors.lastname ? 'true' : 'false'} />
+                                                {errors.lastname && (
+                                                    <Text color="red" fontSize="sm">
+                                                        {errors.lastname.message}
+                                                    </Text>
+                                                )}
+                                            </>
+                                        )}
+                                    />
+                                </FormControl>
+                                <FormControl id="phone">
+                                    <FormLabel>Mobile Number</FormLabel>
+                                    <Controller
+                                        name="phone"
+                                        control={control}
+                                        defaultValue=""
+                                        rules={{
+                                            required: 'Mobile number is required',
+                                            pattern: {
+                                                value: /^9\d{9}$/,
+                                                message: 'Invalid mobile number',
+                                            },
+                                        }}
+                                        render={({ field }) => (
+                                            <>
+                                                <InputGroup>
+                                                    <InputLeftAddon children="+63" />
+                                                    <Input
+                                                        {...field}
+                                                        type="text"
+                                                        placeholder="Mobile number"
+                                                        aria-invalid={errors.phone ? 'true' : 'false'}
+                                                        onChange={(e) => {
+                                                            let inputValue = e.target.value;
+                                                            const formattedNumber = inputValue.replace(/[^0-9]/g, ''); // Remove non-numeric characters
+                                                            const maxLength = 10; // Maximum length of formatted number (10 digits)
+                                                            if (formattedNumber.length <= maxLength) {
+                                                                field.onChange(formattedNumber); // Update the field value with only numeric characters
+                                                            }
+                                                        }}
+                                                    />
+                                                </InputGroup>
+                                                {errors.phone && (
+                                                    <Text color="red" fontSize="sm">
+                                                        {errors.phone.message}
+                                                    </Text>
+                                                )}
+                                            </>
+                                        )}
+                                    />
+                                </FormControl>
+                                <FormControl id="email">
+                                    <FormLabel>Email address</FormLabel>
+                                    <Controller
+                                        name="email"
+                                        control={control}
+                                        defaultValue=""
+                                        rules={{
+                                            required: 'Email is required',
+                                            pattern: {
+                                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                                                message: 'Invalid email address',
+                                            },
+                                        }}
+                                        render={({ field }) => (
+                                            <>
+                                                <Input {...field} type="email" placeholder="Email Address" aria-invalid={errors.email ? 'true' : 'false'} />
+                                                {errors.email && (
+                                                    <Text color="red" fontSize="sm">
+                                                        {errors.email.message}
+                                                    </Text>
+                                                )}
+                                            </>
+                                        )}
+                                    />
+                                </FormControl>
+                                <FormControl id="password">
+                                    <FormLabel>Password</FormLabel>
+                                    <Stack spacing={1} direction={{ base: 'column', sm: 'row' }}>
+                                        <Input
+                                            {...register('password', {
+                                                required: 'Password is required',
+                                                minLength: {
+                                                    value: 6,
+                                                    message: 'Password must be at least 6 characters long',
+                                                },
+                                            })}
+                                            type={showPassword ? 'text' : 'password'}
+                                            placeholder="Password"
+                                            aria-invalid={errors.password ? 'true' : 'false'}
+                                        />
+                                        <Button
+                                            variant={'ghost'}
+                                            onClick={() => setShowPassword(!showPassword)}
+                                            aria-label={showPassword ? 'Hide password' : 'Show password'}>
+                                            {showPassword ? <ViewOffIcon /> : <ViewIcon />}
+                                        </Button>
+                                    </Stack>
+                                    {errors.password && (
+                                        <Text color="red" fontSize="sm">
+                                            {errors.password.message}
+                                        </Text>
+                                    )}
+                                </FormControl>
                                 <Checkbox onChange={handleCheckboxChange}>
-                                    I agree to the <Link onClick={toggleModal} color="blue.400">Terms and Conditions</Link>.
+                                    I agree to the <Link onClick={toggleModal1} color="blue.400">Terms and Conditions - Section 1</Link>.
+                                </Checkbox>
+                                <Checkbox onChange={handleCheckboxChange}>
+                                    I agree to the <Link onClick={toggleModal2} color="blue.400">Terms and Conditions - Section 2</Link>.
                                 </Checkbox>
                                 <Button
                                     type="submit"
