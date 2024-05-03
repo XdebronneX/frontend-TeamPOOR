@@ -119,7 +119,7 @@ const Login = () => {
                                         </FormControl>
                                         <Stack spacing={6}>
                                             <Stack direction="row" align={'start'} justify={'space-between'}>
-                                                <Link onClick={ForgotPasswordHandler} color={'blue.400'}>
+                                                    <Link onClick={ForgotPasswordHandler} style={{ textDecoration: 'underline', fontWeight: 'bold' }}>
                                                     Forgot Password?
                                                 </Link>
                                                 <Text>
