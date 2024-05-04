@@ -154,15 +154,28 @@ const Dashboard = () => {
                   <FaUsers size={24} color="#ef4444" />
                 </div>
                 <div>
-                  <p>Registered users</p>
-
+                  <p>Total registered users</p>
                   <p className="text-normal font-bold">{users?.length}</p>
                 </div>
+              </div>
+                <div className="flex flex-row space-x-2 items-center">
+                  <div className="bg-red-50 p-3 rounded-xl">
+                    <FaUsers size={24} color="#ef4444" />
+                  </div>
                   <div>
                     <p>Not verify users</p>
                     <p className="text-normal font-bold">{users.filter(user => !user.verified).length}</p>
                   </div>
-              </div>
+                </div>
+                <div className="flex flex-row space-x-2 items-center">
+                  <div className="bg-red-50 p-3 rounded-xl">
+                    <FaUsers size={24} color="#ef4444" />
+                  </div>
+                  <div>
+                    <p>Verified users</p>
+                    <p className="text-normal font-bold">{users.filter(user => user.verified).length}</p>
+                  </div>
+                </div>
               <div className="flex flex-row space-x-2 items-center">
                 <div className="bg-red-50 p-3 rounded-xl">
                   <FaMotorcycle size={24} color="#ef4444" />
