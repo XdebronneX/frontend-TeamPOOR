@@ -112,6 +112,9 @@ const SuppliedProductLogs = () => {
       isClosable: true,
     });
   };
+  const supplierHandler = () => {
+    navigate("/admin/supplier/history/logs");
+  };
 
   return (
     <aside className="bg-zinc-100 min-h-screen p-3 flex flex-row gap-4">
@@ -125,6 +128,9 @@ const SuppliedProductLogs = () => {
           <Stack>
             <Heading>Supplied Product Logs History</Heading>{" "}
           </Stack>
+          <Button colorScheme="teal" onClick={supplierHandler} variant="outline">
+            Supplier Log
+          </Button>
           {loading ? (
             <Loader />
           ) : (
