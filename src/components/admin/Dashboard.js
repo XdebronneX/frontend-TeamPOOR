@@ -163,7 +163,7 @@ const Dashboard = () => {
                     <FaUsers size={24} color="#ef4444" />
                   </div>
                   <div>
-                    <p>Not verify users</p>
+                    <p>Unverified users</p>
                     <p className="text-normal font-bold">{users.filter(user => !user.verified).length}</p>
                   </div>
                 </div>
