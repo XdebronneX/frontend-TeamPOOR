@@ -243,7 +243,7 @@ const Dashboard = () => {
 
             <div className="bg-white rounded-xl p-1 shadow-sm col-span-2">
               <div className="p-3">
-                <p className="text-lg font-bold">Monthly Sales</p>
+                <p className="text-lg font-bold">Most Purchased Brand</p>
               </div>
 
               <MostBrand mostPurchasedBrand={mostPurchasedBrand} />
@@ -251,7 +251,7 @@ const Dashboard = () => {
 
             <div className="bg-white rounded-xl p-1 shadow-sm col-span-3">
               <div className="p-3">
-                <p className="text-lg font-bold">Monthly Sales</p>
+                <p className="text-lg font-bold">Most Purchased User</p>
               </div>
 
               <MostLoyalUser totalPurchasedByUser={mostPurchasedUser} />
@@ -259,7 +259,7 @@ const Dashboard = () => {
 
             <div className="bg-white rounded-xl p-1 shadow-sm col-span-5">
               <div className="p-3">
-                <p className="text-lg font-bold">Monthly Sales</p>
+                <p className="text-lg font-bold">Most Pruchased Product</p>
               </div>
 
               <ProductSales mostPurchasedProduct={mostPurchasedProduct} />
