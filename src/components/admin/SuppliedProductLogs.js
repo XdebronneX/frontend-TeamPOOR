@@ -5,7 +5,7 @@ import { getSuppliedLogs, clearErrors } from "../../actions/productActions";
 import { MDBDataTable } from "mdbreact";
 import Loader from "../layout/Loader";
 import Sidebar from "./Sidebar";
-import { Box, Badge, Flex, useToast, Stack, Heading } from "@chakra-ui/react";
+import { Box, Badge, Flex, useToast, Stack, Heading, Button } from "@chakra-ui/react";
 import MetaData from "../layout/MetaData";
 import { CiRead } from "react-icons/ci";
 
