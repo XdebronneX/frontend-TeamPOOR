@@ -59,11 +59,7 @@ const SuppliedProductLogs = () => {
           year: "numeric",
           month: "long",
           day: "2-digit",
-        })}, ${createdAt.toLocaleTimeString("en-US", {
-          hour: "numeric",
-          minute: "2-digit",
-          second: "2-digit",
-        })}`;
+        })}`
 
         // Check if supplier exists and has the firstname property
         const supplierName =
