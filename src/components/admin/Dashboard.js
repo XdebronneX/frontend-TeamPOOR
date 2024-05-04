@@ -158,6 +158,10 @@ const Dashboard = () => {
 
                   <p className="text-normal font-bold">{users?.length}</p>
                 </div>
+                  <div>
+                    <p>Not verify users</p>
+                    <p className="text-normal font-bold">{users.filter(user => !user.verified).length}</p>
+                  </div>
               </div>
               <div className="flex flex-row space-x-2 items-center">
                 <div className="bg-red-50 p-3 rounded-xl">
