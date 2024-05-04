@@ -57,10 +57,6 @@ const Profile = () => {
         navigate("/add-fuel");
     };
 
-    const supplierHandler = () => {
-        navigate("/admin/supplier/history/logs");
-    };
-
     const updateMyAddressHandler = (id) => {
         dispatch(updateDefaultAddresses(id));
     };
@@ -566,9 +562,6 @@ const Profile = () => {
                                 </Button>
                                 <Button colorScheme="teal" onClick={ChangePasswordHandler} variant="outline">
                                     Change Password
-                                </Button>
-                                <Button colorScheme="teal" onClick={supplierHandler} variant="outline">
-                                    Supplier Log
                                 </Button>
                             </Stack>
                             <Box mt={4}>
