@@ -8,8 +8,8 @@ const BestMechanics = ({ mostRatedMechanics }) => {
         }
 
         // Extract mechanic names and average ratings
-        const labels = mostRatedMechanics.map((mechanic) => mechanic.lastname);
-        const data = mostRatedMechanics.map((mechanic) => mechanic.rating);
+        const labels = mostRatedMechanics.map((feedback) => feedback.mechanic.lastname);
+        const data = mostRatedMechanics.map((feedback) => feedback.rating);
 
         // Create chart data
         const chartData = {

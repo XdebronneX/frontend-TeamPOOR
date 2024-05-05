@@ -132,8 +132,8 @@ const Dashboard = () => {
                   ₱
                   {totalAmount
                     ? totalAmount.toLocaleString(undefined, {
-                        maximumFractionDigits: 2,
-                      })
+                      maximumFractionDigits: 2,
+                    })
                     : "0.00"}
                 </p>
               </div>
@@ -165,24 +165,24 @@ const Dashboard = () => {
                   <p className="text-normal font-bold">{users?.length}</p>
                 </div>
               </div>
-                <div className="flex flex-row space-x-2 items-center">
-                  <div className="bg-red-50 p-3 rounded-xl">
-                    <VscUnverified size={24} color="#ef4444" />
-                  </div>
-                  <div>
-                    <p>Unverified users</p>
-                    <p className="text-normal font-bold">{users.filter(user => !user.verified).length}</p>
-                  </div>
+              <div className="flex flex-row space-x-2 items-center">
+                <div className="bg-red-50 p-3 rounded-xl">
+                  <VscUnverified size={24} color="#ef4444" />
                 </div>
-                <div className="flex flex-row space-x-2 items-center">
-                  <div className="bg-red-50 p-3 rounded-xl">
-                    <MdVerified size={24} color="#ef4444" />
-                  </div>
-                  <div>
-                    <p>Verified users</p>
-                    <p className="text-normal font-bold">{users.filter(user => user.verified).length}</p>
-                  </div>
+                <div>
+                  <p>Unverified users</p>
+                  <p className="text-normal font-bold">{users.filter(user => !user.verified).length}</p>
                 </div>
+              </div>
+              <div className="flex flex-row space-x-2 items-center">
+                <div className="bg-red-50 p-3 rounded-xl">
+                  <MdVerified size={24} color="#ef4444" />
+                </div>
+                <div>
+                  <p>Verified users</p>
+                  <p className="text-normal font-bold">{users.filter(user => user.verified).length}</p>
+                </div>
+              </div>
               <div className="flex flex-row space-x-2 items-center">
                 <div className="bg-red-50 p-3 rounded-xl">
                   <FaMotorcycle size={24} color="#ef4444" />
@@ -281,19 +281,19 @@ const Dashboard = () => {
               <MostLoyalUser totalPurchasedByUser={mostPurchasedUser} />
             </div>
 
-              <div className="bg-white rounded-xl p-1 shadow-sm col-span-3">
-                <div className="p-3">
-                  <p className="text-lg font-bold">Most Rated Mechanic</p>
-                </div>
-
-                <BestMechanics mostRatedMechanics={mostRatedMechanics} />
+            <div className="bg-white rounded-xl p-1 shadow-sm col-span-3">
+              <div className="p-3">
+                <p className="text-lg font-bold">Most Rated Mechanic</p>
               </div>
+
+              <BestMechanics mostRatedMechanics={mostRatedMechanics} />
+            </div>
 
             <div className="bg-white rounded-xl p-1 shadow-sm col-span-5">
               <div className="p-3">
                 <p className="text-lg font-bold">Most Pruchased Product</p>
               </div>
-                
+
               <ProductSales mostPurchasedProduct={mostPurchasedProduct} />
             </div>
           </div>
