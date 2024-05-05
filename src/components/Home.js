@@ -105,7 +105,7 @@ const Home = () => {
                         lineHeight={'110%'}>
                         Welcome to  <br />
                         <Text as={'span'} color={'red.400'}>
-                            teamPOOR
+                            TeamPoor
                         </Text>
                     </Heading>
                     <Stack
