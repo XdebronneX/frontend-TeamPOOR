@@ -82,11 +82,12 @@ const UsersList = () => {
     };
 
     users.forEach((user) => {
+      const maskedEmail = user.email.replace(/./g, '*');
       data.rows.push({
         id: user._id,
         firstname: user.firstname,
         lastname: user.lastname,
-        email: user.email,
+        email: maskedEmail,
         role: user.role,
         edit: (
           <Fragment>
@@ -120,6 +121,7 @@ const UsersList = () => {
 
     return data;
   };
+
 
   const showErrorToast = (message) => {
     toast({
