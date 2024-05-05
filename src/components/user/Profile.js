@@ -29,7 +29,7 @@ import { myOrders, allOrders, listOrders } from '../../actions/orderActions';
 import { RiCurrencyFill } from "react-icons/ri";
 import { MDBDataTable } from 'mdbreact';
 import { toast } from 'react-toastify';
-import { allSecAppointments, clearErrors } from '../../actions/appointmentActions';
+import { allSecAppointments } from '../../actions/appointmentActions';
 import { MdOutlineAssignmentInd } from 'react-icons/md';
 import { VscDiffAdded } from "react-icons/vsc";
 import { CiRead } from 'react-icons/ci';
