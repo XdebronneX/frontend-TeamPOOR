@@ -132,6 +132,9 @@ const Login = () => {
                                                     _hover={{
                                                         bg: 'blue.700',
                                                     }}
+                                                    isLoading={loading}
+                                                    loadingText="Signing in..."
+                                                    disabled={loading}
                                                     >
                                                 Sign in
                                             </Button>
