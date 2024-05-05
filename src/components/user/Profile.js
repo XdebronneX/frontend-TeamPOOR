@@ -546,7 +546,7 @@ const Profile = () => {
     const formattedTotalCostProduct = totalPrice.toLocaleString();
     return (
         <Fragment>
-            {loadingAddresses || loadingMotorcycles || loadingFuel || loadingMyOrders || loadingAllOrders || loadingListOrders || loadingAllAppoinment ? (
+            {loadingAddresses || loadingMotorcycles || loadingFuel || loadingMyOrders || loadingAllOrders || loadingListOrders ? (
                 <Loader />
             ) : (
                 <Stack minH="100vh" direction={{ base: "column", md: "row" }} align="stretch">
