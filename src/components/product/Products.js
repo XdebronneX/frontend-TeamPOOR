@@ -95,7 +95,7 @@ const Products = () => {
             <Box
               key={index}
               height="420"
-              backgroundSize="contain"
+              backgroundSize="cover"
               backgroundPosition="center"
               backgroundRepeat="no-repeat"
               backgroundImage={`url(${card.image})`}
