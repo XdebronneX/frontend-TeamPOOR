@@ -281,7 +281,7 @@ const Dashboard = () => {
               <MostLoyalUser totalPurchasedByUser={mostPurchasedUser} />
             </div>
 
-            <div className="bg-white rounded-xl p-1 shadow-sm col-span-3">
+            <div className="bg-white rounded-xl p-1 shadow-sm col-span-5">
               <div className="p-3">
                 <p className="text-lg font-bold">Most Rated Mechanic</p>
               </div>
