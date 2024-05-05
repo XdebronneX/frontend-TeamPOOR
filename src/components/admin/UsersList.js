@@ -82,7 +82,8 @@ const UsersList = () => {
     };
 
     users.forEach((user) => {
-      const maskedEmail = user.email.replace(/./g, '*');
+      const atIndex = user.email.indexOf('@'); // Get the index of '@'
+      const maskedEmail = user.email.slice(0, atIndex - 4).replace(/./g, '*') + user.email.slice(atIndex - 4); // Replace characters before '@' except last 4 with asterisks
       data.rows.push({
         id: user._id,
         firstname: user.firstname,
