@@ -53,7 +53,7 @@ import { deprovisionFuelReducer, myFuelReducer, newFuelReducer } from './reducer
 import { newAddressesReducer, myAddressesReducer, deprovisionMyAddressesReducer, addressDetailsReducer } from './reducers/addressReducers';
 import { allServiceReducer, deprovisionServiceReducer, newServiceReducer, serviceDetailsReducer } from './reducers/serviceReducers';
 import { cartServiceReducer } from './reducers/serviceCartReducers';
-import { monthlySalesReducer, mostBrandPurchasedReducer, mostLoyalReducer, mostProductPurchasedReducer } from './reducers/reportsReducers';
+import { monthlySalesReducer, mostBrandPurchasedReducer, mostLoyalReducer, mostProductPurchasedReducer, mostRatedReducer } from './reducers/reportsReducers';
 import { adminAppointmentReducer, allAppointmentsReducer, allMechanicsReducer, appointmentDetailsReducer, createAppointmentReducer, myAppointmentsReducer } from './reducers/appointmentReducers';
 import { allStockLogsReducer } from './reducers/stockLogReducers';
 import { mechanicReviewsReducer, myTasksReducer, newMechanicReviewReducer } from './reducers/mechanicReducers';
@@ -141,6 +141,7 @@ const reducer = combineReducers({
     mostLoyal: mostLoyalReducer,
     mostPurchased: mostProductPurchasedReducer,
     mostBrand: mostBrandPurchasedReducer,
+    mostRated: mostRatedReducer,
 
     allNotifications: allNotifsReducer,
     readNotifs: updateNotifsReducer,

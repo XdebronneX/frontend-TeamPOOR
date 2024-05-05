@@ -16,6 +16,10 @@ import {
     MOST_BRAND_SUCCESS,
     MOST_BRAND_FAIL,
 
+    MOST_RATED_REQUEST,
+    MOST_RATED_SUCCESS,
+    MOST_RATED_FAIL,
+
     CLEAR_ERRORS
 } from "../constants/reportsConstants";
 
@@ -106,6 +110,29 @@ export const mostBrandChart = () => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: MOST_BRAND_FAIL,
+            payload: error.response.data.message
+        })
+    }
+}
+
+export const mostRatedChart = () => async (dispatch) => {
+    try {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            withCredentials: true
+        }
+        dispatch({ type: MOST_RATED_REQUEST })
+        const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/most/rated-mechanics`, config)
+        dispatch({
+            type: MOST_RATED_SUCCESS,
+            payload: data.mostRatedMechanics,
+        })
+        console.log(data)
+    } catch (error) {
+        dispatch({
+            type: MOST_RATED_FAIL,
             payload: error.response.data.message
         })
     }

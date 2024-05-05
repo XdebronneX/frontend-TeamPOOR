@@ -24,6 +24,7 @@ import {
   mostLoyalChart,
   mostProductChart,
   mostBrandChart,
+  mostRatedChart
 } from "../../actions/reportsActions";
 import { allAppointments } from "../../actions/appointmentActions";
 import Loader from "../layout/Loader";
@@ -31,6 +32,7 @@ import MetaData from "../layout/MetaData";
 import MostLoyalUser from "./Reports/MostLoyalUser";
 import ProductSales from "./Reports/ProductSales";
 import MostBrand from "./Reports/MostBrand";
+import BestMechanics from "./Reports/BestMechanics";
 import { GrMoney } from "react-icons/gr";
 import { FaBoxesStacked } from "react-icons/fa6";
 import { HiMiniWrenchScrewdriver } from "react-icons/hi2";
@@ -42,6 +44,7 @@ import { FaTruckRampBox } from "react-icons/fa6";
 import { IoCalendarOutline } from "react-icons/io5";
 import { MdVerified } from "react-icons/md";
 import { VscUnverified } from "react-icons/vsc";
+
 const Dashboard = () => {
   const dispatch = useDispatch();
   const { users, loading: loadingUsers } = useSelector(
@@ -76,6 +79,8 @@ const Dashboard = () => {
   const { mostPurchasedUser } = useSelector((state) => state.mostLoyal);
   const { mostPurchasedProduct } = useSelector((state) => state.mostPurchased);
   const { mostPurchasedBrand } = useSelector((state) => state.mostBrand);
+  const { mostRatedMechanics } = useSelector((state) => state.mostRated);
+
 
   useEffect(() => {
     dispatch(viewAllUsers());
@@ -90,6 +95,7 @@ const Dashboard = () => {
     dispatch(mostLoyalChart());
     dispatch(mostProductChart());
     dispatch(mostBrandChart());
+    dispatch(mostRatedChart());
   }, [dispatch]);
 
   const isLoading =
@@ -275,11 +281,19 @@ const Dashboard = () => {
               <MostLoyalUser totalPurchasedByUser={mostPurchasedUser} />
             </div>
 
+              <div className="bg-white rounded-xl p-1 shadow-sm col-span-3">
+                <div className="p-3">
+                  <p className="text-lg font-bold">Most Rated Mechanic</p>
+                </div>
+
+                <BestMechanics mostRatedMechanics={mostRatedMechanics} />
+              </div>
+
             <div className="bg-white rounded-xl p-1 shadow-sm col-span-5">
               <div className="p-3">
                 <p className="text-lg font-bold">Most Pruchased Product</p>
               </div>
-
+                
               <ProductSales mostPurchasedProduct={mostPurchasedProduct} />
             </div>
           </div>

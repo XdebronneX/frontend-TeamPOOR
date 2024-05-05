@@ -15,6 +15,10 @@ import {
     MOST_BRAND_SUCCESS,
     MOST_BRAND_FAIL,
 
+    MOST_RATED_REQUEST,
+    MOST_RATED_SUCCESS,
+    MOST_RATED_FAIL,
+
     CLEAR_ERRORS
 } from "../constants/reportsConstants";
 
@@ -119,6 +123,35 @@ export const mostBrandPurchasedReducer = (state = { mostPurchasedBrand: [] }, ac
                 mostPurchasedBrand: action.payload
             }
         case MOST_BRAND_FAIL:
+            return {
+                ...state,
+                loading: false,
+                error: action.payload
+            }
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null
+            }
+        default:
+            return state;
+    }
+}
+
+export const mostRatedReducer = (state = { mostRatedMechanics: [] }, action) => {
+    switch (action.type) {
+        case MOST_RATED_REQUEST:
+            return {
+                ...state,
+                loading: true
+            }
+        case MOST_RATED_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                mostRatedMechanics: action.payload
+            }
+        case MOST_RATED_FAIL:
             return {
                 ...state,
                 loading: false,
