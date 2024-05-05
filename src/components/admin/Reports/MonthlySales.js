@@ -91,7 +91,7 @@
 // export default MonthlySales;
 
 
-import React from "react";
+import React, { useState } from "react";
 import {
   LineChart,
   Line,
@@ -104,6 +104,8 @@ import {
 } from "recharts";
 
 const MonthlySales = ({ data, todaySales, error }) => {
+  const [selectedDate, setSelectedDate] = useState(null);
+
   // Function to format date
   const formatDate = (date) => {
     const options = { month: "long" };
@@ -115,6 +117,15 @@ const MonthlySales = ({ data, todaySales, error }) => {
     name: formatDate(new Date(item._id.year, item._id.month - 1, 1)), // Format date
     totalSales: item.totalPrice, // Use total price as total sales
   }));
+
+  // Filter data based on selected date
+  const filteredData = selectedDate
+    ? data.filter(
+      (item) =>
+        new Date(item._id.year, item._id.month - 1, 1).getTime() ===
+        new Date(selectedDate).getTime()
+    )
+    : data;
 
   // Check for error
   if (error) {
@@ -153,6 +164,15 @@ const MonthlySales = ({ data, todaySales, error }) => {
           zIndex: 0,
         }}
       />
+      <div style={{ marginBottom: "20px" }}>
+        <label htmlFor="datePicker">Select Date:</label>
+        <input
+          type="date"
+          id="datePicker"
+          value={selectedDate}
+          onChange={(e) => setSelectedDate(e.target.value)}
+        />
+      </div>
       <ResponsiveContainer width="100%" height={500}>
         <LineChart
           data={chartData}
