@@ -29,10 +29,6 @@ import { myOrders, allOrders, listOrders } from '../../actions/orderActions';
 import { RiCurrencyFill } from "react-icons/ri";
 import { MDBDataTable } from 'mdbreact';
 import { toast } from 'react-toastify';
-import { allSecAppointments } from '../../actions/appointmentActions';
-import { MdOutlineAssignmentInd } from 'react-icons/md';
-import { VscDiffAdded } from "react-icons/vsc";
-import { CiRead } from 'react-icons/ci';
 
 const Profile = () => {
     const navigate = useNavigate();
@@ -45,7 +41,7 @@ const Profile = () => {
     const { userFuel, loading: loadingFuel } = useSelector((state) => state.myFuel);
     const { orders, error: errorMyOrders, loading: loadingMyOrders } = useSelector(state => state.myOrders)
     const { loading: loadingAllOrders, loading: loadingListOrders, alllistorders } = useSelector((state) => state.allOrders);
-    const { loading: loadingAllAppoinment, error: loadingAppoinmentList, allbookings } = useSelector((state) => state.allAppointment);
+
     const UpdateProfileHandler = () => {
         navigate("/profile/update");
     };
@@ -111,11 +107,9 @@ const Profile = () => {
         dispatch(myOrders());
         if (user.role === "admin") {
             dispatch(allOrders());
-            dispatch(allSecAppointments());
         }
         if (user.role === "secretary") {
             dispatch(listOrders());
-            dispatch(allSecAppointments());
         }
         if (error) {
             handleError(error);
@@ -329,181 +323,6 @@ const Profile = () => {
                 });
             });
         }
-
-        return data;
-    };
-
-    const setAppointments = () => {
-        const data = {
-            columns: [
-                {
-                    label: 'Appointment ID',
-                    field: 'id',
-                    sort: 'asc',
-                },
-                {
-                    label: 'Appointment date',
-                    field: 'appointmentDate',
-                    sort: 'desc',
-                },
-                {
-                    label: 'Time Schedule',
-                    field: 'timeSlot',
-                    sort: 'disabled',
-                },
-                {
-                    label: 'Mechanic',
-                    field: 'mechanic',
-                    sort: 'disabled',
-                },
-                {
-                    label: 'No of service',
-                    field: 'numofServices',
-                    sort: 'disabled',
-                },
-                {
-                    label: 'Amount',
-                    field: 'amount',
-                    sort: 'disabled',
-                },
-                {
-                    label: 'Service Type',
-                    field: 'serviceType',
-                    sort: 'disabled',
-                },
-                {
-                    label: 'Status',
-                    field: 'status',
-                    sort: 'disabled',
-                },
-                {
-                    label: 'View',
-                    field: 'view',
-                    sort: 'disabled'
-                },
-                {
-                    label: 'Additional',
-                    field: 'parts',
-                    sort: 'disabled'
-                },
-                {
-                    label: 'Assign Task',
-                    field: 'assign',
-                    sort: 'disabled'
-                },
-            ],
-            rows: [],
-        };
-
-        allbookings.forEach((booking) => {
-            const appointmentStatus = booking.appointmentStatus || [];
-            const sortedStatus = appointmentStatus.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-            const latestStatus = sortedStatus.length > 0 ? sortedStatus[0].status : 'No status';
-
-            let badgeColor = '';
-            let badgeText = '';
-
-            switch (latestStatus) {
-                case 'PENDING':
-                    badgeColor = 'warning';
-                    badgeText = 'Pending';
-                    break;
-                case 'CONFIRMED':
-                    badgeColor = 'success';
-                    badgeText = 'Confirmed';
-                    break;
-                case 'INPROGRESS':
-                    badgeColor = 'primary';
-                    badgeText = 'In Progress';
-                    break;
-                case 'DONE':
-                    badgeColor = 'success';
-                    badgeText = 'Done';
-                    break;
-                case 'COMPLETED':
-                    badgeColor = 'success';
-                    badgeText = 'Completed';
-                    break;
-                case 'CANCELLED':
-                    badgeColor = 'danger';
-                    badgeText = 'Cancelled';
-                    break;
-                case 'RESCHEDULED':
-                    badgeColor = 'purple';
-                    badgeText = 'Rescheduled';
-                    break;
-                case 'DELAYED':
-                    badgeColor = 'warning';
-                    badgeText = 'Delayed';
-                    break;
-                case 'BACKJOBPENDING':
-                    badgeColor = 'warning';
-                    badgeText = 'Back job Pending';
-                    break;
-                case 'BACKJOBCONFIRMED':
-                    badgeColor = 'primary';
-                    badgeText = 'Back job Confirmed';
-                    break;
-                case 'BACKJOBCOMPLETED':
-                    badgeColor = 'success';
-                    badgeText = 'Back job Completed';
-                    break;
-                case 'NOSHOW':
-                    badgeColor = 'gray';
-                    badgeText = 'No show';
-                    break;
-                default:
-                    badgeText = 'No status';
-            }
-
-            const formattedApppoinmentDate = new Date(booking.appointmentDate).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: '2-digit',
-            });
-
-            // Populate the mechanic field to get the details
-            const mechanicFullname = booking.mechanic ? `${booking.mechanic.firstname} ${booking.mechanic.lastname}` : 'No mechanic assigned yet';
-            data.rows.push({
-                id: booking._id,
-                numofServices: booking.appointmentServices.length,
-                amount: `₱ ${booking.totalPrice.toLocaleString()}`,
-                appointmentDate: formattedApppoinmentDate,
-                timeSlot: booking.timeSlot,
-                mechanic: mechanicFullname,
-                serviceType: booking.serviceType,
-                status: (
-                    <span className={`badge badge-${badgeColor}`}>
-                        {badgeText}
-                    </span>
-                ),
-                view: (
-                    <Link to={`/secretary/appointment/${booking._id}`}>
-                        <Button colorScheme="blue" size="sm" ml="3" leftIcon={<CiRead />}>
-                            View
-                        </Button>
-                    </Link>
-                ),
-                parts: (
-                    latestStatus === 'DONE' && (
-                        <Link to={`/secretary/additional/${booking._id}`}>
-                            <Button colorScheme="yellow" size="sm" ml="3" leftIcon={<VscDiffAdded />}>
-                                Additional
-                            </Button>
-                        </Link>
-                    )
-                ),
-                assign: (
-                    latestStatus === 'CONFIRMED' && (
-                        <Link to={`/secretary/assign/mechanic/${booking._id}`}>
-                            <Button colorScheme="green" size="sm" ml="3" leftIcon={<MdOutlineAssignmentInd />}>
-                                Assign mechanic
-                            </Button>
-                        </Link>
-                    )
-                ),
-            });
-        });
 
         return data;
     };
@@ -818,14 +637,6 @@ const Profile = () => {
                                     noBottomColumns
                                     data={setOrders()}
                                 />
-                                <Heading as="h2" fontSize="xl" fontWeight="bold" mb={4}>List of customers appointment</Heading>
-                                <Divider />
-                                <MDBDataTable
-                                    striped
-                                    bordered
-                                    noBottomColumns
-                                    data={setAppointments()}
-                                />
                             </Stack>
                         </Box>
                     )}
@@ -839,14 +650,6 @@ const Profile = () => {
                                     bordered
                                     noBottomColumns
                                     data={setListOrders()}
-                                />
-                                <Heading as="h2" fontSize="xl" fontWeight="bold" mb={4}>List of customers appointment</Heading>
-                                <Divider />
-                                <MDBDataTable
-                                    striped
-                                    bordered
-                                    noBottomColumns
-                                    data={setAppointments()}
                                 />
                             </Stack>
                         </Box>
