@@ -88,9 +88,9 @@ const Services = () => {
           <Loader />
         </div>
       ) : (
-        <div className="py-5 px-32">
+        <div className="container">
           <h4 className="text-2xl font-bold">Services</h4>
-          <div className="grid grid-cols-1 xl:grid-cols-5 md:grid-cols-3 gap-4 mt-3">
+          <div className="grid grid-cols-1 xl:grid-cols-5 lg:grid-cols-2 gap-4 mt-3">
             {services.map((service) => (
               <Box
                 className="flex flex-col bg-white rounded hover:scale-105 transition delay-150 duration-300 ease-in-out"

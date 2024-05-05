@@ -105,7 +105,7 @@ const Products = () => {
         </Slider>
       </div>
 
-      <div className="sm:px-24">
+      <div className="container">
         {loading ? (
           <div className="flex justify-center items-center">
             <Loader />
@@ -252,7 +252,7 @@ const Products = () => {
             <h4 className="text-2xl font-bold">Products</h4>
             {products.length > 0 ? (
               <Fragment>
-                <div className="grid grid-cols-1 xl:grid-cols-6 md:grid-cols-3 gap-4 mt-5">
+                <div className="grid grid-cols-1 xl:grid-cols-5 md:grid-cols-3 gap-4 mt-5">
                 {products.map((product) => (
                   <a
                     className="bg-white border  rounded hover:scale-105 transition delay-150 duration-300 ease-in-out "
