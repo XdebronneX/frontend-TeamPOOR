@@ -40,7 +40,8 @@ import { TbCircleLetterB } from "react-icons/tb";
 import { BiCategory } from "react-icons/bi";
 import { FaTruckRampBox } from "react-icons/fa6";
 import { IoCalendarOutline } from "react-icons/io5";
-
+import { MdVerified } from "react-icons/md";
+import { VscUnverified } from "react-icons/vsc";
 const Dashboard = () => {
   const dispatch = useDispatch();
   const { users, loading: loadingUsers } = useSelector(
@@ -160,7 +161,7 @@ const Dashboard = () => {
               </div>
                 <div className="flex flex-row space-x-2 items-center">
                   <div className="bg-red-50 p-3 rounded-xl">
-                    <FaUsers size={24} color="#ef4444" />
+                    <VscUnverified size={24} color="#ef4444" />
                   </div>
                   <div>
                     <p>Unverified users</p>
@@ -169,7 +170,7 @@ const Dashboard = () => {
                 </div>
                 <div className="flex flex-row space-x-2 items-center">
                   <div className="bg-red-50 p-3 rounded-xl">
-                    <FaUsers size={24} color="#ef4444" />
+                    <MdVerified size={24} color="#ef4444" />
                   </div>
                   <div>
                     <p>Verified users</p>
