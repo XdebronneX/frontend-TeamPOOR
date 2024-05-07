@@ -324,7 +324,8 @@
 // export default Dashboard;
 
 
-import React, { useEffect, Fragment, useRef, useState } from "react";
+
+import React, { useEffect, Fragment, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Box,
@@ -334,7 +335,6 @@ import {
   Heading,
   Icon,
   Stack,
-  Select
 } from "@chakra-ui/react";
 import Sidebar from "./Sidebar";
 import DashboardCard from "../admin/DashboardCard";
@@ -376,9 +376,6 @@ import html2canvas from "html2canvas";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  // State to manage selected chart for export
-  const [selectedChart, setSelectedChart] = useState(null);
-
   const { users, loading: loadingUsers } = useSelector(
     (state) => state.allUsers
   );
@@ -440,15 +437,8 @@ const Dashboard = () => {
     loadingOrders ||
     loadingAppointment;
 
-  // Refs for exporting to PDF
   const dashboardRef = useRef(null);
-  const monthlySalesRef = useRef(null);
-  const mostBrandRef = useRef(null);
-  const mostLoyalUserRef = useRef(null);
-  const mostRatedMechanicsRef = useRef(null);
-  const mostPurchasedProductRef = useRef(null);
 
-  // Export dashboard to PDF
   const exportToPDF = () => {
     const input = dashboardRef.current;
 
@@ -458,37 +448,33 @@ const Dashboard = () => {
       const imgWidth = 210;
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
       pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
-      pdf.save("reports.pdf");
+      pdf.save("dashboard.pdf");
     });
   };
 
-  // Export selected chart to PDF
-  const exportChartToPDF = () => {
-    const chartRef =
-      selectedChart === "monthlySales"
-        ? monthlySalesRef.current
-        : selectedChart === "mostBrand"
-          ? mostBrandRef.current
-          : selectedChart === "mostLoyalUser"
-            ? mostLoyalUserRef.current
-            : selectedChart === "mostRatedMechanics"
-              ? mostRatedMechanicsRef.current
-              : selectedChart === "mostPurchasedProduct"
-                ? mostPurchasedProductRef.current
-                : null;
+  const exportMonthlySales = () => {
+    const canvas = document.createElement('canvas');
+    // Assuming monthlySales contains chart data
+    const chartData = monthlySales;
+    // Add your chart options here
+    const chartOptions = {};
 
-    console.log("Exporting chart to PDF...", chartRef);
+    // Render chart on canvas
+    new Chart(canvas, {
+      type: 'line',
+      data: chartData,
+      options: chartOptions
+    });
 
-    if (chartRef) {
-      html2canvas(chartRef).then((canvas) => {
-        const imgData = canvas.toDataURL("image/png");
-        const pdf = new jsPDF();
-        const imgWidth = 210;
-        const imgHeight = (canvas.height * imgWidth) / canvas.width;
-        pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
-        pdf.save(`${selectedChart}.pdf`);
-      });
-    }
+    // Convert canvas to image
+    const imgData = canvas.toDataURL('image/jpeg', 1.0);
+
+    // Create PDF document
+    const pdf = new jsPDF('landscape');
+
+    // Add image to PDF
+    pdf.addImage(imgData, 'JPEG', 10, 10, 280, 150);
+    pdf.save('monthly_sales.pdf');
   };
 
   return (
@@ -642,6 +628,34 @@ const Dashboard = () => {
             </div>
 
             <div className="bg-white rounded-xl p-1 shadow-sm col-span-4 row-span-3 ">
+                <Select
+                  value={selectedChart}
+                  onChange={(e) => setSelectedChart(e.target.value)}
+                >
+                  <option value="">Select Chart to Export</option>
+                  <option value="monthlySales">Monthly Sales</option>
+                  <option value="mostPurchasedBrand">Most Purchased Brand</option>
+                  <option value="mostLoyalUser">Most Loyal User</option>
+                  <option value="mostRatedMechanic">Most Rated Mechanic</option>
+                  <option value="mostPurchasedProduct">Most Purchased Product</option>
+                </Select>
+
+                {selectedChart === "monthlySales" && (
+                  <MonthlySales data={monthlySales} />
+                )}
+                {selectedChart === "mostPurchasedBrand" && (
+                  <MostBrand mostPurchasedBrand={mostPurchasedBrand} />
+                )}
+                {selectedChart === "mostLoyalUser" && (
+                  <MostLoyalUser totalPurchasedByUser={mostPurchasedUser} />
+                )}
+                {selectedChart === "mostRatedMechanic" && (
+                  <BestMechanics mostRatedMechanics={mostRatedMechanics} />
+                )}
+                {selectedChart === "mostPurchasedProduct" && (
+                  <ProductSales mostPurchasedProduct={mostPurchasedProduct} />
+                )}
+                <button onClick={exportToPDF}>Export to PDF</button>
               <div className="p-3">
                 <p className="text-lg font-bold">Monthly Sales</p>
               </div>
@@ -680,27 +694,10 @@ const Dashboard = () => {
 
               <ProductSales mostPurchasedProduct={mostPurchasedProduct} />
             </div>
-            {/* <button onClick={exportToPDF}>Export to PDF</button> */}
+            <button onClick={exportToPDF}>Export to PDF</button>
           </div>
         )}
       </div>
-      {/* Dropdown to select the chart for export */}
-      <Select
-        placeholder="Select chart"
-        value={selectedChart}
-        onChange={(e) => setSelectedChart(e.target.value)}
-      >
-        <option value="monthlySales">Monthly Sales</option>
-        <option value="mostBrand">Most Purchased Brand</option>
-        <option value="mostLoyalUser">Biggest Purchased</option>
-        <option value="mostRatedMechanics">Most Rated Mechanic</option>
-        <option value="mostPurchasedProduct">Most Purchased Product</option>
-      </Select>
-
-      {/* Button to export selected chart */}
-      <button onClick={exportChartToPDF}>Export Chart to PDF</button>
-      {/* Button to export whole dashboard */}
-      <button onClick={exportToPDF}>Export to PDF</button>
     </aside>
   );
 };
