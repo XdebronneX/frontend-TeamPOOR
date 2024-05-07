@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from "react";
+import React, { useEffect, Fragment, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Box,
@@ -44,6 +44,8 @@ import { FaTruckRampBox } from "react-icons/fa6";
 import { IoCalendarOutline } from "react-icons/io5";
 import { MdVerified } from "react-icons/md";
 import { VscUnverified } from "react-icons/vsc";
+import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -108,13 +110,26 @@ const Dashboard = () => {
     loadingOrders ||
     loadingAppointment;
 
+  const exportToPDF = () => {
+    const input = dashboardRef.current;
+
+    html2canvas(input).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF();
+      const imgWidth = 210;
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
+      pdf.save("dashboard.pdf");
+    });
+  };
+
   return (
     <aside className="bg-zinc-100 min-h-screen p-3 flex flex-row gap-4">
       <nav className="h-full flex flex-col sticky top-4">
         <Sidebar />
       </nav>
 
-      <div className="w-full col-span-4">
+      <div className="w-full col-span-4" ref={dashboardRef}>
         {isLoading ? (
           <Flex justify="center" align="center" minH="100%">
             <Loader />
@@ -122,6 +137,7 @@ const Dashboard = () => {
         ) : (
           <div className="grid grid-flow-row auto-rows-max grid-cols-1 gap-4 lg:grid-cols-5">
             <div className="bg-white rounded-xl p-3 flex flex-row space-x-2 items-center shadow-sm col-span-2">
+                <button onClick={exportToPDF}>Export to PDF</button>
               <div className="bg-red-50 p-3 rounded-xl">
                 <FaBoxesStacked size={34} color="#ef4444" />
               </div>
