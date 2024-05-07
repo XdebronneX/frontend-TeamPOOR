@@ -110,6 +110,7 @@ const Dashboard = () => {
     loadingOrders ||
     loadingAppointment;
 
+  const dashboardRef = useRef(null);
   const exportToPDF = () => {
     const input = dashboardRef.current;
 
@@ -137,7 +138,7 @@ const Dashboard = () => {
         ) : (
           <div className="grid grid-flow-row auto-rows-max grid-cols-1 gap-4 lg:grid-cols-5">
             <div className="bg-white rounded-xl p-3 flex flex-row space-x-2 items-center shadow-sm col-span-2">
-                <button onClick={exportToPDF}>Export to PDF</button>
+              <button onClick={exportToPDF}>Export to PDF</button>
               <div className="bg-red-50 p-3 rounded-xl">
                 <FaBoxesStacked size={34} color="#ef4444" />
               </div>
