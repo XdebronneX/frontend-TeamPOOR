@@ -469,7 +469,7 @@ const Dashboard = () => {
           selectedChart === "mostRatedMechanics" ? mostRatedMechanicsRef.current :
             selectedChart === "mostPurchasedProduct" ? mostPurchasedProductRef.current :
               null;
-
+    onsole.log("Exporting chart to PDF...");
     if (chartRef) {
       html2canvas(chartRef).then((canvas) => {
         const imgData = canvas.toDataURL("image/png");
