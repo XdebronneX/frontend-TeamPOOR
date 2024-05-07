@@ -192,7 +192,7 @@ const OrderDetails = () => {
       if (result.isConfirmed) {
         Swal.fire({
           title: "Deleted!",
-          text: "Your file has been deleted.",
+          text: "Your order has been canceled.",
           icon: "success",
         });
 
