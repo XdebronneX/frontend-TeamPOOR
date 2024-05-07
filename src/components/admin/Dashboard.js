@@ -681,12 +681,13 @@ const Dashboard = () => {
         value={selectedChart}
         onChange={(e) => setSelectedChart(e.target.value)}
       >
-        <option value="monthlySales">Monthly Sales</option>
-        <option value="mostBrand">Most Purchased Brand</option>
-        <option value="mostLoyalUser">Biggest Purchased</option>
-        <option value="mostRatedMechanics">Most Rated Mechanic</option>
-        <option value="mostPurchasedProduct">Most Purchased Product</option>
+        <option value={monthlySalesRef}>Monthly Sales</option>
+        <option value={mostBrandRef}>Most Purchased Brand</option>
+        <option value={mostLoyalUserRef}>Biggest Purchased</option>
+        <option value={mostRatedMechanicsRef}>Most Rated Mechanic</option>
+        <option value={mostPurchasedProductRef}>Most Purchased Product</option>
       </Select>
+
       {/* Button to export selected chart */}
       <button onClick={exportChartToPDF}>Export Chart to PDF</button>
       {/* Button to export whole dashboard */}
