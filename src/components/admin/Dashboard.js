@@ -440,6 +440,7 @@ const Dashboard = () => {
     loadingOrders ||
     loadingAppointment;
 
+  // Refs for exporting to PDF
   const dashboardRef = useRef(null);
   const monthlySalesRef = useRef(null);
   const mostBrandRef = useRef(null);
@@ -447,7 +448,7 @@ const Dashboard = () => {
   const mostRatedMechanicsRef = useRef(null);
   const mostPurchasedProductRef = useRef(null);
 
-  // Function to export the dashboard to PDF
+  // Export dashboard to PDF
   const exportToPDF = () => {
     const input = dashboardRef.current;
 
@@ -457,19 +458,27 @@ const Dashboard = () => {
       const imgWidth = 210;
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
       pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
-      pdf.save("dashboard.pdf");
+      pdf.save("reports.pdf");
     });
   };
 
-  // Function to export the selected chart to PDF
+  // Export selected chart to PDF
   const exportChartToPDF = () => {
-    const chartRef = selectedChart === "monthlySales" ? monthlySalesRef.current :
-      selectedChart === "mostBrand" ? mostBrandRef.current :
-        selectedChart === "mostLoyalUser" ? mostLoyalUserRef.current :
-          selectedChart === "mostRatedMechanics" ? mostRatedMechanicsRef.current :
-            selectedChart === "mostPurchasedProduct" ? mostPurchasedProductRef.current :
-              null;
+    const chartRef =
+      selectedChart === "monthlySales"
+        ? monthlySalesRef.current
+        : selectedChart === "mostBrand"
+          ? mostBrandRef.current
+          : selectedChart === "mostLoyalUser"
+            ? mostLoyalUserRef.current
+            : selectedChart === "mostRatedMechanics"
+              ? mostRatedMechanicsRef.current
+              : selectedChart === "mostPurchasedProduct"
+                ? mostPurchasedProductRef.current
+                : null;
+
     console.log("Exporting chart to PDF...", chartRef);
+
     if (chartRef) {
       html2canvas(chartRef).then((canvas) => {
         const imgData = canvas.toDataURL("image/png");
@@ -687,7 +696,6 @@ const Dashboard = () => {
         <option value="mostRatedMechanics">Most Rated Mechanic</option>
         <option value="mostPurchasedProduct">Most Purchased Product</option>
       </Select>
-
 
       {/* Button to export selected chart */}
       <button onClick={exportChartToPDF}>Export Chart to PDF</button>
