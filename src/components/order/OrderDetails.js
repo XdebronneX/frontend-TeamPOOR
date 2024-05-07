@@ -361,7 +361,7 @@ const OrderDetails = () => {
         </div>
 
         <div className="md:w-2/5 space-y-4">
-          {(latestStatus === "COMPLETED" || latestStatus === "DELIVERED") && (
+          {(latestStatus === "COMPLETED" || latestStatus === "DELIVERED" ) && (
             <div className="bg-white shadow-md rounded-xl p-4 space-y-4">
               <div className="">
                 {latestStatus === "COMPLETED" ? (
@@ -470,7 +470,7 @@ const OrderDetails = () => {
               >
                 Pay now
               </Button>
-              {(latestStatus === "PENDING" || latestStatus === "TOPAY") && (
+              {(latestStatus === "PENDING" || latestStatus === "TOPAY" || latestStatus === "Pending") && (
                 <Button colorScheme="red" mr={3} onClick={swalHandler}>
                   Cancel order
                 </Button>
