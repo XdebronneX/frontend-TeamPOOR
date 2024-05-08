@@ -14,6 +14,7 @@ import {
   StackDivider,
   useColorModeValue,
   Input,
+  Alert,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -39,6 +40,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import StarRating from "./StarRating";
 import { FaStar } from "react-icons/fa";
+
 const ProductDetails = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -52,6 +54,8 @@ const ProductDetails = () => {
   const { error: reviewError, success } = useSelector(
     (state) => state.newReview
   );
+
+  console.log("product", product);
 
   const successMsg = (message = "") =>
     toast.success(message, {
@@ -121,175 +125,88 @@ const ProductDetails = () => {
     setIsModalOpen(false);
   };
   const starPercentage = (product.ratings / 5) * 100;
-  // return (
-  //   <Container className="p-20" maxWidth="8xl">
-  //     {loading ? (
-  //       <Loader />
-  //     ) : error ? (
-  //       <Text color="red.500">Error: {error}</Text>
-  //     ) : (
-  //       <div className="shadow p-5">
-  //         <div className="flex flex-row space-x-5 ">
-  //           <div className="">
-  //             <Carousel
-  //               showThumbs={true}
-  //               showArrows={true}
-  //               autoPlay={true}
-  //               interval={5000}
-  //               transitionTime={500}
-  //               thumbWidth={100}
-  //               thumbHeight={80}
-  //               //   style={{
-  //               //     border: "1px solid #ccc",
-  //               //     borderRadius: "5px",
-  //               //     height: "65%",
-  //               //   }}
-  //             >
-  //               {product.images &&
-  //                 product.images.map((image) => (
-  //                   <div key={image.id}>
-  //                     <img
-  //                       src={image.url}
-  //                       alt={`Product Image - ${product.name}`}
-  //                       style={{
-  //                         maxWidth: "100%",
-  //                         maxHeight: "600px",
-  //                         width: "auto",
-  //                         height: "auto",
-  //                       }}
-  //                     />
-  //                   </div>
-  //                 ))}
-  //             </Carousel>
-  //           </div>
-
-  //           <div className="flex-1 space-y-5">
-  //             <Text className="font-extrabold text-4xl">{product.name}</Text>
-  //             <Text fontSize="xl" color="gray.500">
-  //               <Box display="flex" alignItems="center">
-  //                 {[...Array(5)].map((_, index) => (
-  //                   <FaStar
-  //                     key={index}
-  //                     color={
-  //                       index + 1 <= product.ratings ? "#FCCD00" : "gray.300"
-  //                     }
-  //                   />
-  //                 ))}
-  //                 <Box
-  //                   width={`${starPercentage}%`}
-  //                   height="1em"
-  //                   overflow="hidden"
-  //                   position="relative"
-  //                 >
-  //                   <Box
-  //                     width="100%"
-  //                     height="100%"
-  //                     position="absolute"
-  //                     top="0"
-  //                     left="0"
-  //                   />
-  //                 </Box>
-  //               </Box>
-  //             </Text>
-
-  //             <div className="flex flex-row justify-between items-center border-t py-3">
-  //               <Text className="text-3xl text-red-500">₱{product.price}</Text>
-
-  //               <Button
-  //                 className="py-2 bg-red-500 rounded-full w-50"
-  //                 onClick={addToCart}
-  //                 colorScheme="#ef4444"
-  //               >
-  //                 <Text className="text-white">ADD TO CART</Text>
-  //               </Button>
-  //             </div>
-
-  //             <Text className="font-bold">Description</Text>
-  //             <Text className="font-muted">{product.description}</Text>
-  //           </div>
-  //         </div>
-
-  //         <div className="py-5">
-  //           <h4 className="font-bold text-lg">Reviews</h4>
-
-  //           {product.reviews && product.reviews.length > 0 && (
-  //             <ListReviews reviews={product.reviews} />
-  //           )}
-  //         </div>
-  //       </div>
-  //     )}
-  //   </Container>
-  // );
   return (
-    <Container className="p-20" maxWidth="8xl">
-      {loading ? (
-        <Loader />
-      ) : error ? (
-        <Text color="red.500">Error: {error}</Text>
-      ) : (
-        <div className="shadow p-5">
-          <div className="flex flex-row space-x-5 ">
-            <div className="">
-              <Carousel
-                showThumbs={true}
-                showArrows={true}
-                autoPlay={true}
-                interval={5000}
-                transitionTime={500}
-                thumbWidth={100}
-                thumbHeight={80}
-              >
-                {product.images &&
-                  product.images.map((image) => (
-                    <div key={image.id}>
-                      <img
-                        src={image.url}
-                        alt={`Product Image - ${product.name}`}
+    <div className="bg-zinc-100">
+      <div className="container py-4">
+        {loading ? (
+          <Loader />
+        ) : error ? (
+          <Text color="red.500">Error: {error}</Text>
+        ) : (
+          <div className="p-5 shadow-md rounded bg-white">
+            <div className="grid grid-cols-2 grid-rows-1 gap-10">
+              <div className="">
+                <Carousel
+                  showThumbs={true}
+                  showArrows={true}
+                  autoPlay={true}
+                  interval={5000}
+                  transitionTime={500}
+                  thumbWidth={100}
+                  thumbHeight={80}
+                  //   style={{
+                  //     border: "1px solid #ccc",
+                  //     borderRadius: "5px",
+                  //     height: "65%",
+                  //   }}
+                >
+                  {product.images &&
+                    product.images.map((image) => (
+                      <div
+                        key={image.id}
                         style={{
                           maxWidth: "100%",
                           maxHeight: "600px",
-                          width: "auto",
-                          height: "auto",
+                          overflow: "hidden",
                         }}
+                      >
+                        <img
+                          src={image.url}
+                          alt={`Product Image - ${product.name}`}
+                          style={{
+                            width: "100%",
+                            height: "auto",
+                          }}
+                        />
+                      </div>
+                    ))}
+                </Carousel>
+              </div>
+
+              <div className="flex-1 space-y-5">
+                <Text className="font-semibold text-4xl">{product.name}</Text>
+                <Text fontSize="xl" color="gray.500">
+                  <Box display="flex" alignItems="center">
+                    {[...Array(5)].map((_, index) => (
+                      <FaStar
+                        key={index}
+                        color={
+                          index + 1 <= product.ratings ? "#FCCD00" : "gray.300"
+                        }
                       />
-                    </div>
-                  ))}
-              </Carousel>
-            </div>
-
-            <div className="flex-1 space-y-5">
-              <Text className="font-extrabold text-4xl">{product.name}</Text>
-              <Text fontSize="xl" color="gray.500">
-                <Box display="flex" alignItems="center">
-                  {[...Array(5)].map((_, index) => (
-                    <FaStar
-                      key={index}
-                      color={
-                        index + 1 <= product.ratings ? "#FCCD00" : "gray.300"
-                      }
-                    />
-                  ))}
-                  <Box
-                    width={`${starPercentage}%`}
-                    height="1em"
-                    overflow="hidden"
-                    position="relative"
-                  >
+                    ))}
                     <Box
-                      width="100%"
-                      height="100%"
-                      position="absolute"
-                      top="0"
-                      left="0"
-                    />
+                      width={`${starPercentage}%`}
+                      height="1em"
+                      overflow="hidden"
+                      position="relative"
+                    >
+                      <Box
+                        width="100%"
+                        height="100%"
+                        position="absolute"
+                        top="0"
+                        left="0"
+                      />
+                    </Box>
                   </Box>
-                </Box>
-              </Text>
+                </Text>
 
-              <div className="flex flex-row justify-between items-center border-t py-3">
-                <Text className="text-3xl text-red-500">₱{product.price}</Text>
-                {/* Add condition to disable button if product stock is 0 */}
-                {product.stock > 0 ? (
+                <div className="flex flex-row justify-between items-center border-t py-3">
+                  <Text className="text-3xl text-red-500">
+                    ₱{product.price}
+                  </Text>
+
                   <Button
                     className="py-2 bg-red-500 rounded-full w-50"
                     onClick={addToCart}
@@ -297,32 +214,30 @@ const ProductDetails = () => {
                   >
                     <Text className="text-white">ADD TO CART</Text>
                   </Button>
-                ) : (
-                  <Button
-                    className="py-2 bg-gray-300 rounded-full w-50"
-                    disabled
-                  >
-                    <Text className="text-white">OUT OF STOCK</Text>
-                  </Button>
-                )}
+                </div>
+
+                <Text className="font-bold">Description</Text>
+                <Text className="font-muted">{product.description}</Text>
+              </div>
+            </div>
+
+            <div className="py-5 space-y-3">
+              <div>
+                <h4 className="font-bold text-lg">Reviews</h4>
+                <p className="text-zinc-600">
+                  {product.reviews.length || 0} comments
+                </p>
               </div>
 
-              <Text className="font-bold">Description</Text>
-              <Text className="font-muted">{product.description}</Text>
+              {product.reviews && product.reviews.length > 0 && (
+                <ListReviews reviews={product.reviews} />
+              )}
             </div>
           </div>
-
-          <div className="py-5">
-            <h4 className="font-bold text-lg">Reviews</h4>
-            {product.reviews && product.reviews.length > 0 && (
-              <ListReviews reviews={product.reviews} />
-            )}
-          </div>
-        </div>
-      )}
-    </Container>
+        )}
+      </div>
+    </div>
   );
-
 };
 
 export default ProductDetails;
