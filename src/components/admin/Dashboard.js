@@ -475,6 +475,7 @@ const Dashboard = () => {
   };
 
   const exportBiggestPurchasedToExcel = (data, filename, sheetName) => {
+    
     const formattedData = data.map(user => ({
       Lastname: user.user.lastname,
       TotalPurchased: user.totalPurchased,
