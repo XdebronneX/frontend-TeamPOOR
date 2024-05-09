@@ -285,7 +285,7 @@ const MostBrand = ({ mostPurchasedBrand }) => {
     };
 
     const data = mostPurchasedBrand.map(item => ({
-        name: item.brand,
+        name: item._id,
         value: item.totalQuantity,
         backgroundColor: item.backgroundColor ? item.backgroundColor : generateRandomColor(),
     }));
