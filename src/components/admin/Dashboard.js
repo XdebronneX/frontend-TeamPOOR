@@ -463,7 +463,7 @@ const Dashboard = () => {
   };
 
   const exportMostBrandToExcel = (data, filename, sheetName) => {
-    const ws = XLSX.utils.json_to_sheet(formattedData);
+    const ws = XLSX.utils.json_to_sheet(data);
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, sheetName);
     XLSX.writeFile(wb, `${filename}.xlsx`);
@@ -494,7 +494,7 @@ const Dashboard = () => {
                 Export Most Purchased Brand to Excel
               </button>
 
-              <button onClick={() => exportToExcel(mostPurchasedUser, "Most_Loyal_User")}>
+              {/* <button onClick={() => exportToExcel(mostPurchasedUser, "Most_Loyal_User")}>
                 Export Most Loyal User to Excel
               </button>
 
@@ -504,7 +504,7 @@ const Dashboard = () => {
 
               <button onClick={() => exportToExcel(mostPurchasedProduct, "Most_Purchased_Product")}>
                 Export Most Purchased Product to Excel
-              </button>
+              </button> */}
             <div className="bg-white rounded-xl p-3 flex flex-row space-x-2 items-center shadow-sm col-span-2">
               <div className="bg-red-50 p-3 rounded-xl">
                 <FaBoxesStacked size={34} color="#ef4444" />
