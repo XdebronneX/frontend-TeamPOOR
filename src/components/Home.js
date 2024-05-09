@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Stack,
   Heading,
@@ -82,7 +82,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.authUser);
   const { users, loading: loadingUsers } = useSelector((state) => state.allUsers);
-  const {alllistorders,loading: loadingOrders } = useSelector((state) => state.allOrders);
+  const { alllistorders, loading: loadingOrders } = useSelector((state) => state.allOrders);
   const { products, loading: loadingProducts } = useSelector((state) => state.allProducts);
   const { services, loading: loadingServices } = useSelector((state) => state.allServices);
 
