@@ -225,7 +225,7 @@ const ProductDetails = () => {
               <div>
                 <h4 className="font-bold text-lg">Reviews</h4>
                 <p className="text-zinc-600">
-                  {product.reviews?.length || 0} comments
+                  {product?.reviews?.length || 0} comments
                 </p>
               </div>
 
