@@ -279,6 +279,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { MdOutlineAssignmentInd } from "react-icons/md";
 import MetaData from "../layout/MetaData";
+import { CiRead } from "react-icons/ci";
 
 const BookingList = () => {
   const dispatch = useDispatch();
