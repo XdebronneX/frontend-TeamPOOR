@@ -371,6 +371,7 @@ import { IoCalendarOutline } from "react-icons/io5";
 import { MdVerified } from "react-icons/md";
 import { VscUnverified } from "react-icons/vsc";
 import ReactToPrint from 'react-to-print';
+import * as XLSX from 'xlsx';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -437,6 +438,12 @@ const Dashboard = () => {
 
   const dashboardRef = useRef();
 
+  const exportToExcel = (data, filename) => {
+    const ws = XLSX.utils.json_to_sheet(data);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+    XLSX.writeFile(wb, `${filename}.xlsx`);
+  };
   return (
     <aside className="bg-zinc-100 min-h-screen p-3 flex flex-row gap-4">
       <nav className="h-full flex flex-col sticky top-4">
@@ -454,6 +461,25 @@ const Dashboard = () => {
           </Flex>
         ) : (
           <div className="grid grid-flow-row auto-rows-max grid-cols-1 gap-4 lg:grid-cols-5">
+              <button onClick={() => exportToExcel(monthlySales, "Monthly_Sales")}>
+                Export Monthly Sales to Excel
+              </button>
+
+              <button onClick={() => exportToExcel(mostPurchasedBrand, "Most_Purchased_Brand")}>
+                Export Most Purchased Brand to Excel
+              </button>
+
+              <button onClick={() => exportToExcel(mostPurchasedUser, "Most_Loyal_User")}>
+                Export Most Loyal User to Excel
+              </button>
+
+              <button onClick={() => exportToExcel(mostRatedMechanics, "Most_Rated_Mechanics")}>
+                Export Most Rated Mechanics to Excel
+              </button>
+
+              <button onClick={() => exportToExcel(mostPurchasedProduct, "Most_Purchased_Product")}>
+                Export Most Purchased Product to Excel
+              </button>
             <div className="bg-white rounded-xl p-3 flex flex-row space-x-2 items-center shadow-sm col-span-2">
               <div className="bg-red-50 p-3 rounded-xl">
                 <FaBoxesStacked size={34} color="#ef4444" />
