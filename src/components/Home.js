@@ -198,7 +198,7 @@ const Home = () => {
       </div>
 
       <div className="grid grid-cols-3 grid-rows-1 gap-4 px-36 py-16">
-        <div className="p-3 bg-white rounded-xl shadow-2xl space-y-2 items-center justify-center flex flex-col duration-700 ease-in-out transition-transform transform-gpu hover:scale-110">
+        <div className="p-8 bg-white rounded-3xl shadow-2xl space-y-2 items-center justify-center flex flex-col duration-700 ease-in-out transition-transform transform-gpu hover:scale-110">
           <div className="p-4 rounded-full bg-red-50 items-center w-fit">
             <Icon as={LuBoxes} color="red.500" boxSize={6} />
           </div>
@@ -209,7 +209,7 @@ const Home = () => {
             for your motorcycle.
           </Text>
         </div>
-        <div className="p-3 bg-white rounded-xl shadow-2xl space-y-2 items-center justify-center flex flex-col duration-700 ease-in-out transition-transform transform-gpu hover:scale-110">
+        <div className="p-8 bg-white rounded-3xl shadow-2xl space-y-2 items-center justify-center flex flex-col duration-700 ease-in-out transition-transform transform-gpu hover:scale-110">
           <div className="p-4 rounded-full bg-red-50 items-center w-fit">
             <Icon as={HiOutlineWrenchScrewdriver} color="red.500" boxSize={6} />
           </div>
@@ -220,7 +220,7 @@ const Home = () => {
             keeping your motorcycle running smoothly.
           </Text>
         </div>
-        <div className="p-3 bg-white rounded-xl shadow-2xl space-y-2 items-center justify-center flex flex-col duration-700 ease-in-out transition-transform transform-gpu hover:scale-110">
+        <div className="p-8 bg-white rounded-3xl shadow-2xl space-y-2 items-center justify-center flex flex-col duration-700 ease-in-out transition-transform transform-gpu hover:scale-110">
           <div className="p-4 rounded-full bg-red-50 items-center w-fit">
             <Icon as={MdDeliveryDining} color="red.500" boxSize={6} />
           </div>
