@@ -135,10 +135,10 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="flex-1 px-28 duration-700 ease-in-out transition-transform transform-gpu hover:scale-110">
+      <div className="flex-1 px-28 ">
         <div className="bg-white shadow-lg rounded-full ">
           <div className="flex flex-row justify-around items-center px-10 py-4">
-            <div className="flex flex-row gap-4 items-center">
+            <div className="flex flex-row gap-4 items-center duration-700 ease-in-out transition-transform transform-gpu hover:scale-110">
               <div className="p-4 rounded-full bg-red-50 items-center flex">
                 <Icon as={AiOutlineUsergroupAdd} color="red.500" boxSize={6} />
               </div>
@@ -151,7 +151,7 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="flex flex-row gap-4 items-center">
+            <div className="flex flex-row gap-4 items-center duration-700 ease-in-out transition-transform transform-gpu hover:scale-110">
               <div className="p-4 rounded-full bg-red-50 items-center flex">
                 <Icon as={MdDeliveryDining} color="red.500" boxSize={6} />
               </div>
@@ -164,7 +164,7 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="flex flex-row gap-4 items-center">
+            <div className="flex flex-row gap-4 items-center duration-700 ease-in-out transition-transform transform-gpu hover:scale-110">
               <div className="p-4 rounded-full bg-red-50 items-center flex">
                 <Icon as={LuBoxes} color="red.500" boxSize={6} />
               </div>
@@ -177,7 +177,7 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="flex flex-row gap-4 items-center">
+            <div className="flex flex-row gap-4 items-center duration-700 ease-in-out transition-transform transform-gpu hover:scale-110">
               <div className="p-4 rounded-full bg-red-50 items-center flex">
                 <Icon
                   as={HiOutlineWrenchScrewdriver}
