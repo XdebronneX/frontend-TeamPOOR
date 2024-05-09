@@ -1,173 +1,239 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from "react";
 import {
-    Container,
-    Stack,
-    Flex,
-    Box,
-    Heading,
-    Text,
-    Button,
-    Image,
-    Icon,
-    IconButton,
-    createIcon,
-    IconProps,
-    useColorModeValue,
-    Avatar,
-    Grid,
-    HStack,
-    Collapse
-} from '@chakra-ui/react'
-import Carousel from './layout/Carousel'
-import { allOrders, clearErrors } from "../actions/orderActions"
-import { useDispatch, useSelector } from 'react-redux';
-
+  Container,
+  Stack,
+  Flex,
+  Box,
+  Heading,
+  Text,
+  Button,
+  Image,
+  Icon,
+  IconButton,
+  createIcon,
+  IconProps,
+  useColorModeValue,
+  Avatar,
+  Grid,
+  HStack,
+  Collapse,
+} from "@chakra-ui/react";
+import Carousel from "./layout/Carousel";
+import { allOrders, clearErrors } from "../actions/orderActions";
+import { useDispatch, useSelector } from "react-redux";
+import { FaUserPlus } from "react-icons/fa";
+import { LuBoxes } from "react-icons/lu";
+import { AiOutlineUsergroupAdd } from "react-icons/ai";
+import { HiOutlineWrenchScrewdriver } from "react-icons/hi2";
+import { MdDeliveryDining } from "react-icons/md";
 const TestimonialContent = (props) => {
-    const { children } = props
+  const { children } = props;
 
-    return (
-        <Stack
-            bg={useColorModeValue('white', 'gray.800')}
-            boxShadow={'lg'}
-            p={8}
-            rounded={'xl'}
-            align={'center'}
-            pos={'relative'}
-            _after={{
-                content: `""`,
-                w: 0,
-                h: 0,
-                borderLeft: 'solid transparent',
-                borderLeftWidth: 16,
-                borderRight: 'solid transparent',
-                borderRightWidth: 16,
-                borderTop: 'solid',
-                borderTopWidth: 16,
-                borderTopColor: useColorModeValue('white', 'gray.800'),
-                pos: 'absolute',
-                bottom: '-16px',
-                left: '50%',
-                transform: 'translateX(-50%)',
-            }}>
-            {children}
-        </Stack>
-    )
-}
+  return (
+    <Stack
+      bg={useColorModeValue("white", "gray.800")}
+      boxShadow={"lg"}
+      p={8}
+      rounded={"xl"}
+      align={"center"}
+      pos={"relative"}
+      _after={{
+        content: `""`,
+        w: 0,
+        h: 0,
+        borderLeft: "solid transparent",
+        borderLeftWidth: 16,
+        borderRight: "solid transparent",
+        borderRightWidth: 16,
+        borderTop: "solid",
+        borderTopWidth: 16,
+        borderTopColor: useColorModeValue("white", "gray.800"),
+        pos: "absolute",
+        bottom: "-16px",
+        left: "50%",
+        transform: "translateX(-50%)",
+      }}
+    >
+      {children}
+    </Stack>
+  );
+};
 
 const TestimonialHeading = (props) => {
-    const { children } = props
+  const { children } = props;
 
-    return (
-        <Heading as={'h3'} fontSize={'xl'}>
-            {children}
-        </Heading>
-    )
-}
+  return (
+    <Heading as={"h3"} fontSize={"xl"}>
+      {children}
+    </Heading>
+  );
+};
 
 const TestimonialText = (props) => {
-    const { children } = props
+  const { children } = props;
 
-    return (
-        <Text
-            textAlign={'center'}
-            color={useColorModeValue('gray.600', 'gray.400')}
-            fontSize={'sm'}>
-            {children}
-        </Text>
-    )
-}
+  return (
+    <Text
+      textAlign={"center"}
+      color={useColorModeValue("gray.600", "gray.400")}
+      fontSize={"sm"}
+    >
+      {children}
+    </Text>
+  );
+};
 
 const Home = () => {
-    const [show, setShow] = React.useState(false)
-    const handleToggle = () => setShow(!show)
+  const [show, setShow] = React.useState(false);
+  const handleToggle = () => setShow(!show);
 
-    const dispatch = useDispatch()
-    const { user } = useSelector((state) => state.authUser);
-    // useEffect(() => {
-    //     if (user.role === "admin") {
-    //         dispatch(allOrders());
-    //     }
-    // }, [dispatch]);
-    return (
-        <>
-            <Container maxW={'11xl'} mt={1}>
-                <Carousel />
-                <Stack
-                    as={Box}
-                    textAlign={'center'}
-                    spacing={{ base: 8, md: 14 }}
-                    // py={{ base: 20, md: 36 }}
-                    display={{ base: "none", md: "block" }}
-                >
-                    <Heading
-                        fontWeight={600}
-                        fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
-                        lineHeight={'110%'}>
-                        Welcome to  <br />
-                        <Text as={'span'} color={'red.400'}>
-                            TeamPoor
-                        </Text>
-                    </Heading>
-                    <Stack
-                        direction={'column'}
-                        spacing={3}
-                        align={'center'}
-                        alignSelf={'center'}
-                        position={'relative'}
-                    >
-                        <Box mt={8} width="50%" textAlign="center" fontStyle={"arial"}>
-                            <Collapse startingHeight={70} in={show}>
-                                Rev up your passion for riding at our premier motorcycle shop. Discover a curated selection of top-notch bikes, gear, and accessories that blend style and performance seamlessly.
-                                <br />
-                                Whether you're a seasoned rider or a newcomer, our knowledgeable staff is here to guide you to the perfect ride. Embrace the exhilaration of the open road with quality products and unmatched expertise – because at TeamPOOR, we're not just selling motorcycles; we're fueling your journey.
-                            </Collapse>
-                            <Button size='lg' onClick={handleToggle} mt={5}>
-                                Show {show ? 'Less' : 'More'}
-                            </Button>
-                        </Box>
-                    </Stack>
-                </Stack>
-                <Stack spacing={{ base: 10, md: 20 }} mt={14}>
-                    <Box bg={useColorModeValue('gray.100', 'gray.700')}>
-                        <Container maxW={'7xl'} py={16} as={Stack} spacing={12}>
-                            {/* <Stack spacing={0} align={'center'}>
-                                <Heading>Our Clients Speak</Heading>
-                                <Text>Welcome to our shop, where every rider's dream takes shape.</Text>
-                            </Stack> */}
-                            <Stack
-                                direction={{ base: 'column', md: 'row' }}
-                                spacing={{ base: 10, md: 4, lg: 5 }}>
-                                <Box>
-                                    <TestimonialContent>
-                                        <TestimonialHeading>OEM-Quality Parts</TestimonialHeading>
-                                        <TestimonialText>
-                                            We source and provide original equipment manufacturer (OEM) quality parts, ensuring reliability, compatibility, and optimal performance for your motorcycle.
-                                        </TestimonialText>
-                                    </TestimonialContent>
-                                </Box>
-                                <Box>
-                                    <TestimonialContent>
-                                        <TestimonialHeading>Expert Repair Services</TestimonialHeading>
-                                        <TestimonialText>
-                                            Trust our skilled technicians for professional repair services. From routine maintenance to complex repairs, our team is dedicated to keeping your motorcycle running smoothly.
-                                        </TestimonialText>
-                                    </TestimonialContent>
-                                </Box>
-                                <Box>
-                                    <TestimonialContent>
-                                        <TestimonialHeading>Efficient Online Ordering</TestimonialHeading>
-                                        <TestimonialText>
-                                            Experience seamless online ordering with our user-friendly platform. Browse, select, and order parts from the comfort of your home, with efficient shipping options available.
-                                        </TestimonialText>
-                                    </TestimonialContent>
-                                </Box>
-                            </Stack>
-                        </Container>
-                    </Box>
-                </Stack>
-            </Container>
-        </>
-    )
-}
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.authUser);
+  // useEffect(() => {
+  //     if (user.role === "admin") {
+  //         dispatch(allOrders());
+  //     }
+  // }, [dispatch]);
+  return (
+    <div className="flex-1 min-h-screen">
+      <div className="bg-[#fbe2e2] absolute top-[-6rem] -z-10 right-[11rem] h-[31.24rem] w-[31.25rem] rounded-full blur-[10rem]"></div>
+      <div className="bg-red-100 absolute top-[-5rem] -z-10 left-[35rem] h-[31.24rem] w-[31.25rem] rounded-full blur-[10rem] md:left-[-32rem] lg:left-[-28rem] xl:left-[-15rem] 2xl:left-[-5rem]"></div>
 
-export default Home
+      <div className="grid grid-cols-3 grid-rows-1 gap-4 px-36">
+        <div className="flex flex-col justify-center ">
+          <Text className="font-extrabold text-6xl">
+            Stay Connected Anywhere with{" "}
+            <span className="text-red-500 text-6xl">TeamPoor</span> Mobile App
+          </Text>
+
+          <Text className="text-2xl mt-4">
+            Download now and unlock endless possibilities.
+          </Text>
+
+          {/* <Button>Download</Button> */}
+
+          <div className="flex flex-row items-center gap-4">
+            <div className="py-2 px-3 rounded-full bg-red-500 w-fit mt-4  duration-700 ease-in-out transition-transform transform-gpu hover:scale-110">
+              <Text className="text-white font-bold text-lg">Download Apk</Text>
+            </div>
+
+            {/* <div>
+              <Text>Show Now </Text>
+            </div> */}
+          </div>
+        </div>
+        <div className="col-span-2">
+          <img
+            style={{
+              maxHeight: "calc(100vh)", // Adjusted to 150vh
+              width: "100%",
+              objectFit: "contain",
+            }}
+            src={"/images/guy4.png"}
+            alt="Guy"
+          />
+        </div>
+      </div>
+
+      <div className="flex-1 px-28 duration-700 ease-in-out transition-transform transform-gpu hover:scale-110">
+        <div className="bg-white shadow-lg rounded-full ">
+          <div className="flex flex-row justify-around items-center px-10 py-4">
+            <div className="flex flex-row gap-4 items-center">
+              <div className="p-4 rounded-full bg-red-50 items-center flex">
+                <Icon as={AiOutlineUsergroupAdd} color="red.500" boxSize={6} />
+              </div>
+
+              <div className="flex flex-col">
+                <span className="font-extrabold text-lg text-red-500">
+                  123+
+                </span>
+                <span className="text-normal font-bold">Total User</span>
+              </div>
+            </div>
+
+            <div className="flex flex-row gap-4 items-center">
+              <div className="p-4 rounded-full bg-red-50 items-center flex">
+                <Icon as={MdDeliveryDining} color="red.500" boxSize={6} />
+              </div>
+
+              <div className="flex flex-col">
+                <span className="font-extrabold text-lg text-red-500">
+                  123+
+                </span>
+                <span className="text-normal font-bold">Total Orders</span>
+              </div>
+            </div>
+
+            <div className="flex flex-row gap-4 items-center">
+              <div className="p-4 rounded-full bg-red-50 items-center flex">
+                <Icon as={LuBoxes} color="red.500" boxSize={6} />
+              </div>
+
+              <div className="flex flex-col">
+                <span className="font-extrabold text-lg text-red-500">
+                  123+
+                </span>
+                <span className="text-normal font-bold">Total Products</span>
+              </div>
+            </div>
+
+            <div className="flex flex-row gap-4 items-center">
+              <div className="p-4 rounded-full bg-red-50 items-center flex">
+                <Icon
+                  as={HiOutlineWrenchScrewdriver}
+                  color="red.500"
+                  boxSize={6}
+                />
+              </div>
+
+              <div className="flex flex-col">
+                <span className="font-extrabold text-lg text-red-500">
+                  123+
+                </span>
+                <span className="text-normal font-bold">Total Services</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-3 grid-rows-1 gap-4 px-36 py-16">
+        <div className="p-3 bg-white rounded-xl shadow-2xl space-y-2 items-center justify-center flex flex-col duration-700 ease-in-out transition-transform transform-gpu hover:scale-110">
+          <div className="p-4 rounded-full bg-red-50 items-center w-fit">
+            <Icon as={LuBoxes} color="red.500" boxSize={6} />
+          </div>
+          <Text className="font-bold text-lg">OEM-Quality Parts</Text>
+          <Text>
+            We source and provide original equipment manufacturer (OEM) quality
+            parts, ensuring reliability, compatibility, and optimal performance
+            for your motorcycle.
+          </Text>
+        </div>
+        <div className="p-3 bg-white rounded-xl shadow-2xl space-y-2 items-center justify-center flex flex-col duration-700 ease-in-out transition-transform transform-gpu hover:scale-110">
+          <div className="p-4 rounded-full bg-red-50 items-center w-fit">
+            <Icon as={HiOutlineWrenchScrewdriver} color="red.500" boxSize={6} />
+          </div>
+          <Text className="font-bold text-lg">Expert Repair Services</Text>
+          <Text>
+            Trust our skilled technicians for professional repair services. From
+            routine maintenance to complex repairs, our team is dedicated to
+            keeping your motorcycle running smoothly.
+          </Text>
+        </div>
+        <div className="p-3 bg-white rounded-xl shadow-2xl space-y-2 items-center justify-center flex flex-col duration-700 ease-in-out transition-transform transform-gpu hover:scale-110">
+          <div className="p-4 rounded-full bg-red-50 items-center w-fit">
+            <Icon as={MdDeliveryDining} color="red.500" boxSize={6} />
+          </div>
+          <Text className="font-bold text-lg">Efficient Online Ordering</Text>
+          <Text>
+            Experience seamless online ordering with our user-friendly platform.
+            Browse, select, and order parts from the comfort of your home, with
+            efficient shipping options available.
+          </Text>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Home;
