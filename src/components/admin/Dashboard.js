@@ -440,6 +440,10 @@ const Dashboard = () => {
   return (
     <aside className="bg-zinc-100 min-h-screen p-3 flex flex-row gap-4">
       <nav className="h-full flex flex-col sticky top-4">
+        <ReactToPrint
+          trigger={() => <button>Print Dashboard</button>}
+          content={() => dashboardRef.current}
+        />
         <Sidebar />
       </nav>
 
@@ -452,10 +456,6 @@ const Dashboard = () => {
           <div className="grid grid-flow-row auto-rows-max grid-cols-1 gap-4 lg:grid-cols-5">
             <div className="bg-white rounded-xl p-3 flex flex-row space-x-2 items-center shadow-sm col-span-2">
               <div className="bg-red-50 p-3 rounded-xl">
-                  <ReactToPrint
-                    trigger={() => <button>Print Dashboard</button>}
-                    content={() => dashboardRef.current}
-                  />
                 <FaBoxesStacked size={34} color="#ef4444" />
               </div>
               <div>
