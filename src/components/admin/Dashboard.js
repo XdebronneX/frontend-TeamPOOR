@@ -445,17 +445,24 @@ const Dashboard = () => {
   //   XLSX.writeFile(wb, `${filename}.xlsx`);
   // };
 
-  const exportToExcel = (data, filename, sheetName) => {
+  const exportMonthlySalesToExcel = (data, filename, sheetName) => {
     const formatDate = (date) => {
       const options = { month: "long" };
       return new Date(date).toLocaleDateString(undefined, options);
     };
-    
+
     const formattedData = data.map(item => ({
       month: formatDate(new Date(item._id.year, item._id.month - 1, 1)), // Format date
       totalSales: item.totalPrice, // Use total price as total sales
     }));
 
+    const ws = XLSX.utils.json_to_sheet(formattedData);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, sheetName);
+    XLSX.writeFile(wb, `${filename}.xlsx`);
+  };
+
+  const exportMostBrandToExcel = (data, filename, sheetName) => {
     const ws = XLSX.utils.json_to_sheet(formattedData);
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, sheetName);
@@ -479,11 +486,11 @@ const Dashboard = () => {
           </Flex>
         ) : (
           <div className="grid grid-flow-row auto-rows-max grid-cols-1 gap-4 lg:grid-cols-5">
-              <button onClick={() => exportToExcel(monthlySales, "Monthly_Sales")}>
+              <button onClick={() => exportMonthlySalesToExcel(monthlySales, "Monthly_Sales")}>
                 Export Monthly Sales to Excel
               </button>
 
-              <button onClick={() => exportToExcel(mostPurchasedBrand, "Most_Purchased_Brand")}>
+              <button onClick={() => exportMostBrandToExcel(mostPurchasedBrand, "Most_Purchased_Brand")}>
                 Export Most Purchased Brand to Excel
               </button>
 
