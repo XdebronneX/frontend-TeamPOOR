@@ -441,7 +441,7 @@ const Dashboard = () => {
   const exportToExcel = (data, filename, sheetName) => {
     const formattedData = data.map(item => ({
       Month: item.month,
-      Sales: item.sales
+      Sales: item.totalSales
     }));
 
     const ws = XLSX.utils.json_to_sheet(formattedData);
@@ -449,7 +449,7 @@ const Dashboard = () => {
     XLSX.utils.book_append_sheet(wb, ws, sheetName);
     XLSX.writeFile(wb, `${filename}.xlsx`);
   };
-  
+
   return (
     <aside className="bg-zinc-100 min-h-screen p-3 flex flex-row gap-4">
       <nav className="h-full flex flex-col sticky top-4">
