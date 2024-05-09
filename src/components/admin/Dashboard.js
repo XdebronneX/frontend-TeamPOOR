@@ -475,10 +475,24 @@ const Dashboard = () => {
   };
 
   const exportBiggestPurchasedToExcel = (data, filename, sheetName) => {
-    
+
     const formattedData = data.map(user => ({
       Lastname: user.user.lastname,
       TotalPurchased: user.totalPurchased,
+    }));
+
+    const ws = XLSX.utils.json_to_sheet(formattedData);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, sheetName);
+    XLSX.writeFile(wb, `${filename}.xlsx`);
+  };
+
+
+  const exportMostPurchasedProductToExcel = (data, filename, sheetName) => {
+    const formattedData = data.map(product => ({
+      Name: product.name, // Change to 'Name'
+      Brand: product.brand, // Change to 'Brand'
+      TotalQuantity: product.totalQuantity, // Remain the same
     }));
 
     const ws = XLSX.utils.json_to_sheet(formattedData);
@@ -519,11 +533,11 @@ const Dashboard = () => {
 
               {/* <button onClick={() => exportToExcel(mostRatedMechanics, "Most_Rated_Mechanics")}>
                 Export Most Rated Mechanics to Excel
-              </button>
-
-              <button onClick={() => exportToExcel(mostPurchasedProduct, "Most_Purchased_Product")}>
-                Export Most Purchased Product to Excel
               </button> */}
+
+              <button onClick={() => exportMostPurchasedProductToExcel(mostPurchasedProduct, "Most_Purchased_Product")}>
+                Export Most Purchased Product to Excel
+              </button>
             <div className="bg-white rounded-xl p-3 flex flex-row space-x-2 items-center shadow-sm col-span-2">
               <div className="bg-red-50 p-3 rounded-xl">
                 <FaBoxesStacked size={34} color="#ef4444" />
