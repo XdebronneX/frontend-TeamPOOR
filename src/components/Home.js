@@ -17,7 +17,7 @@ import { MdDeliveryDining } from "react-icons/md";
 import { viewAllUsers } from "../actions/userActions";
 import { getAdminProducts } from "../actions/productActions";
 import { getAdminServices } from "../actions/serviceActions";
-
+import { BsBoxSeam } from "react-icons/bs";
 // const TestimonialContent = (props) => {
 //   const { children } = props;
 
@@ -128,7 +128,7 @@ const Home = () => {
               width: "100%",
               objectFit: "contain",
             }}
-            src={"/images/guy4.png"}
+            src={"/images/guy5.png"}
             alt="Guy"
           />
         </div>
@@ -152,11 +152,11 @@ const Home = () => {
 
             <div className="flex flex-row gap-4 items-center duration-700 ease-in-out transition-transform transform-gpu hover:scale-110">
               <div className="p-4 rounded-full bg-red-50 items-center flex">
-                <Icon as={MdDeliveryDining} color="red.500" boxSize={6} />
+                <Icon as={BsBoxSeam} color="red.500" boxSize={6} />
               </div>
 
               <div className="flex flex-col">
-                <span className="font-extrabold text-lg text-red-500">
+                <span className="font-extrabold text-lg text-red-500 animate-[counter_3s_ease-out_forwards] [counter-set:_num_var(--num)] before:content-[counter(num)]">
                   {alllistorders?.length}
                 </span>
                 <span className="text-normal font-bold">Total Orders</span>
@@ -221,7 +221,7 @@ const Home = () => {
         </div>
         <div className="p-8 bg-white rounded-3xl shadow-2xl space-y-2 items-center justify-center flex flex-col duration-700 ease-in-out transition-transform transform-gpu hover:scale-110">
           <div className="p-4 rounded-full bg-red-50 items-center w-fit">
-            <Icon as={MdDeliveryDining} color="red.500" boxSize={6} />
+            <Icon as={BsBoxSeam} color="red.500" boxSize={6} />
           </div>
           <Text className="font-bold text-lg">Efficient Online Ordering</Text>
           <Text>
