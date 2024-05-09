@@ -438,15 +438,10 @@ const Dashboard = () => {
 
   const dashboardRef = useRef();
 
-  const exportToExcel = (data, filename, sheetName) => {
-    const formattedData = data.map(item => ({
-      Month: item.month,
-      Sales: item.totalSales
-    }));
-
-    const ws = XLSX.utils.json_to_sheet(formattedData);
+  const exportToExcel = (data, filename) => {
+    const ws = XLSX.utils.json_to_sheet(data);
     const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, sheetName);
+    XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
     XLSX.writeFile(wb, `${filename}.xlsx`);
   };
 
