@@ -463,11 +463,17 @@ const Dashboard = () => {
   };
 
   const exportMostBrandToExcel = (data, filename, sheetName) => {
-    const ws = XLSX.utils.json_to_sheet(data);
+    const formattedData = data.map(item => ({
+      BrandName: item._id,
+      TotalQuantity: item.totalQuantity,
+    }));
+
+    const ws = XLSX.utils.json_to_sheet(formattedData);
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, sheetName);
     XLSX.writeFile(wb, `${filename}.xlsx`);
   };
+
 
   return (
     <aside className="bg-zinc-100 min-h-screen p-3 flex flex-row gap-4">
