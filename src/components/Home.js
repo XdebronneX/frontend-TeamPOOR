@@ -1,22 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
-  Container,
   Stack,
-  Flex,
-  Box,
   Heading,
   Text,
-  Button,
-  Image,
   Icon,
-  IconButton,
-  createIcon,
-  IconProps,
   useColorModeValue,
-  Avatar,
-  Grid,
-  HStack,
-  Collapse,
 } from "@chakra-ui/react";
 import Carousel from "./layout/Carousel";
 import { allOrders, clearErrors } from "../actions/orderActions";
@@ -26,62 +14,66 @@ import { LuBoxes } from "react-icons/lu";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import { HiOutlineWrenchScrewdriver } from "react-icons/hi2";
 import { MdDeliveryDining } from "react-icons/md";
-const TestimonialContent = (props) => {
-  const { children } = props;
+import { viewAllUsers } from "../actions/userActions";
+import { getAdminProducts } from "../actions/productActions";
+import { getAdminServices } from "../actions/serviceActions";
 
-  return (
-    <Stack
-      bg={useColorModeValue("white", "gray.800")}
-      boxShadow={"lg"}
-      p={8}
-      rounded={"xl"}
-      align={"center"}
-      pos={"relative"}
-      _after={{
-        content: `""`,
-        w: 0,
-        h: 0,
-        borderLeft: "solid transparent",
-        borderLeftWidth: 16,
-        borderRight: "solid transparent",
-        borderRightWidth: 16,
-        borderTop: "solid",
-        borderTopWidth: 16,
-        borderTopColor: useColorModeValue("white", "gray.800"),
-        pos: "absolute",
-        bottom: "-16px",
-        left: "50%",
-        transform: "translateX(-50%)",
-      }}
-    >
-      {children}
-    </Stack>
-  );
-};
+// const TestimonialContent = (props) => {
+//   const { children } = props;
 
-const TestimonialHeading = (props) => {
-  const { children } = props;
+//   return (
+//     <Stack
+//       bg={useColorModeValue("white", "gray.800")}
+//       boxShadow={"lg"}
+//       p={8}
+//       rounded={"xl"}
+//       align={"center"}
+//       pos={"relative"}
+//       _after={{
+//         content: `""`,
+//         w: 0,
+//         h: 0,
+//         borderLeft: "solid transparent",
+//         borderLeftWidth: 16,
+//         borderRight: "solid transparent",
+//         borderRightWidth: 16,
+//         borderTop: "solid",
+//         borderTopWidth: 16,
+//         borderTopColor: useColorModeValue("white", "gray.800"),
+//         pos: "absolute",
+//         bottom: "-16px",
+//         left: "50%",
+//         transform: "translateX(-50%)",
+//       }}
+//     >
+//       {children}
+//     </Stack>
+//   );
+// };
 
-  return (
-    <Heading as={"h3"} fontSize={"xl"}>
-      {children}
-    </Heading>
-  );
-};
+// const TestimonialHeading = (props) => {
+//   const { children } = props;
 
-const TestimonialText = (props) => {
-  const { children } = props;
+//   return (
+//     <Heading as={"h3"} fontSize={"xl"}>
+//       {children}
+//     </Heading>
+//   );
+// };
 
-  return (
-    <Text
-      textAlign={"center"}
-      color={useColorModeValue("gray.600", "gray.400")}
-      fontSize={"sm"}
-    >
-      {children}
-    </Text>
-  );
-};
+// const TestimonialText = (props) => {
+//   const { children } = props;
+
+//   return (
+//     <Text
+//       textAlign={"center"}
+//       color={useColorModeValue("gray.600", "gray.400")}
+//       fontSize={"sm"}
+//     >
+//       {children}
+//     </Text>
+//   );
+// };
 
 const Home = () => {
   const [show, setShow] = React.useState(false);
@@ -89,11 +81,18 @@ const Home = () => {
 
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.authUser);
-  // useEffect(() => {
-  //     if (user.role === "admin") {
-  //         dispatch(allOrders());
-  //     }
-  // }, [dispatch]);
+  const { users, loading: loadingUsers } = useSelector((state) => state.allUsers);
+  const {alllistorders,loading: loadingOrders } = useSelector((state) => state.allOrders);
+  const { products, loading: loadingProducts } = useSelector((state) => state.allProducts);
+  const { services, loading: loadingServices } = useSelector((state) => state.allServices);
+
+  useEffect(() => {
+    dispatch(viewAllUsers());
+    dispatch(getAdminProducts());
+    dispatch(getAdminServices());
+    dispatch(allOrders());
+  }, [dispatch]);
+
   return (
     <div className="flex-1 min-h-screen">
       <div className="bg-[#fbe2e2] absolute top-[-6rem] -z-10 right-[11rem] h-[31.24rem] w-[31.25rem] rounded-full blur-[10rem]"></div>
@@ -145,7 +144,7 @@ const Home = () => {
 
               <div className="flex flex-col">
                 <span className="font-extrabold text-lg text-red-500">
-                  123+
+                  {users?.length}
                 </span>
                 <span className="text-normal font-bold">Total User</span>
               </div>
@@ -158,7 +157,7 @@ const Home = () => {
 
               <div className="flex flex-col">
                 <span className="font-extrabold text-lg text-red-500">
-                  123+
+                  {alllistorders?.length}
                 </span>
                 <span className="text-normal font-bold">Total Orders</span>
               </div>
@@ -171,7 +170,7 @@ const Home = () => {
 
               <div className="flex flex-col">
                 <span className="font-extrabold text-lg text-red-500">
-                  123+
+                  {products?.length}
                 </span>
                 <span className="text-normal font-bold">Total Products</span>
               </div>
@@ -188,7 +187,7 @@ const Home = () => {
 
               <div className="flex flex-col">
                 <span className="font-extrabold text-lg text-red-500">
-                  123+
+                  {services?.length}
                 </span>
                 <span className="text-normal font-bold">Total Services</span>
               </div>
