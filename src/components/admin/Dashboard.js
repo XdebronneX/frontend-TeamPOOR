@@ -446,6 +446,11 @@ const Dashboard = () => {
   // };
 
   const exportToExcel = (data, filename, sheetName) => {
+    const formatDate = (date) => {
+      const options = { month: "long" };
+      return new Date(date).toLocaleDateString(undefined, options);
+    };
+    
     const formattedData = data.map(item => ({
       month: formatDate(new Date(item._id.year, item._id.month - 1, 1)), // Format date
       totalSales: item.totalPrice, // Use total price as total sales
