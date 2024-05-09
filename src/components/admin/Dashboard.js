@@ -474,6 +474,18 @@ const Dashboard = () => {
     XLSX.writeFile(wb, `${filename}.xlsx`);
   };
 
+  const exportBiggestPurchasedToExcel = (data, filename, sheetName) => {
+    const formattedData = data.map(user => ({
+      Lastname: user.lastname,
+      TotalPurchased: user.totalPurchased,
+    }));
+
+    const ws = XLSX.utils.json_to_sheet(formattedData);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, sheetName);
+    XLSX.writeFile(wb, `${filename}.xlsx`);
+  };
+
 
   return (
     <aside className="bg-zinc-100 min-h-screen p-3 flex flex-row gap-4">
@@ -500,11 +512,11 @@ const Dashboard = () => {
                 Export Most Purchased Brand to Excel
               </button>
 
-              {/* <button onClick={() => exportToExcel(mostPurchasedUser, "Most_Loyal_User")}>
+              <button onClick={() => exportBiggestPurchasedToExcel(mostPurchasedUser, "Most_Loyal_User")}>
                 Export Most Loyal User to Excel
               </button>
 
-              <button onClick={() => exportToExcel(mostRatedMechanics, "Most_Rated_Mechanics")}>
+              {/* <button onClick={() => exportToExcel(mostRatedMechanics, "Most_Rated_Mechanics")}>
                 Export Most Rated Mechanics to Excel
               </button>
 
