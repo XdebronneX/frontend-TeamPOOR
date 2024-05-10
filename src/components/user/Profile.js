@@ -9,6 +9,7 @@ import {
     Stack,
     Heading,
     Flex,
+    Badge
 } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
 import { EditIcon } from "@chakra-ui/icons";
