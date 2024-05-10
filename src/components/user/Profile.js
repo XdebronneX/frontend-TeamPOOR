@@ -14,7 +14,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { EditIcon } from "@chakra-ui/icons";
 import Loader from "../layout/Loader";
 import { myMotorcycle } from '../../actions/motorcycleActions';
-import { FaPlusCircle } from "react-icons/fa";
+import { FaPlusCircle, FaGasPump } from "react-icons/fa";
 import { myAddresses, updateDefaultAddresses, clearErrors } from '../../actions/addressActions';
 import { UPDATE_ADDRESSES_RESET } from '../../constants/addressConstants';
 import { myFuel } from '../../actions/fuelActions';
@@ -24,12 +24,11 @@ import {
     cities,
     barangays,
 } from "select-philippines-address";
-import { FaGasPump } from 'react-icons/fa';
 import { myOrders, allOrders, listOrders } from '../../actions/orderActions';
 import { RiCurrencyFill } from "react-icons/ri";
 import { MDBDataTable } from 'mdbreact';
 import { toast } from 'react-toastify';
-
+import { getAdminProducts } from "../../actions/productActions";
 const Profile = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -41,6 +40,7 @@ const Profile = () => {
     const { userFuel, loading: loadingFuel } = useSelector((state) => state.myFuel);
     const { orders, error: errorMyOrders, loading: loadingMyOrders } = useSelector(state => state.myOrders)
     const { loading: loadingAllOrders, loading: loadingListOrders, alllistorders } = useSelector((state) => state.allOrders);
+    const { error: errorAllProducts, loading: loadingAllProduts, products } = useSelector((state) => state.allProducts);
 
     const UpdateProfileHandler = () => {
         navigate("/profile/update");
@@ -107,6 +107,9 @@ const Profile = () => {
         dispatch(myOrders());
         if (user.role === "admin") {
             dispatch(allOrders());
+        }
+        if (user.role === "supplier") {
+            dispatch(getAdminProducts());
         }
         if (user.role === "secretary") {
             dispatch(listOrders());
@@ -539,6 +542,73 @@ const Profile = () => {
         return data;
     };
 
+    const setProductData = () => {
+        const data = {
+            columns: [
+                {
+                    label: "Product ID",
+                    field: "id",
+                    sort: "asc",
+                },
+                {
+                    label: "Product name",
+                    field: "name",
+                    sort: "asc",
+                },
+                {
+                    label: "Product brand",
+                    field: "brand",
+                    sort: "asc",
+                },
+                {
+                    label: "Stock",
+                    field: "stock",
+                    sort: "asc",
+                },
+                {
+                    label: "Status",
+                    field: "status",
+                    sort: "asc",
+                },
+            ],
+            rows: [],
+        };
+
+        products.forEach((product) => {
+            let status = "";
+
+            if (product.stock === 0) {
+                status = "Out of stock";
+            } else if (product.stock <= 10) {
+                status = "Low stock";
+            } else {
+                status = "In stock";
+            }
+
+            data.rows.push({
+                id: product._id,
+                name: product.name,
+                brand: product.brand.name,
+                stock: product.stock.toLocaleString(),
+                status: (
+                    <Badge
+                        colorScheme={
+                            product.stock === 0
+                                ? "red"
+                                : product.stock <= 10
+                                    ? "yellow"
+                                    : "green"
+                        }
+                    >
+                        {status}
+                    </Badge>
+                ),
+            });
+        });
+
+        return data;
+    };
+
     const totalCost = userFuel ? userFuel.reduce((acc, curr) => acc + curr.totalCost, 0) : 0;
     const formattedTotalCostFuel = totalCost.toLocaleString();
 
@@ -636,6 +706,20 @@ const Profile = () => {
                                     bordered
                                     noBottomColumns
                                     data={setOrders()}
+                                />
+                            </Stack>
+                        </Box>
+                    )}
+                    {user.role === "supplier" && (
+                        <Box flex="1" p={4} bg="white" rounded="md" boxShadow="md" overflow="auto" maxHeight="99vh">
+                            <Stack spacing={4}>
+                                <Heading as="h2" fontSize="xl" fontWeight="bold" mb={4}>Product Stocks</Heading>
+                                <Divider />
+                                <MDBDataTable
+                                    striped
+                                    bordered
+                                    noBottomColumns
+                                    data={setProductData()}
                                 />
                             </Stack>
                         </Box>

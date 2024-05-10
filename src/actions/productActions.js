@@ -101,7 +101,7 @@ export const getAdminProducts = () => async (dispatch) => {
     try {
         dispatch({ type: ADMIN_PRODUCTS_REQUEST });
 
-        const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/admin/view/all/products`, {withCredentials: true});
+        const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/view/all/products`, {withCredentials: true});
 
         dispatch({
             type: ADMIN_PRODUCTS_SUCCESS,
