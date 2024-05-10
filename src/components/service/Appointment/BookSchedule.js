@@ -137,22 +137,17 @@ const BookSchedule = () => {
   }, [booking.appointmentDate]);
 
   const checkAvailability = (date) => {
-    // Mock function to determine available time slots
-    // You should replace this with your actual logic
+    const currentTime = new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' });
     const availableSlots = getAvailableTimeSlots(date);
-    if (availableSlots.length === 0) {
-      const nextDay = getNextDay(date);
-      setBooking({ ...booking, appointmentDate: nextDay });
+    if (availableSlots.length === 0 || !availableSlots.includes(currentTime)) {
+      const nextAvailableDate = getNextAvailableDate(date);
+      setBooking({ ...booking, appointmentDate: nextAvailableDate });
     } else {
       setAvailableTimeSlots(availableSlots);
     }
   };
 
   const getAvailableTimeSlots = (date) => {
-    // Mock function to determine available time slots
-    // You should replace this with your actual logic
-    // For example, you might fetch available time slots from an API based on the selected date
-    // Here, it just returns an array of all time slots
     return [
       "09:00 AM",
       "10:00 AM",
@@ -166,11 +161,16 @@ const BookSchedule = () => {
     ];
   };
 
-  const getNextDay = (date) => {
+  const getNextAvailableDate = (date) => {
     const currentDate = new Date(date);
-    const nextDay = new Date(currentDate);
-    nextDay.setDate(currentDate.getDate() + 1);
-    return nextDay.toISOString().split("T")[0];
+    while (true) {
+      currentDate.setDate(currentDate.getDate() + 1);
+      const nextDate = currentDate.toISOString().split("T")[0];
+      const availableSlots = getAvailableTimeSlots(nextDate);
+      if (availableSlots.length > 0) {
+        return nextDate;
+      }
+    }
   };
 
   const handleDateChange = (date) => {
