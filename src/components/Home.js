@@ -17,62 +17,6 @@ import { MdDeliveryDining } from "react-icons/md";
 import { viewAllUsers } from "../actions/userActions";
 import { getAllProducts } from "../actions/productActions";
 import { getAllServices } from "../actions/serviceActions";
-// const TestimonialContent = (props) => {
-//   const { children } = props;
-
-//   return (
-//     <Stack
-//       bg={useColorModeValue("white", "gray.800")}
-//       boxShadow={"lg"}
-//       p={8}
-//       rounded={"xl"}
-//       align={"center"}
-//       pos={"relative"}
-//       _after={{
-//         content: `""`,
-//         w: 0,
-//         h: 0,
-//         borderLeft: "solid transparent",
-//         borderLeftWidth: 16,
-//         borderRight: "solid transparent",
-//         borderRightWidth: 16,
-//         borderTop: "solid",
-//         borderTopWidth: 16,
-//         borderTopColor: useColorModeValue("white", "gray.800"),
-//         pos: "absolute",
-//         bottom: "-16px",
-//         left: "50%",
-//         transform: "translateX(-50%)",
-//       }}
-//     >
-//       {children}
-//     </Stack>
-//   );
-// };
-
-// const TestimonialHeading = (props) => {
-//   const { children } = props;
-
-//   return (
-//     <Heading as={"h3"} fontSize={"xl"}>
-//       {children}
-//     </Heading>
-//   );
-// };
-
-// const TestimonialText = (props) => {
-//   const { children } = props;
-
-//   return (
-//     <Text
-//       textAlign={"center"}
-//       color={useColorModeValue("gray.600", "gray.400")}
-//       fontSize={"sm"}
-//     >
-//       {children}
-//     </Text>
-//   );
-// };
 
 const Home = () => {
   const [show, setShow] = React.useState(false);
@@ -123,7 +67,7 @@ const Home = () => {
               width: "100%",
               objectFit: "contain",
             }}
-            src={"/images/guy4.png"}
+            src={"/images/guy5.png"}
             alt="Guy"
           />
         </div>
@@ -147,12 +91,12 @@ const Home = () => {
 
             <div className="flex flex-row gap-4 items-center duration-700 ease-in-out transition-transform transform-gpu hover:scale-110">
               <div className="p-4 rounded-full bg-red-50 items-center flex">
-                <Icon as={MdDeliveryDining} color="red.500" boxSize={6} />
+                <Icon as={BsBoxSeam} color="red.500" boxSize={6} />
               </div>
 
               <div className="flex flex-col">
                 <span className="font-extrabold text-lg text-red-500">
-                123
+                  {alllistorders?.length}
                 </span>
                 <span className="text-normal font-bold">Total Orders</span>
               </div>
@@ -216,7 +160,7 @@ const Home = () => {
         </div>
         <div className="p-8 bg-white rounded-3xl shadow-2xl space-y-2 items-center justify-center flex flex-col duration-700 ease-in-out transition-transform transform-gpu hover:scale-110">
           <div className="p-4 rounded-full bg-red-50 items-center w-fit">
-            <Icon as={MdDeliveryDining} color="red.500" boxSize={6} />
+            <Icon as={BsBoxSeam} color="red.500" boxSize={6} />
           </div>
           <Text className="font-bold text-lg">Efficient Online Ordering</Text>
           <Text>
