@@ -98,7 +98,7 @@ const BookingDetails = () => {
 
   let badgeColor = "";
   let badgeText = "";
-  
+
   switch (latestStatus) {
     case 'PENDING':
       badgeColor = 'warning';
@@ -288,16 +288,6 @@ const BookingDetails = () => {
               </div>
 
               <div className="border-b border-zinc-200" />
-
-              {latestStatus === "COMPLETED" && (
-                <button
-                  className="btn btn-primary btn-block mt-3"
-                  onClick={() => handlePrint()} // Use arrow function to invoke handlePrint
-                >
-                  <i className="fa fa-print mr-1" /> Print Receipt
-                </button>
-              )}
-
               {latestStatus === "DELIVERED" && (
                 <button
                   className="btn btn-primary btn-block mt-3"
