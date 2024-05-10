@@ -30,7 +30,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { UPDATE_ORDER_RESET } from "../../../constants/orderConstants";
-import { useReactToPrint } from "react-to-print";
+import { backjobBooking } from "../../../actions/appointmentActions";
 
 const BookingDetails = () => {
   const dispatch = useDispatch();
@@ -40,11 +40,11 @@ const BookingDetails = () => {
     (state) => state.appointmentDetails
   );
   const { error, isUpdated } = useSelector((state) => state.adminAppointment);
-  const { customerInfo, bookingInfo, appointmentServices, user, totalPrice } =
-    booking;
+  const { customerInfo, bookingInfo, appointmentServices, user, totalPrice } = booking;
   const appointmentId = id;
-  const [showReviewModal, setShowReviewModal] = useState(false);
-  const [selectedItemForReview, setSelectedItemForReview] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [comment, setComment] = useState("");
+  
   const errMsg = (message = "") =>
     toast.error(message, {
       position: toast.POSITION.BOTTOM_CENTER,
@@ -84,12 +84,70 @@ const BookingDetails = () => {
     successMsg("Appointment Cancelled");
   };
 
+  const backjobBookingHandler = () => {
+    const formData = new FormData();
+    formData.set("appointmentStatus", "BACKJOBPENDING");
+    formData.set("comment", comment);
+    dispatch(backjobBooking(appointmentId, formData));
+    successMsg("Request for backjob successfully sent!");
+  };
+
   const appointmentStatus = booking.appointmentStatus || [];
-  const sortedStatus = appointmentStatus.sort(
-    (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
-  );
-  const latestStatus =
-    sortedStatus.length > 0 ? sortedStatus[0].status : "No status";
+  const sortedStatus = appointmentStatus.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+  const latestStatus = sortedStatus.length > 0 ? sortedStatus[0].status : "No status";
+
+  switch (latestStatus) {
+    case 'PENDING':
+      badgeColor = 'warning';
+      badgeText = 'Pending';
+      break;
+    case 'CONFIRMED':
+      badgeColor = 'success';
+      badgeText = 'Confirmed';
+      break;
+    case 'INPROGRESS':
+      badgeColor = 'primary';
+      badgeText = 'In Progress';
+      break;
+    case 'DONE':
+      badgeColor = 'success';
+      badgeText = 'Done';
+      break;
+    case 'COMPLETED':
+      badgeColor = 'success';
+      badgeText = 'Completed';
+      break;
+    case 'CANCELLED':
+      badgeColor = 'danger';
+      badgeText = 'Cancelled';
+      break;
+    case 'RESCHEDULED':
+      badgeColor = 'purple';
+      badgeText = 'Resheduled';
+      break;
+    case 'DELAYED':
+      badgeColor = 'warning';
+      badgeText = 'Delayed';
+      break;
+    case 'BACKJOBPENDING':
+      badgeColor = 'warning';
+      badgeText = 'Back job Pending';
+      break;
+    case 'BACKJOBCONFIRMED':
+      badgeColor = 'primary';
+      badgeText = 'Back job Confirmed';
+      break;
+    case 'BACKJOBCOMPLETED':
+      badgeColor = 'success';
+      badgeText = 'Back job Completed';
+      break;
+    case 'NOSHOW':
+      badgeColor = 'gray';
+      badgeText = 'No show';
+      break;
+    default:
+      badgeText = 'No status';
+  }
 
   const formatTimestamp = (timestamp) => {
     const date = new Date(timestamp);
@@ -103,17 +161,6 @@ const BookingDetails = () => {
     };
     return date.toLocaleString("en-US", options);
   };
-
-  const openReviewModal = (item) => {
-    setSelectedItemForReview(item);
-    setShowReviewModal(true);
-  };
-
-  const componentRef = useRef();
-
-  const handlePrint = useReactToPrint({
-    content: () => componentRef.current,
-  });
 
   // console.log('books', booking);
   return (
@@ -207,20 +254,9 @@ const BookingDetails = () => {
 
                         <div>
                           {item.service && item.service.price && (
-                            <p>${item.service.price}</p>
+                            <p>₱{item.service.price}</p>
                           )}
                         </div>
-
-                        {latestStatus === "COMPLETED" && (
-                          <div>
-                            <Button
-                              colorScheme="green"
-                              onClick={() => openReviewModal(item)}
-                            >
-                              <p className="text-white">Review</p>
-                            </Button>
-                          </div>
-                        )}
                       </div>
                     </>
                   ))}
@@ -264,7 +300,7 @@ const BookingDetails = () => {
                   className="btn btn-primary btn-block mt-3"
                   onClick={() => updateBookingHandler(booking._id)}
                 >
-                  <i className="fa fa-check mr-1" /> Order Received
+                  <i className="fa fa-check mr-1" /> Done service
                 </button>
               )}
             </div>
@@ -276,10 +312,29 @@ const BookingDetails = () => {
             </Button>
           )}
 
+          {(latestStatus === "COMPLETED") && (
+          <Button colorScheme="blue" onClick={() => setShowModal(true)}>Request Backjob</Button>
+          )}
+
+          <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader>Request Backjob</ModalHeader>
+              <ModalCloseButton />
+              <ModalBody>
+                <Textarea placeholder="Enter your comments..." value={comment} onChange={(e) => setComment(e.target.value)} />
+              </ModalBody>
+              <ModalFooter>
+                <Button colorScheme="blue" mr={3} onClick={backjobBookingHandler}>Send Request</Button>
+                <Button onClick={() => setShowModal(false)}>Cancel</Button>
+              </ModalFooter>
+            </ModalContent>
+          </Modal>
+
           <div className="bg-white shadow-md rounded-xl p-4 space-y-4">
             <div className="">
               <h1 className="font-bold text-xl">
-                Your Order's Tracking History
+                Your Service Tracking
               </h1>
             </div>
 

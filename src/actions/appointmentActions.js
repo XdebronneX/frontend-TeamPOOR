@@ -246,7 +246,7 @@ export const updateBooking = (id, bookingData) => async (dispatch) => {
     }
 }
 
-export const cancelBooking = (id, bookingData) => async (dispatch) => {
+export const backjobBooking = (id, bookingData) => async (dispatch) => {
     try {
         dispatch({ type: UPDATE_APPOINTMENT_REQUEST })
         const config = {

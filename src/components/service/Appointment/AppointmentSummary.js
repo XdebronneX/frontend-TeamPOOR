@@ -33,7 +33,7 @@ const AppointmentSummary = () => {
     }
 
     if (success && isSuccess) {
-      toast.success("Your order has been placed successfully!", {
+      toast.success("Your booking has been placed successfully!", {
         position: toast.POSITION.BOTTOM_CENTER,
       });
       dispatch(clearServiceCart());

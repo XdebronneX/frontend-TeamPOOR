@@ -1,441 +1,3 @@
-// import React, { Fragment, useEffect } from 'react'
-// import { Link } from 'react-router-dom'
-// import { MDBDataTable } from 'mdbreact'
-// import Loader from '../layout/Loader'
-// import { useDispatch, useSelector } from 'react-redux'
-// import { myAppointments, clearErrors } from '../../actions/appointmentActions';
-// import { CiRead } from "react-icons/ci";
-// import { Container } from '@chakra-ui/react';
-
-// const ListAppointments = () => {
-//     const dispatch = useDispatch()
-
-//     const { loading, error, bookings } = useSelector(state => state.myBookings)
-
-//     useEffect(() => {
-//         dispatch(myAppointments())
-
-//         if (error) {
-//             dispatch(clearErrors())
-//         }
-//     }, [dispatch, error])
-
-//     const setListAppointments = () => {
-//         const data = {
-//             columns: [
-//                 {
-//                     label: 'Appointment ID',
-//                     field: 'id',
-//                     sort: 'asc',
-//                 },
-//                 {
-//                     label: 'Appointment date',
-//                     field: 'appointmentDate',
-//                     sort: 'asc',
-//                 },
-//                 {
-//                     label: 'Time',
-//                     field: 'timeSlot',
-//                     sort: 'disabled',
-//                 },
-//                 {
-//                     label: 'Assigned mechanic',
-//                     field: 'mechanic',
-//                     sort: 'disabled',
-//                 },
-//                 {
-//                     label: 'No of service',
-//                     field: 'numofServices',
-//                     sort: 'disabled',
-//                 },
-//                 {
-//                     label: 'Service type',
-//                     field: 'serviceType',
-//                     sort: 'disabled',
-//                 },
-//                 {
-//                     label: 'Amount',
-//                     field: 'amount',
-//                     sort: 'disabled',
-//                 },
-//                 {
-//                     label: 'Status',
-//                     field: 'status',
-//                     sort: 'disabled',
-//                 },
-//                 {
-//                     label: 'View',
-//                     field: 'view',
-//                     sort: 'disabled'
-//                 },
-//             ],
-//             rows: [],
-//         };
-
-//         bookings.forEach((booking) => {
-//             const appointmentStatus = booking.appointmentStatus || [];
-//             const sortedStatus = appointmentStatus.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-//             const latestStatus = sortedStatus.length > 0 ? sortedStatus[0].status : 'No status';
-
-//             let badgeColor = '';
-//             let badgeText = '';
-
-//             switch (latestStatus) {
-//                 case 'PENDING':
-//                     badgeColor = 'warning';
-//                     badgeText = 'Pending';
-//                     break;
-//                 case 'CONFIRMED':
-//                     badgeColor = 'success';
-//                     badgeText = 'Confirmed';
-//                     break;
-//                 case 'INPROGRESS':
-//                     badgeColor = 'primary';
-//                     badgeText = 'In Progress';
-//                     break;
-//                 case 'COMPLETED':
-//                     badgeColor = 'success';
-//                     badgeText = 'Completed';
-//                     break;
-//                 case 'CANCELLED':
-//                     badgeColor = 'danger';
-//                     badgeText = 'Cancelled';
-//                     break;
-//                 case 'RESCHEDULED':
-//                     badgeColor = 'purple';
-//                     badgeText = 'Resheduled';
-//                     break;
-//                 case 'DELAYED':
-//                     badgeColor = 'warning';
-//                     badgeText = 'Delayed';
-//                     break;
-//                 case 'NOSHOW':
-//                     badgeColor = 'gray';
-//                     badgeText = 'No show';
-//                     break;
-//                 default:
-//                     badgeText = 'No status';
-//             }
-//             const formattedDate = new Date(booking.appointmentDate).toLocaleDateString('en-US', {
-//                 year: 'numeric',
-//                 month: 'long',
-//                 day: '2-digit',
-//             });
-//             const mechanicFullname = booking.mechanic ? `${booking.mechanic.firstname} ${booking.mechanic.lastname}` : 'No mechanic assigned yet';
-//             data.rows.push({
-//                 id: booking._id,
-//                 numofServices: booking.appointmentServices.length,
-//                 appointmentDate: formattedDate,
-//                 timeSlot: booking.timeSlot,
-//                 mechanic: mechanicFullname,
-//                 amount: `$${booking.totalPrice}`,
-//                 serviceType: booking.serviceType,
-//                 status: (
-//                     <span className={`badge badge-${badgeColor}`}>
-//                         {badgeText}
-//                     </span>
-//                 ),
-//                 view: (
-//                     <Link to={`/appointment/${booking._id}`} className="btn btn-primary py-1 px-2">
-//                         <CiRead />
-//                     </Link>
-//                 ),
-//             });
-//         });
-
-//         return data;
-//     }
-
-//     return (
-//         <Container maxW="container.xl">
-//             {loading ? (
-//                 <Loader />
-//             ) : (
-//                 <Fragment>
-//                     <MDBDataTable
-//                         striped
-//                         bordered
-//                         noBottomColumns
-//                         data={setListAppointments()}
-//                     />
-//                 </Fragment>
-//             )}
-//         </Container>
-//     )
-// }
-
-// export default ListAppointments;
-
-//** Working na to */
-// import React, { Fragment, useEffect, useState } from 'react';
-// import { Link } from 'react-router-dom';
-// import { MDBDataTable } from 'mdbreact';
-// import Loader from '../layout/Loader';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { myAppointments, clearErrors } from '../../actions/appointmentActions';
-// import { CiRead } from "react-icons/ci";
-// import { Container } from '@chakra-ui/react';
-// import { newReviewMechanic } from '../../actions/mechanicActions';
-// import { toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
-// import { Rating } from "react-simple-star-rating";
-// import { NEW_MECHANIC_REVIEW_RESET } from '../../constants/mechanicConstants';
-
-// const ListAppointments = () => {
-//     const dispatch = useDispatch();
-//     const { loading, error, bookings } = useSelector(state => state.myBookings)
-//     const { error: reviewMechError, success } = useSelector(state => state.reviewMechanic);
-
-//     useEffect(() => {
-//         dispatch(myAppointments());
-
-//         if (error) {
-//             dispatch(clearErrors());
-//         }
-//     }, [dispatch, error]);
-
-//     const [showReviewModal, setShowReviewModal] = useState(false);
-//     const [selectedItemForReview, setSelectedItemForReview] = useState(null);
-//     const [rating, setRating] = useState(0);
-//     const [comment, setComment] = useState("");
-
-//     useEffect(() => {
-//         if (success) {
-//             successMsg("Review posted successfully");
-//             dispatch({ type: NEW_MECHANIC_REVIEW_RESET });
-//             setShowReviewModal(false);
-//         }
-//         if (error) {
-//             notify(error);
-//             dispatch(clearErrors());
-//         }
-//         if (reviewMechError) {
-//             notify(reviewMechError);
-//             dispatch(clearErrors());
-//         }
-//     }, [dispatch, error, reviewMechError, success]);
-
-//     const handleRatingChange = (value) => {
-//         setRating(value);
-//     };
-
-//     const handleCommentChange = (event) => {
-//         setComment(event.target.value);
-//     };
-
-//     const openReviewModal = (item) => {
-//         setSelectedItemForReview(item);
-//         setShowReviewModal(true);
-//     };
-
-//     const closeReviewModal = () => {
-//         setSelectedItemForReview(null);
-//         setShowReviewModal(false);
-//     };
-
-//     const setListAppointments = () => {
-//         const data = {
-//             columns: [
-//                 {
-//                     label: 'Appointment ID',
-//                     field: 'id',
-//                     sort: 'asc',
-//                 },
-//                 {
-//                     label: 'Appointment date',
-//                     field: 'appointmentDate',
-//                     sort: 'asc',
-//                 },
-//                 {
-//                     label: 'Time',
-//                     field: 'timeSlot',
-//                     sort: 'disabled',
-//                 },
-//                 {
-//                     label: 'Assigned mechanic',
-//                     field: 'mechanic',
-//                     sort: 'disabled',
-//                 },
-//                 {
-//                     label: 'No of service',
-//                     field: 'numofServices',
-//                     sort: 'disabled',
-//                 },
-//                 {
-//                     label: 'Service type',
-//                     field: 'serviceType',
-//                     sort: 'disabled',
-//                 },
-//                 {
-//                     label: 'Amount',
-//                     field: 'amount',
-//                     sort: 'disabled',
-//                 },
-//                 {
-//                     label: 'Status',
-//                     field: 'status',
-//                     sort: 'disabled',
-//                 },
-//                 {
-//                     label: 'View',
-//                     field: 'view',
-//                     sort: 'disabled'
-//                 },
-//                 {
-//                     label: 'Review mechanic',
-//                     field: 'review',
-//                     sort: 'disabled'
-//                 },
-//             ],
-//             rows: [],
-//         };
-
-//         bookings.forEach((booking) => {
-//             const appointmentStatus = booking.appointmentStatus || [];
-//             const sortedStatus = appointmentStatus.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-//             const latestStatus = sortedStatus.length > 0 ? sortedStatus[0].status : 'No status';
-
-//             let badgeColor = '';
-//             let badgeText = '';
-
-//             switch (latestStatus) {
-//                 case 'PENDING':
-//                     badgeColor = 'warning';
-//                     badgeText = 'Pending';
-//                     break;
-//                 case 'CONFIRMED':
-//                     badgeColor = 'success';
-//                     badgeText = 'Confirmed';
-//                     break;
-//                 case 'INPROGRESS':
-//                     badgeColor = 'primary';
-//                     badgeText = 'In Progress';
-//                     break;
-//                 case 'COMPLETED':
-//                     badgeColor = 'success';
-//                     badgeText = 'Completed';
-//                     break;
-//                 case 'CANCELLED':
-//                     badgeColor = 'danger';
-//                     badgeText = 'Cancelled';
-//                     break;
-//                 case 'RESCHEDULED':
-//                     badgeColor = 'purple';
-//                     badgeText = 'Resheduled';
-//                     break;
-//                 case 'DELAYED':
-//                     badgeColor = 'warning';
-//                     badgeText = 'Delayed';
-//                     break;
-//                 case 'NOSHOW':
-//                     badgeColor = 'gray';
-//                     badgeText = 'No show';
-//                     break;
-//                 default:
-//                     badgeText = 'No status';
-//             }
-//             const formattedDate = new Date(booking.appointmentDate).toLocaleDateString('en-US', {
-//                 year: 'numeric',
-//                 month: 'long',
-//                 day: '2-digit',
-//             });
-//             const mechanicFullname = booking.mechanic ? `${booking.mechanic.firstname} ${booking.mechanic.lastname}` : 'No mechanic assigned yet';
-//             data.rows.push({
-//                 id: booking._id,
-//                 numofServices: booking.appointmentServices.length,
-//                 appointmentDate: formattedDate,
-//                 timeSlot: booking.timeSlot,
-//                 mechanic: mechanicFullname,
-//                 amount: `$${booking.totalPrice}`,
-//                 serviceType: booking.serviceType,
-//                 status: (
-//                     <span className={`badge badge-${badgeColor}`}>
-//                         {badgeText}
-//                     </span>
-//                 ),
-//                 view: (
-//                     <Link to={`/appointment/${booking._id}`} className="btn btn-primary py-1 px-2">
-//                         <CiRead />
-//                     </Link>
-//                 ),
-//                 review: (
-//                     <button onClick={() => openReviewModal(booking)} className="btn btn-success py-1 px-2">
-//                         Review
-//                     </button>
-//                 ),
-//             });
-//         });
-
-//         return data;
-//     };
-
-//     const reviewMechanicHandler = () => {
-//         const formData = new FormData();
-//         formData.set("comment", comment);
-//         formData.set("rating", rating);
-//         dispatch(newReviewMechanic(selectedItemForReview._id, formData)); // Pass the appointment ID
-//     };
-
-//     const notify = (error) => {
-//         toast.error(error, {
-//             position: toast.POSITION.BOTTOM_CENTER,
-//         });
-//     };
-
-//     const successMsg = (message) => {
-//         toast.success(message, {
-//             position: toast.POSITION.BOTTOM_CENTER,
-//         });
-//     };
-
-//     return (
-//         <Container maxW="container.xl">
-//             {loading ? (
-//                 <Loader />
-//             ) : (
-//                 <Fragment>
-//                     <MDBDataTable
-//                         striped
-//                         bordered
-//                         noBottomColumns
-//                         data={setListAppointments()}
-//                     />
-//                     {showReviewModal && (
-//                         <div className="modal" tabIndex="-1" role="dialog" style={{ display: "block" }}>
-//                             <div className="modal-dialog" role="document">
-//                                 <div className="modal-content">
-//                                     <div className="modal-header">
-//                                         <h5 className="modal-title">Review Mechanic</h5>
-//                                         <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={closeReviewModal}>
-//                                             <span aria-hidden="true">&times;</span>
-//                                         </button>
-//                                     </div>
-//                                     <div className="modal-body">
-//                                         <div className="form-group">
-//                                             <label htmlFor="rating">Rating:</label>
-//                                                 <Rating onClick={handleRatingChange} ratingValue={rating} SVGstyle={{ display: "inline" }} />
-//                                         </div>
-//                                         <div className="form-group">
-//                                             <label htmlFor="comment">Comment:</label>
-//                                             <textarea className="form-control" id="comment" rows="3" value={comment} onChange={handleCommentChange}></textarea>
-//                                         </div>
-//                                     </div>
-//                                     <div className="modal-footer">
-//                                         <button type="button" className="btn btn-secondary" onClick={closeReviewModal}>Close</button>
-//                                         <button type="button" className="btn btn-primary" onClick={reviewMechanicHandler}>Submit Review</button>
-//                                     </div>
-//                                 </div>
-//                             </div>
-//                         </div>
-//                     )}
-//                 </Fragment>
-//             )}
-//         </Container>
-//     )
-// }
-
-// export default ListAppointments;
-
 import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { MDBDataTable } from "mdbreact";
@@ -443,7 +5,6 @@ import Loader from "../layout/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { myAppointments, clearErrors } from "../../actions/appointmentActions";
 import { CiRead } from "react-icons/ci";
-import { Container } from "@chakra-ui/react";
 import { newReviewMechanic } from "../../actions/mechanicActions";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -585,45 +146,58 @@ const ListAppointments = () => {
       let badgeText = "";
 
       switch (latestStatus) {
-        case "PENDING":
-          badgeColor = "warning";
-          badgeText = "Pending";
+        case 'PENDING':
+          badgeColor = 'warning';
+          badgeText = 'Pending';
           break;
-        case "CONFIRMED":
-          badgeColor = "success";
-          badgeText = "Confirmed";
+        case 'CONFIRMED':
+          badgeColor = 'success';
+          badgeText = 'Confirmed';
           break;
-        case "INPROGRESS":
-          badgeColor = "primary";
-          badgeText = "In Progress";
+        case 'INPROGRESS':
+          badgeColor = 'primary';
+          badgeText = 'In Progress';
           break;
-        case "COMPLETED":
-          badgeColor = "success";
-          badgeText = "Completed";
+        case 'DONE':
+          badgeColor = 'success';
+          badgeText = 'Done';
           break;
-        case "DONE":
-          badgeColor = "success";
-          badgeText = "Done";
+        case 'COMPLETED':
+          badgeColor = 'success';
+          badgeText = 'Completed';
           break;
-        case "CANCELLED":
-          badgeColor = "danger";
-          badgeText = "Cancelled";
+        case 'CANCELLED':
+          badgeColor = 'danger';
+          badgeText = 'Cancelled';
           break;
-        case "RESCHEDULED":
-          badgeColor = "purple";
-          badgeText = "Resheduled";
+        case 'RESCHEDULED':
+          badgeColor = 'purple';
+          badgeText = 'Resheduled';
           break;
-        case "DELAYED":
-          badgeColor = "warning";
-          badgeText = "Delayed";
+        case 'DELAYED':
+          badgeColor = 'warning';
+          badgeText = 'Delayed';
           break;
-        case "NOSHOW":
-          badgeColor = "gray";
-          badgeText = "No show";
+        case 'BACKJOBPENDING':
+          badgeColor = 'warning';
+          badgeText = 'Back job Pending';
+          break;
+        case 'BACKJOBCONFIRMED':
+          badgeColor = 'primary';
+          badgeText = 'Back job Confirmed';
+          break;
+        case 'BACKJOBCOMPLETED':
+          badgeColor = 'success';
+          badgeText = 'Back job Completed';
+          break;
+        case 'NOSHOW':
+          badgeColor = 'gray';
+          badgeText = 'No show';
           break;
         default:
-          badgeText = "No status";
+          badgeText = 'No status';
       }
+
       const formattedDate = new Date(
         booking.appointmentDate
       ).toLocaleDateString("en-US", {
@@ -649,7 +223,7 @@ const ListAppointments = () => {
         appointmentDate: formattedDate,
         timeSlot: booking.timeSlot,
         mechanic: mechanicFullname,
-        amount: `$${booking.totalPrice}`,
+        amount: `₱${booking.totalPrice}`,
         serviceType: booking.serviceType,
         status: (
           <span className={`badge badge-${badgeColor}`}>{badgeText}</span>
