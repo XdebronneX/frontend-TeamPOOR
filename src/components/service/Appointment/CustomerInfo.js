@@ -2,23 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { saveCustomerInfo } from "../../../actions/serviceCartActions";
-import {
-  Box,
-  Flex,
-  Heading,
-  FormControl,
-  FormLabel,
-  Input,
-  Select,
-  Button,
-} from "@chakra-ui/react";
+import { FormControl,FormLabel,Input,Select,Button } from "@chakra-ui/react";
 import ListOfAddresses from "../../addresses/ListOfAddresses";
-import {
-  regions,
-  provinces,
-  cities,
-  barangays,
-} from "select-philippines-address";
+import { regions,provinces,cities,barangays } from "select-philippines-address";
 import AppointmentSteps from "./AppointmentSteps";
 import { myMotorcycle } from "../../../actions/motorcycleActions";
 
@@ -128,10 +114,6 @@ const CustomerInfo = () => {
     navigate("/confirm/appointment");
   };
 
-  const cancelHandler = () => {
-    navigate("/cart");
-  };
-
   return (
     <div className="space-y-5 py-3 bg-zinc-100 min-h-screen">
       <AppointmentSteps booking listofservices customerinfo />
@@ -199,15 +181,6 @@ const CustomerInfo = () => {
               Proceed to summary
             </Button>
 
-            <Button
-              id="cancel_btn"
-              onClick={cancelHandler}
-              colorScheme="red"
-              size="md"
-              width="100%"
-            >
-              Back to Cart
-            </Button>
           </div>
         </div>
       </form>
