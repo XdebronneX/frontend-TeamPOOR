@@ -128,22 +128,41 @@ const BookSchedule = () => {
   });
 
   useEffect(() => {
-    const currentTime = new Date();
-    const currentHour = currentTime.getHours();
-    const currentMinutes = currentTime.getMinutes();
+    // Check if the selected date has available time slots
+    if (booking.appointmentDate) {
+      const availableTimeSlots = getAvailableTimeSlots(booking.appointmentDate);
+      if (availableTimeSlots.length === 0) {
+        // If no available time slots, move to the next day
+        const nextDay = getNextDay(booking.appointmentDate);
+        setBooking(prevBooking => ({ ...prevBooking, appointmentDate: nextDay }));
+      }
+    }
+  }, [booking.appointmentDate]);
 
-    // Filter out time slots that are earlier than the current time
-    const filteredTimeOptions = timeOptions.filter(time => {
-      const [hour, minute] = time.split(":");
-      return (
-        parseInt(hour, 10) > currentHour ||
-        (parseInt(hour, 10) === currentHour && parseInt(minute, 10) > currentMinutes)
-      );
-    });
+  const getAvailableTimeSlots = (date) => {
+    // Mock function to determine available time slots
+    // You should replace this with your actual logic
+    // For example, you might fetch available time slots from an API based on the selected date
+    // Here, it just returns an array of all time slots
+    return [
+      "09:00 AM",
+      "10:00 AM",
+      "11:00 AM",
+      "01:00 PM",
+      "02:00 PM",
+      "03:00 PM",
+      "04:00 PM",
+      "05:00 PM",
+      "06:00 PM",
+    ];
+  };
 
-    // Update the timeOptions state with filteredTimeOptions
-    setTimeOptions(filteredTimeOptions);
-  }, []);
+  const getNextDay = (date) => {
+    const currentDate = new Date(date);
+    const nextDay = new Date(currentDate);
+    nextDay.setDate(currentDate.getDate() + 1);
+    return nextDay.toISOString().split("T")[0];
+  };
 
   const handleDateChange = (date) => {
     setBooking({ ...booking, appointmentDate: date });
@@ -163,17 +182,7 @@ const BookSchedule = () => {
     navigate("/book/service");
   };
 
-  const [timeOptions, setTimeOptions] = useState([
-    "09:00 AM",
-    "10:00 AM",
-    "11:00 AM",
-    "01:00 PM",
-    "02:00 PM",
-    "03:00 PM",
-    "04:00 PM",
-    "05:00 PM",
-    "06:00 PM",
-  ]);
+  const timeOptions = getAvailableTimeSlots(booking.appointmentDate);
 
   return (
     <div className="space-y-5 py-3 bg-zinc-100 min-h-screen">
@@ -187,7 +196,7 @@ const BookSchedule = () => {
 
       <Fragment>
         <form onSubmit={submitHandler}>
-          <div class="container w-9/12 grid grid-cols-1 lg:grid-cols-3 gap-y-4 lg:gap-x-4">
+          <div className="container w-9/12 grid grid-cols-1 lg:grid-cols-3 gap-y-4 lg:gap-x-4">
             <div className="shadow-sm rounded-xl p-3 space-y-5 bg-white col-span-2">
               <div className="form-group">
                 <label htmlFor="bookingDate">Select Date:</label>
