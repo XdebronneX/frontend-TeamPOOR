@@ -15,9 +15,8 @@ import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import { HiOutlineWrenchScrewdriver } from "react-icons/hi2";
 import { MdDeliveryDining } from "react-icons/md";
 import { viewAllUsers } from "../actions/userActions";
-import { getAdminProducts } from "../actions/productActions";
-import { getAdminServices } from "../actions/serviceActions";
-
+import { getAllProducts } from "../actions/productActions";
+import { getAllServices } from "../actions/serviceActions";
 // const TestimonialContent = (props) => {
 //   const { children } = props;
 
@@ -81,16 +80,12 @@ const Home = () => {
 
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.authUser);
-  const { users, loading: loadingUsers } = useSelector((state) => state.allUsers);
-  const { alllistorders, loading: loadingOrders } = useSelector((state) => state.allOrders);
   const { products, loading: loadingProducts } = useSelector((state) => state.allProducts);
   const { services, loading: loadingServices } = useSelector((state) => state.allServices);
 
   useEffect(() => {
-    dispatch(viewAllUsers());
-    dispatch(getAdminProducts());
-    dispatch(getAdminServices());
-    dispatch(allOrders());
+    dispatch(getAllProducts());
+    dispatch(getAllServices());
   }, [dispatch]);
 
   return (
@@ -144,7 +139,7 @@ const Home = () => {
 
               <div className="flex flex-col">
                 <span className="font-extrabold text-lg text-red-500">
-                  {users?.length}
+                123
                 </span>
                 <span className="text-normal font-bold">Total User</span>
               </div>
@@ -157,7 +152,7 @@ const Home = () => {
 
               <div className="flex flex-col">
                 <span className="font-extrabold text-lg text-red-500">
-                  {alllistorders?.length}
+                123
                 </span>
                 <span className="text-normal font-bold">Total Orders</span>
               </div>

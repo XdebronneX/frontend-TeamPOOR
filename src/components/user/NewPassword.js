@@ -11,7 +11,6 @@ import {
     Input,
     Stack,
     useColorModeValue,
-    // useToast,
     InputRightElement,
     InputGroup,
 } from '@chakra-ui/react';
@@ -27,29 +26,6 @@ const NewPassword = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const { error, success } = useSelector((state) => state.forgotPassword);
-    // const toast = useToast();  // Add this line
-
-    // const handleSuccess = () => {
-    //     toast({
-    //         title: 'Success!',
-    //         description: 'Password reset successfully',
-    //         status: 'info',
-    //         duration: 3000,
-    //         isClosable: true,
-    //         position: 'bottom-left',
-    //     });
-    // };
-
-    // const handleError = (message) => {
-    //     toast({
-    //         title: 'Error!',
-    //         description: message,
-    //         status: 'error',
-    //         duration: 3000,
-    //         isClosable: true,
-    //         position: 'bottom-left',
-    //     });
-    // };
 
     const handleSuccess = (message = '') => {
         toast.success(message, {
@@ -69,7 +45,7 @@ const NewPassword = () => {
             dispatch(clearErrors());
         }
         if (success) {
-            handleSuccess();
+            handleSuccess("New password set successfully!");
             setTimeout(() => {
                 navigate('/login', { replace: true });
             }, 2000);
