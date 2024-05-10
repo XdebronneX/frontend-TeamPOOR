@@ -127,18 +127,32 @@ const BookSchedule = () => {
     timeSlot: "",
   });
 
+  const [availableTimeSlots, setAvailableTimeSlots] = useState([]);
+
   useEffect(() => {
+    // Check availability when the date changes
     if (booking.appointmentDate) {
-      const availableTimeSlots = getAvailableTimeSlots(booking.appointmentDate);
-      if (availableTimeSlots.length === 0) {
-        // If no available time slots, move to the next day
-        const nextDay = getNextDay(booking.appointmentDate);
-        handleDateChange(nextDay);
-      }
+      checkAvailability(booking.appointmentDate);
     }
   }, [booking.appointmentDate]);
 
+  const checkAvailability = (date) => {
+    // Mock function to determine available time slots
+    // You should replace this with your actual logic
+    const availableSlots = getAvailableTimeSlots(date);
+    if (availableSlots.length === 0) {
+      const nextDay = getNextDay(date);
+      setBooking({ ...booking, appointmentDate: nextDay });
+    } else {
+      setAvailableTimeSlots(availableSlots);
+    }
+  };
+
   const getAvailableTimeSlots = (date) => {
+    // Mock function to determine available time slots
+    // You should replace this with your actual logic
+    // For example, you might fetch available time slots from an API based on the selected date
+    // Here, it just returns an array of all time slots
     return [
       "09:00 AM",
       "10:00 AM",
@@ -161,11 +175,6 @@ const BookSchedule = () => {
 
   const handleDateChange = (date) => {
     setBooking({ ...booking, appointmentDate: date });
-    const availableTimeSlots = getAvailableTimeSlots(date);
-    if (availableTimeSlots.length === 0) {
-      const nextDay = getNextDay(date);
-      handleDateChange(nextDay); // Recursively call handleDateChange until a date with available slots is found
-    }
   };
 
   const handleTimeSlotChange = (selectedTimeSlot) => {
@@ -181,8 +190,6 @@ const BookSchedule = () => {
     dispatch(saveBookingInfo(booking));
     navigate("/book/service");
   };
-
-  const timeOptions = getAvailableTimeSlots(booking.appointmentDate);
 
   return (
     <div className="space-y-5 py-3 bg-zinc-100 min-h-screen">
@@ -214,7 +221,7 @@ const BookSchedule = () => {
               <div className="form-group">
                 <label>Select Time Slot:</label>
                 <div className="btn-group d-flex flex-wrap">
-                  {timeOptions.map((time, index) => (
+                  {availableTimeSlots.map((time, index) => (
                     <button
                       key={index}
                       type="button"
