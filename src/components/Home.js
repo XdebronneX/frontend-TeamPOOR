@@ -17,6 +17,7 @@ import { MdDeliveryDining } from "react-icons/md";
 import { viewAllUsers } from "../actions/userActions";
 import { getAllProducts } from "../actions/productActions";
 import { getAllServices } from "../actions/serviceActions";
+import { BsBoxSeam } from "react-icons/bs";
 
 const Home = () => {
   const [show, setShow] = React.useState(false);
@@ -96,7 +97,7 @@ const Home = () => {
 
               <div className="flex flex-col">
                 <span className="font-extrabold text-lg text-red-500">
-                  {alllistorders?.length}
+                123
                 </span>
                 <span className="text-normal font-bold">Total Orders</span>
               </div>
