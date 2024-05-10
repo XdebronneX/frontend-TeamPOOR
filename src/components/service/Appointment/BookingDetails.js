@@ -96,6 +96,9 @@ const BookingDetails = () => {
   const sortedStatus = appointmentStatus.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
   const latestStatus = sortedStatus.length > 0 ? sortedStatus[0].status : "No status";
 
+  let badgeColor = "";
+  let badgeText = "";
+  
   switch (latestStatus) {
     case 'PENDING':
       badgeColor = 'warning';
