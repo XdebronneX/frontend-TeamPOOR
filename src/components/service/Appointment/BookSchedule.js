@@ -128,22 +128,17 @@ const BookSchedule = () => {
   });
 
   useEffect(() => {
-    // Check if the selected date has available time slots
     if (booking.appointmentDate) {
       const availableTimeSlots = getAvailableTimeSlots(booking.appointmentDate);
       if (availableTimeSlots.length === 0) {
         // If no available time slots, move to the next day
         const nextDay = getNextDay(booking.appointmentDate);
-        setBooking(prevBooking => ({ ...prevBooking, appointmentDate: nextDay }));
+        handleDateChange(nextDay);
       }
     }
   }, [booking.appointmentDate]);
 
   const getAvailableTimeSlots = (date) => {
-    // Mock function to determine available time slots
-    // You should replace this with your actual logic
-    // For example, you might fetch available time slots from an API based on the selected date
-    // Here, it just returns an array of all time slots
     return [
       "09:00 AM",
       "10:00 AM",
@@ -166,6 +161,11 @@ const BookSchedule = () => {
 
   const handleDateChange = (date) => {
     setBooking({ ...booking, appointmentDate: date });
+    const availableTimeSlots = getAvailableTimeSlots(date);
+    if (availableTimeSlots.length === 0) {
+      const nextDay = getNextDay(date);
+      handleDateChange(nextDay); // Recursively call handleDateChange until a date with available slots is found
+    }
   };
 
   const handleTimeSlotChange = (selectedTimeSlot) => {
