@@ -513,7 +513,7 @@ const Dashboard = () => {
             <Loader />
           </Flex>
         ) : (
-          <div>
+          <div className="space-y-3">
             <div className="flex flex-row gap-4">
               <Button
                 leftIcon={<MdDownload />}
@@ -522,6 +522,7 @@ const Dashboard = () => {
                 onClick={() =>
                   exportMonthlySalesToExcel(monthlySales, "Monthly_Sales")
                 }
+                size='sm'
               >
                 Export Monthly Sales to Excel
               </Button>
@@ -536,6 +537,7 @@ const Dashboard = () => {
                     "Most_Purchased_Brand"
                   )
                 }
+                size='sm'
               >
                 Export Most Purchased Brand to Excel
               </Button>
@@ -550,6 +552,7 @@ const Dashboard = () => {
                     "Most_Loyal_User"
                   )
                 }
+                size='sm'
               >
                 Export Most Loyal User to Excel
               </Button>
@@ -568,6 +571,7 @@ const Dashboard = () => {
                     "Most_Purchased_Product"
                   )
                 }
+                size='sm'
               >
                 Export Most Purchased Product to Excel
               </Button>
