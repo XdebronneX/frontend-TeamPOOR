@@ -132,8 +132,6 @@ import { useForm } from "react-hook-form";
 const NewBrand = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [name, setName] = useState("")
-  const [images, setImages] = useState("")
   const { loading, error, success } = useSelector((state) => state.newBrand);
 
   const { handleSubmit, register, formState: { errors } } = useForm();
@@ -158,35 +156,15 @@ const NewBrand = () => {
       dispatch({ type: CREATE_BRANDS_RESET });
       navigate("/admin/view/all/brands");
     }
-  }, [dispatch, error, success, navigate]);
+  }, [dispatch, error, success, navigate, notify, successMsg]);
 
-  const submitHandler = async (formData) => {
-    if (!formData.name || !formData.images) {
-      notify("Please fill out all fields.");
-      return;
-    }
-    const data = new FormData();
-    data.append("name", formData.name);
-    data.append("images", formData.images[0]);
+  const submitHandler = async (data) => {
+    const formData = new FormData();
+    formData.append("name", data.name);
+    formData.append("images", data.images[0]);
 
     dispatch(createBrands(data));
-  };
-
-  const onChange = (e) => {
-    if (e.target.name === "images") {
-      const file = e.target.files[0];
-      const reader = new FileReader();
-
-      reader.onload = () => {
-        if (reader.readyState === 2) {
-          setImages(reader.result);
-        }
-      };
-
-      reader.readAsDataURL(file);
-    } else {
-      setName(e.target.value);
-    }
+    console.log(data);
   };
 
   return (
@@ -211,7 +189,13 @@ const NewBrand = () => {
                 <Input
                   type="text"
                   id="name_field"
+                  {...register('name', { required: true })}
                 />
+                {errors.name && errors.name.type === 'required' && (
+                  <Text color="red" fontSize="sm">
+                    Name is required.
+                  </Text>
+                )}
               </FormControl>
               <FormControl mb={4}>
                 <FormLabel>Image</FormLabel>
@@ -219,8 +203,13 @@ const NewBrand = () => {
                   type="file"
                   name="images"
                   accept="image/*"
-                  onChange={onChange}
+                  {...register('images', { required: true })}
                 />
+                {errors.images && errors.images.type === 'required' && (
+                  <Text color="red" fontSize="sm">
+                    Image is required.
+                  </Text>
+                )}
               </FormControl>
               <Button type="submit" colorScheme="teal">
                 Submit
@@ -234,3 +223,4 @@ const NewBrand = () => {
 };
 
 export default NewBrand;
+
