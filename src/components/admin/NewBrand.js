@@ -17,7 +17,7 @@ const NewBrand = () => {
   const [images, setImages] = useState("");
   const { loading, error, success } = useSelector((state) => state.newBrand);
 
-  const { handleSubmit } = useForm();
+  const { handleSubmit, register, formState: { errors } } = useForm();
 
   const successMsg = (message = "") =>
     toast.success(message, {
@@ -41,17 +41,12 @@ const NewBrand = () => {
     }
   }, [dispatch, error, success, navigate]);
 
-  const submitHandler = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    if (!validateForm()) {
-      notify("Please fill out all fields.");
-      return;
-    }
-    formData.append("name", name);
-    formData.append("images", images);
+  const submitHandler = async (formData) => {
+    const data = new FormData();
+    data.append("name", formData.name);
+    data.append("images", formData.images[0]);
 
-    dispatch(createBrands(formData));
+    dispatch(createBrands(data));
   };
 
   const onChange = (e) => {
@@ -93,9 +88,13 @@ const NewBrand = () => {
                 <Input
                   type="text"
                   id="name_field"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  {...register('name', { required: true })}
                 />
+                {errors.name && errors.name.type === 'required' && (
+                  <Text color="red" fontSize="sm">
+                    Name is required.
+                  </Text>
+                )}
               </FormControl>
               <FormControl mb={4}>
                 <FormLabel>Image</FormLabel>
@@ -104,7 +103,13 @@ const NewBrand = () => {
                   name="images"
                   accept="image/*"
                   onChange={onChange}
+                  {...register('images', { required: true })}
                 />
+                {errors.images && errors.images.type === 'required' && (
+                  <Text color="red" fontSize="sm">
+                    Image is required.
+                  </Text>
+                )}
               </FormControl>
               <Button type="submit" colorScheme="teal">
                 Submit
@@ -118,4 +123,3 @@ const NewBrand = () => {
 };
 
 export default NewBrand;
-
