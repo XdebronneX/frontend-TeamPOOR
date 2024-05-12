@@ -177,6 +177,18 @@ const BookingList = () => {
           badgeColor = "warning";
           badgeText = "Delayed";
           break;
+        case 'BACKJOBPENDING':
+          badgeColor = 'warning';
+          badgeText = 'Back job Pending';
+          break;
+        case 'BACKJOBCONFIRMED':
+          badgeColor = 'primary';
+          badgeText = 'Back job Confirmed';
+          break;
+        case 'BACKJOBCOMPLETED':
+          badgeColor = 'success';
+          badgeText = 'Back job Completed';
+          break;
         case "NOSHOW":
           badgeColor = "gray";
           badgeText = "No show";
