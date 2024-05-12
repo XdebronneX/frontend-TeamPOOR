@@ -5,7 +5,7 @@ import { getSuppliedLogs, clearErrors } from "../../actions/productActions";
 import { MDBDataTable } from "mdbreact";
 import Loader from "../layout/Loader";
 import Sidebar from "./Sidebar";
-import { Box, Badge, Flex, useToast, Stack, Heading, Button } from "@chakra-ui/react";
+import { useToast, Stack, Heading, Button } from "@chakra-ui/react";
 import MetaData from "../layout/MetaData";
 import { CiRead } from "react-icons/ci";
 
@@ -16,7 +16,7 @@ const SuppliedProductLogs = () => {
   const { error, loading, suppliedHistoryLog } = useSelector(
     (state) => state.allSupplied
   );
-  console.log(suppliedHistoryLog);
+  // console.log(suppliedHistoryLog);
   useEffect(() => {
     dispatch(getSuppliedLogs());
     if (loading) {
@@ -98,16 +98,6 @@ const SuppliedProductLogs = () => {
     });
   };
 
-  const showSuccessToast = (message) => {
-    toast({
-      title: "Success",
-      description: message,
-      status: "success",
-      position: "bottom-center",
-      duration: 3000,
-      isClosable: true,
-    });
-  };
   const supplierHandler = () => {
     navigate("/admin/supplier/history/logs");
   };
