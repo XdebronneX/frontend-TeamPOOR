@@ -167,6 +167,23 @@ const NewBrand = () => {
     dispatch(createBrands(formData));
   };
 
+    const onChange = (e) => {
+      if (e.target.name === "images") {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = () => {
+          if (reader.readyState === 2) {
+            setImages(reader.result);
+          }
+        };
+
+        reader.readAsDataURL(file);
+      } else {
+        setName(e.target.value);
+      }
+    };
+
   return (
     <aside className="bg-zinc-100 min-h-screen p-3 flex flex-row gap-4">
       <nav className="h-full flex flex-col sticky top-4">
@@ -189,6 +206,7 @@ const NewBrand = () => {
                 <Input
                   type="text"
                   id="name_field"
+                  onChange={(e) => setName(e.target.value)}
                   {...register("name", { required: "Name is required" })}
                 />
                 {errors.name && (
@@ -200,6 +218,7 @@ const NewBrand = () => {
                 <Input
                   type="file"
                   id="images_field"
+                  onChange={onChange}
                   {...register("images", { required: "Image is required" })}
                 />
                 {errors.images && (
