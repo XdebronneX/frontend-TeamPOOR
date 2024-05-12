@@ -16,7 +16,7 @@ const NewBrand = () => {
   const [name, setName] = useState("");
   const [images, setImages] = useState("");
   const { loading, error, success } = useSelector((state) => state.newBrand);
-  const { handleSubmit, control, formState: { errors }, register } = useForm();
+  const { register, handleSubmit, formState: { errors }, } = useForm();
 
   const successMsg = (message = "") =>
     toast.success(message, {
@@ -87,20 +87,13 @@ const NewBrand = () => {
                 <Input
                   type="text"
                   id="name_field"
-                  control={control}
-                  defaultValue=""
-                  rules={{ required: 'Brand Name is required'}}
-                  render={({ field }) => (
-                    <>
-                      <Input {...field} type="text" placeholder="First Name" aria-invalid={errors.name ? 'true' : 'false'} />
-                      {errors.name && (
-                        <Text color="red" fontSize="sm">
-                          {errors.name.message}
-                        </Text>
-                      )}
-                    </>
-                  )}
+                  {...register('name', {required: true})}
                 />
+                {errors.name && errors.name.type === 'required' && (
+                  <Text color="red" fontSize="sm">
+                    Name is required.
+                  </Text>
+                )}
               </FormControl>
               <FormControl mb={4}>
                 <FormLabel>Image</FormLabel>
@@ -108,20 +101,13 @@ const NewBrand = () => {
                   type="file"
                   name="images"
                   accept="images/*"
-                  control={control}
-                  defaultValue=""
-                  rules={{ required: 'Image is required' }}
-                  render={({ field }) => (
-                    <>
-                      <Input {...field} type="text" placeholder="First Name" aria-invalid={errors.images ? 'true' : 'false'} />
-                      {errors.images && (
-                        <Text color="red" fontSize="sm">
-                          {errors.images.message}
-                        </Text>
-                      )}
-                    </>
-                  )}
+                  {...register("images", { required: true })}
                 />
+                {errors.images && !images && (
+                  <Text color="red" fontSize="sm">
+                    Please select a valid images.
+                  </Text>
+                )}
               </FormControl>
               <Button type="submit" colorScheme="teal">
                 Submit
