@@ -500,10 +500,6 @@ const Dashboard = () => {
   return (
     <aside className="bg-zinc-100 min-h-screen p-3 flex flex-row gap-4">
       <nav className="h-full flex flex-col sticky top-4">
-        <ReactToPrint
-          trigger={() => <button>Print Dashboard</button>}
-          content={() => dashboardRef.current}
-        />
         <Sidebar />
       </nav>
 
@@ -515,6 +511,20 @@ const Dashboard = () => {
         ) : (
           <div className="space-y-3">
             <div className="flex flex-row gap-4">
+              <ReactToPrint
+                trigger={() => (
+                  <Button
+                    leftIcon={<MdDownload />}
+                    colorScheme="blue"
+                    variant="solid"
+                    size="sm"
+                  >
+                    Print Dashboard
+                  </Button>
+                )}
+                content={() => dashboardRef.current}
+              />
+
               <Button
                 leftIcon={<MdDownload />}
                 colorScheme="blue"
@@ -522,7 +532,7 @@ const Dashboard = () => {
                 onClick={() =>
                   exportMonthlySalesToExcel(monthlySales, "Monthly_Sales")
                 }
-                size='sm'
+                size="sm"
               >
                 Export Monthly Sales to Excel
               </Button>
@@ -537,7 +547,7 @@ const Dashboard = () => {
                     "Most_Purchased_Brand"
                   )
                 }
-                size='sm'
+                size="sm"
               >
                 Export Most Purchased Brand to Excel
               </Button>
@@ -552,7 +562,7 @@ const Dashboard = () => {
                     "Most_Loyal_User"
                   )
                 }
-                size='sm'
+                size="sm"
               >
                 Export Most Loyal User to Excel
               </Button>
@@ -571,7 +581,7 @@ const Dashboard = () => {
                     "Most_Purchased_Product"
                   )
                 }
-                size='sm'
+                size="sm"
               >
                 Export Most Purchased Product to Excel
               </Button>
