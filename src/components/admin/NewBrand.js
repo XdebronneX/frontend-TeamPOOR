@@ -167,22 +167,14 @@ const NewBrand = () => {
     dispatch(createBrands(formData));
   };
 
-    const onChange = (e) => {
-      if (e.target.name === "images") {
-        const file = e.target.files[0];
-        const reader = new FileReader();
-
-        reader.onload = () => {
-          if (reader.readyState === 2) {
-            setImages(reader.result);
-          }
-        };
-
-        reader.readAsDataURL(file);
-      } else {
-        setName(e.target.value);
-      }
-    };
+  const onChange = (e) => {
+    if (e.target.name === "images") {
+      const file = e.target.files[0];
+      setImages(file); // Set the file directly to the state
+    } else {
+      setName(e.target.value);
+    }
+  };
 
   return (
     <aside className="bg-zinc-100 min-h-screen p-3 flex flex-row gap-4">
