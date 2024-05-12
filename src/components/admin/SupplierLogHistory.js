@@ -524,7 +524,9 @@ const SupplierHistory = () => {
                           e.target.value
                         )
                       }
+                      {...register("price", { required: true })}
                     />
+                    {errors.price && <span>Price is required</span>}
                   </Td>
                   <Td>
                     <Input
@@ -537,7 +539,9 @@ const SupplierHistory = () => {
                           e.target.value
                         )
                       }
+                      {...register("quantity", { required: true })}
                     />
+                    {errors.quantity && <span>Quantity is required</span>}
                   </Td>
                   <Td>
                     <Button
@@ -558,6 +562,7 @@ const SupplierHistory = () => {
               id="notes_field"
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
+              {...register("notes")}
             />
           </FormControl>
           <Box display="flex" justifyContent="space-between">
