@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { FormControl, FormLabel, Input, Button, Text } from "@chakra-ui/react";
 import Sidebar from "./Sidebar";
 import MetaData from "../layout/MetaData";
+import { useForm } from "react-hook-form";
 
 const NewBrand = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,8 @@ const NewBrand = () => {
   const [name, setName] = useState("");
   const [images, setImages] = useState("");
   const { loading, error, success } = useSelector((state) => state.newBrand);
+
+  const { handleSubmit } = useForm();
 
   const successMsg = (message = "") =>
     toast.success(message, {
@@ -39,14 +42,14 @@ const NewBrand = () => {
   }, [dispatch, error, success, navigate]);
 
   const submitHandler = async (e) => {
-    const formData = new FormData();
     e.preventDefault();
+    const formData = new FormData();
     if (!validateForm()) {
       notify("Please fill out all fields.");
       return;
     }
-    formData.append("name", e.name);
-    formData.append("images", e.images);
+    formData.append("name", name);
+    formData.append("images", images);
 
     dispatch(createBrands(formData));
   };
@@ -99,7 +102,7 @@ const NewBrand = () => {
                 <Input
                   type="file"
                   name="images"
-                  accept="images/*"
+                  accept="image/*"
                   onChange={onChange}
                 />
               </FormControl>
