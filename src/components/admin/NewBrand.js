@@ -132,6 +132,8 @@ import { useForm } from "react-hook-form";
 const NewBrand = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [name, setName] = useState("")
+  const [images, setImages] = useState("")
   const { loading, error, success } = useSelector((state) => state.newBrand);
 
   const { handleSubmit, register, formState: { errors } } = useForm();
