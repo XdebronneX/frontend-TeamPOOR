@@ -16,7 +16,6 @@ import {
 } from "@chakra-ui/react";
 import Sidebar from "./Sidebar";
 import MetaData from "../layout/MetaData";
-import { useForm } from "react-hook-form";
 
 const NewCategory = () => {
   const dispatch = useDispatch();

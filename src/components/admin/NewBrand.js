@@ -134,6 +134,8 @@ const NewBrand = () => {
   const navigate = useNavigate();
   const { loading, error, success } = useSelector((state) => state.newBrand);
   const { handleSubmit, register, formState: { errors } } = useForm();
+  const [name, setName] = useState("");
+  const [images, setImages] = useState("");
 
   const successMsg = (message = "") =>
     toast.success(message, {
@@ -157,13 +159,13 @@ const NewBrand = () => {
     }
   }, [dispatch, error, success, navigate]);
 
-    const submitHandler = async () => {
-      const formData = new FormData();
-      formData.append("name", name);
-      formData.append("images", images);
+  const submitHandler = async () => {
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("images", images);
 
-      dispatch(createBrands(formData));
-    };
+    dispatch(createBrands(formData));
+  };
 
   return (
     <aside className="bg-zinc-100 min-h-screen p-3 flex flex-row gap-4">
