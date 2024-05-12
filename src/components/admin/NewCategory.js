@@ -16,7 +16,6 @@ import {
 } from "@chakra-ui/react";
 import Sidebar from "./Sidebar";
 import MetaData from "../layout/MetaData";
-
 const NewCategory = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -98,22 +97,18 @@ const NewCategory = () => {
                 <Input
                   type="text"
                   id="name_field"
-                  {...register("name", { required: "Name is required" })}
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                 />
-                {errors.name && (
-                  <Text color="red.500">{errors.name.message}</Text>
-                )}
               </FormControl>
               <FormControl mb={4}>
                 <FormLabel>Image</FormLabel>
                 <Input
                   type="file"
                   name="images"
-                  {...register("images", { required: "Image is required" })}
+                  accept="images/*"
+                  onChange={onChange}
                 />
-                {errors.images && (
-                  <Text color="red.500">{errors.images.message}</Text>
-                )}
               </FormControl>
               <Button type="submit" colorScheme="teal">
                 Submit
