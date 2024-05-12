@@ -40,10 +40,10 @@ const NewBrand = () => {
     }
   }, [dispatch, error, success, navigate]);
 
-  const submitHandler = async () => {
+  const submitHandler = async (e) => {
     const formData = new FormData();
-    formData.append("name", name);
-    formData.append("images", images);
+    formData.append("name", e.name);
+    formData.append("images", e.images);
 
     dispatch(createBrands(formData));
   };
@@ -102,6 +102,10 @@ const NewBrand = () => {
                   name="images"
                   accept="images/*"
                   {...register("images", { required: true })}
+                  onChange={(e) => {
+                    onChange(e);
+                    e.target.blur(); // Trigger form validation
+                  }}
                 />
                 {errors.images && !images && (
                   <Text color="red" fontSize="sm">
