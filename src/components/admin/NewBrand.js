@@ -172,22 +172,22 @@ const NewBrand = () => {
     dispatch(createBrands(data));
   };
 
-    const onChange = (e) => {
-      if (e.target.name === "images") {
-        const file = e.target.files[0];
-        const reader = new FileReader();
+  const onChange = (e) => {
+    if (e.target.name === "images") {
+      const file = e.target.files[0];
+      const reader = new FileReader();
 
-        reader.onload = () => {
-          if (reader.readyState === 2) {
-            setImages(reader.result);
-          }
-        };
+      reader.onload = () => {
+        if (reader.readyState === 2) {
+          setImages(reader.result);
+        }
+      };
 
-        reader.readAsDataURL(file);
-      } else {
-        setName(e.target.value);
-      }
-    };
+      reader.readAsDataURL(file);
+    } else {
+      setName(e.target.value);
+    }
+  };
 
   return (
     <aside className="bg-zinc-100 min-h-screen p-3 flex flex-row gap-4">
@@ -203,7 +203,7 @@ const NewBrand = () => {
               New Brand
             </Text>
             <form
-              onSubmit={submitHandler}
+              onSubmit={handleSubmit(submitHandler)}
               encType="multipart/form-data"
             >
               <FormControl mb={4}>
