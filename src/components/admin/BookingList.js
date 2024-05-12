@@ -212,7 +212,7 @@ const BookingList = () => {
       data.rows.push({
         id: booking._id,
         numofServices: booking.appointmentServices.length,
-        amount: `$${booking.totalPrice}`,
+        amount: `₱${booking.totalPrice}`,
         appointmentDate: formattedApppoinmentDate,
         timeSlot: booking.timeSlot,
         mechanic: mechanicFullname,
