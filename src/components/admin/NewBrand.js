@@ -203,7 +203,7 @@ const NewBrand = () => {
               New Brand
             </Text>
             <form
-              onSubmit={handleSubmit(submitHandler)}
+              onSubmit={submitHandler}
               encType="multipart/form-data"
             >
               <FormControl mb={4}>
