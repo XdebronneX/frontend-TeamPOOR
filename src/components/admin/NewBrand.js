@@ -192,13 +192,7 @@ const NewBrand = () => {
                 <Input
                   type="text"
                   id="name_field"
-                  {...register('name', { required: true })}
                 />
-                {errors.name && errors.name.type === 'required' && (
-                  <Text color="red" fontSize="sm">
-                    Name is required.
-                  </Text>
-                )}
               </FormControl>
               <FormControl mb={4}>
                 <FormLabel>Image</FormLabel>
@@ -206,13 +200,7 @@ const NewBrand = () => {
                   type="file"
                   name="images"
                   accept="image/*"
-                  {...register('images', { required: true })}
                 />
-                {errors.images && errors.images.type === 'required' && (
-                  <Text color="red" fontSize="sm">
-                    Image is required.
-                  </Text>
-                )}
               </FormControl>
               <Button type="submit" colorScheme="teal">
                 Submit
