@@ -523,24 +523,6 @@ const CreateFuel = () => {
     }
   }, [dispatch, createdFuel, error, navigate]);
 
-  // Function to handle changes in the odometer reading
-  const handleChangeOdometer = (e) => {
-    const newOdometer = parseFloat(e.target.value);
-    if (!isNaN(newOdometer)) {
-      // Update the odometer state
-      setOdometer(newOdometer);
-      // Calculate the current milestone based on the new odometer reading
-      const currentMilestone = Math.floor(newOdometer / 1000) * 1000;
-      // Check if the current milestone exceeds the latest milestone by 1000
-      if (currentMilestone > odometerMilestone) {
-        // Update the next milestone
-        setOdometerMilestone(currentMilestone);
-      }
-    }
-  };
-
-
-
   const handleChangePrice = (e) => {
     const inputValue = e.target.value;
     if (!isNaN(inputValue)) {
@@ -618,7 +600,6 @@ const CreateFuel = () => {
                   {...register("odometer", {
                     required: "Odometer reading is required",
                   })}
-                  onChange={handleChangeOdometer} // Call the handleChangeOdometer function on change
                 />
                 <Text color="red">
                   {errors.odometer && errors.odometer.message}
