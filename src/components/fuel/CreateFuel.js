@@ -534,10 +534,11 @@ const CreateFuel = () => {
       // Check if the current milestone exceeds the latest milestone by 1000
       if (currentMilestone > odometerMilestone) {
         // Update the next milestone
-        setOdometerMilestone(currentMilestone + 1000);
+        setOdometerMilestone(currentMilestone);
       }
     }
   };
+
 
 
   const handleChangePrice = (e) => {
