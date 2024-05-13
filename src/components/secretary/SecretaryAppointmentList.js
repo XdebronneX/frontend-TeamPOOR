@@ -131,7 +131,7 @@ const SecretaryAppointmentList = () => {
                     badgeText = 'Cancelled';
                     break;
                 case 'RESCHEDULED':
-                    badgeColor = 'purple';
+                    badgeColor = 'primary';
                     badgeText = 'Rescheduled';
                     break;
                 case 'DELAYED':

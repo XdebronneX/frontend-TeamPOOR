@@ -61,7 +61,7 @@ const ProcessBySecretary = () => {
             badgeText = 'Cancelled';
             break;
         case 'RESCHEDULED':
-            badgeColor = 'purple';
+            badgeColor = 'primary';
             badgeText = 'Resheduled';
             break;
         case 'DELAYED':
@@ -173,9 +173,7 @@ const ProcessBySecretary = () => {
                                                     </div>
                                                 </>
                                             ))}
-
                                         <div className="border-b border-zinc-200 mt-4" />
-
                                         <div className="flex flex-row-reverse">
                                             <p className="">
                                                 Grand Total: <b>₱{totalPrice?.toFixed(2)}</b>
@@ -215,7 +213,7 @@ const ProcessBySecretary = () => {
                                             Update status
                                         </button>
                                             <div className="col-12 col-lg-3 mt-5">
-                                                {latestStatus === "BACKJOBCONFIRMED" && (
+                                                {(latestStatus === "BACKJOBCONFIRMED" || latestStatus === "RESCHEDULED") && (
                                                     <Link to={`/backjob/reschedule/appointment/${booking._id}`}>
                                                         <Button colorScheme="blue" size="sm" ml="3">
                                                             Choose Schedule
