@@ -529,13 +529,16 @@ const CreateFuel = () => {
     if (!isNaN(newOdometer)) {
       // Update the odometer state
       setOdometer(newOdometer);
-      // Check if the new odometer reading exceeds the latest milestone by 1000
-      if (newOdometer >= odometerMilestone) {
+      // Calculate the current milestone based on the new odometer reading
+      const currentMilestone = Math.floor(newOdometer / 1000) * 1000;
+      // Check if the current milestone exceeds the latest milestone by 1000
+      if (currentMilestone > odometerMilestone) {
         // Update the next milestone
-        setOdometerMilestone(odometerMilestone + 1000);
+        setOdometerMilestone(currentMilestone + 1000);
       }
     }
   };
+
 
   const handleChangePrice = (e) => {
     const inputValue = e.target.value;
