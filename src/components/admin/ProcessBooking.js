@@ -72,7 +72,7 @@ const ProcessBooking = () => {
       badgeText = "Cancelled";
       break;
     case "RESCHEDULED":
-      badgeColor = "purple";
+      badgeColor = "primary";
       badgeText = "Resheduled";
       break;
     case "DELAYED":
