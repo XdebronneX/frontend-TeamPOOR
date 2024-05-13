@@ -519,7 +519,7 @@ const Dashboard = () => {
                     variant="solid"
                     size="sm"
                   >
-                    Print Dashboard
+                    Print Reports
                   </Button>
                 )}
                 content={() => dashboardRef.current}
