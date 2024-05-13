@@ -203,7 +203,7 @@ const ListOfFuel = () => {
           <Fragment>
             <div className="bg-white p-3 rounded-xl">
               {userFuel && userFuel.length === 0 ? (
-                <Text>No Fuel found.</Text>
+                <Text>No Fuel log found.</Text>
               ) : (
                 <MDBDataTable
                   striped
