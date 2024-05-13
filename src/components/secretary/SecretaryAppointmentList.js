@@ -187,13 +187,11 @@ const SecretaryAppointmentList = () => {
                     </Link>
                 ),
                 parts: (
-                    latestStatus === 'DONE' && (
                         <Link to={`/secretary/additional/${booking._id}`}>
                             <Button colorScheme="yellow" size="sm" ml="3" leftIcon={<VscDiffAdded />}>
                                 Additional
                             </Button>
                         </Link>
-                    )
                 ),
                 assign: (
                     latestStatus === 'CONFIRMED' && (
