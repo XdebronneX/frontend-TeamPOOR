@@ -225,6 +225,12 @@ const ProductDetails = () => {
 
                 <Text className="font-bold">Description</Text>
                 <Text className="font-muted">{product.description}</Text>
+                <Text className="text-red-500 text-xs">
+                  Please be advised that our product warranty is exclusively
+                  applicable to services performed by our team when we assemble
+                  the parts on your motorcycle. The warranty does not cover
+                  products ordered online or assembled by third parties.
+                </Text>
               </div>
             </div>
 
