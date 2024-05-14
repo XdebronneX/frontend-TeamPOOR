@@ -91,86 +91,76 @@ const Services = () => {
         <div className="container">
           <h4 className="text-2xl font-bold">Services</h4>
           <div className="grid grid-cols-1 xl:grid-cols-5 lg:grid-cols-2 gap-4 mt-3">
-            {services.map((service) => (
-              <Box
-                className="flex flex-col bg-white rounded hover:scale-105 transition delay-150 duration-300 ease-in-out"
-                pointerEvents={service.isAvailable === false ? "none" : "auto"}
-              >
-                {service.images && service.images[0] && (
-                  <Link
-                    to={`/showSingleService/${service._id}`}
-                    className="relative items-center justify-center"
+              {services ?
+                (services.map((service) => (
+                  <Box
+                    className="flex flex-col bg-white rounded hover:scale-105 transition delay-150 duration-300 ease-in-out"
+                    pointerEvents={service.isAvailable === false ? "none" : "auto"}
                   >
-                    <div className="bg-white rounded-xl overflow-hidden">
-                      <Image
-                        src={service.images[0].url}
-                        alt={`Picture of ${service.name}`}
-                        objectFit="cover"
-                        height="350"
-                        width="100%"
-                        className={
-                          service.isAvailable === false ? "grayscale" : ""
-                        }
-                      />
+                    {service.images && service.images[0] && (
+                      <Link
+                        to={`/showSingleService/${service._id}`}
+                        className="relative items-center justify-center"
+                      >
+                        <div className="bg-white rounded-xl overflow-hidden">
+                          <Image
+                            src={service.images[0].url}
+                            alt={`Picture of ${service.name}`}
+                            objectFit="cover"
+                            height="350"
+                            width="100%"
+                            className={
+                              service.isAvailable === false ? "grayscale" : ""
+                            }
+                          />
+                        </div>
+
+                        {service.isAvailable === false ? (
+                          <Image
+                            src={
+                              "https://png.pngtree.com/png-vector/20221012/ourmid/pngtree-out-of-stock-supply-exhausted-concept-vector-png-image_14991028.png"
+                            }
+                            alt={`Picture of ${service.name}`}
+                            className="absolute inset-0"
+                          />
+                        ) : null}
+                      </Link>
+                    )}
+                    <div className="py-3 space-y-2 p-2">
+                      <div>
+                        <Badge
+                          variant="solid"
+                          colorScheme={
+                            getBadgeColorAndText(service.type).badgeColor
+                          }
+                          className="text-xs px-2"
+                          rounded="full"
+                        >
+                          {getBadgeColorAndText(service.type).badgeText}
+                        </Badge>
+                      </div>
+
+                      <div>
+                        <p className="text-md font-bold">{service.name}</p>
+                      </div>
+                      <div className="h-12">
+                        <p className="text-normal line-clamp-2 text-zinc-500">
+                          {service.description}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-red-500 text-normal font-bold">
+                          ₱{service.price.toFixed(2)}
+                        </p>
+                      </div>
                     </div>
-
-                    {service.isAvailable === false ? (
-                      <Image
-                        src={
-                          "https://png.pngtree.com/png-vector/20221012/ourmid/pngtree-out-of-stock-supply-exhausted-concept-vector-png-image_14991028.png"
-                        }
-                        alt={`Picture of ${service.name}`}
-                        className="absolute inset-0"
-                      />
-                    ) : null}
-                  </Link>
-                )}
-                <div className="py-3 space-y-2 p-2">
-                  {/* <div className="flex flex-row justify-between items-center border-t py-3">
-                    <p className="text-red-500 text-lg font-bold">
-                      ₱{service.price.toFixed(2)}
-                    </p>
-                    <Badge
-                      variant="solid"
-                      colorScheme={
-                        getBadgeColorAndText(service.type).badgeColor
-                      }
-                      className="text-sm"
-                      rounded="full"
-                    >
-                      {getBadgeColorAndText(service.type).badgeText}
-                    </Badge>
-                  </div> */}
-
-                  <div>
-                    <Badge
-                      variant="solid"
-                      colorScheme={
-                        getBadgeColorAndText(service.type).badgeColor
-                      }
-                      className="text-xs px-2"
-                      rounded="full"
-                    >
-                      {getBadgeColorAndText(service.type).badgeText}
-                    </Badge>
-                  </div>
-
-                  <div>
-                    <p className="text-md font-bold">{service.name}</p>
-                  </div>
-                  <div className="h-12">
-                    <p className="text-normal line-clamp-2 text-zinc-500">
-                      {service.description}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-red-500 text-normal font-bold">
-                      ₱{service.price.toFixed(2)}
-                    </p>
-                  </div>
+                  </Box>
+                ))
+                ):
+                <div className="flex flex-col items-center justify-center">
+                  <p className="font-bold text-lg">No Services found</p>
                 </div>
-              </Box>
-            ))}
+                }
           </div>
         </div>
       )}
