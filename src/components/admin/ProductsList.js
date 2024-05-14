@@ -82,27 +82,22 @@ const ProductsList = () => {
         {
           label: "Product ID",
           field: "id",
-          sort: "asc",
+          sort: "desc",
         },
         {
           label: "Name",
           field: "name",
-          sort: "asc",
+          sort: "disabled",
         },
-        // {
-        //     label: 'Type',
-        //     field: 'type',
-        //     sort: 'asc',
-        // },
         {
           label: "Brand",
           field: "brand",
-          sort: "asc",
+          sort: "disabled",
         },
         {
           label: "Stock",
           field: "stock",
-          sort: "asc",
+          sort: "disabled",
         },
         {
           label: "Price",
