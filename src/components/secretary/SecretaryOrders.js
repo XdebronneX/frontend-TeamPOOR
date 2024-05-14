@@ -106,6 +106,10 @@ const SecretaryOrders = () => {
                         badgeColor = 'success';
                         badgeText = 'Received';
                         break;
+                    case 'PAID':
+                        badgeColor = 'success';
+                        badgeText = 'Paid';
+                        break;
                     case 'COMPLETED':
                         badgeColor = 'success';
                         badgeText = 'Completed';
