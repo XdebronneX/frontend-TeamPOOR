@@ -59,6 +59,16 @@ const SecretaryAppointmentList = () => {
                     sort: 'disabled',
                 },
                 {
+                    label: 'Mechanic Proof',
+                    field: 'mechanicProof',
+                    sort: 'disabled',
+                },
+                {
+                    label: 'Customer Proof',
+                    field: 'customerProof',
+                    sort: 'disabled',
+                },
+                {
                     label: 'No of service',
                     field: 'numofServices',
                     sort: 'disabled',
@@ -174,6 +184,24 @@ const SecretaryAppointmentList = () => {
                 timeSlot: booking.timeSlot,
                 mechanic: mechanicFullname,
                 serviceType: booking.serviceType,
+                mechanicProof: booking.mechanicProof ? (
+                    <img
+                        src={booking.mechanicProof.url}
+                        alt="Mechanic Proof Image"
+                        style={{ width: "100px", height: "100px" }}
+                    />
+                ) : (
+                    "Not proof uploaded yet"
+                ),
+                customerProof: booking.customerProof ? (
+                    <img
+                        src={booking.customerProof.url}
+                        alt="Registration Proof Image"
+                        style={{ width: '100px', height: '100px' }}
+                    />
+                ) : (
+                    "Not proof uploaded yet"
+                ),
                 status: (
                     <span className={`badge badge-${badgeColor}`}>
                         {badgeText}
@@ -187,11 +215,11 @@ const SecretaryAppointmentList = () => {
                     </Link>
                 ),
                 parts: (
-                        <Link to={`/secretary/additional/${booking._id}`}>
-                            <Button colorScheme="yellow" size="sm" ml="3" leftIcon={<VscDiffAdded />}>
-                                Additional
-                            </Button>
-                        </Link>
+                    <Link to={`/secretary/additional/${booking._id}`}>
+                        <Button colorScheme="yellow" size="sm" ml="3" leftIcon={<VscDiffAdded />}>
+                            Additional
+                        </Button>
+                    </Link>
                 ),
                 assign: (
                     latestStatus === 'CONFIRMED' && (
