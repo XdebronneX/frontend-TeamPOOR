@@ -12,6 +12,7 @@ const ConfirmOrder = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.authUser);
+  const [isSuccess, setIsSuccess] = useState(false);
   const { cartItems, shippingInfo, paymentInfo } = useSelector(
     (state) => state.cart
   );
@@ -34,11 +35,12 @@ const ConfirmOrder = () => {
 
   useEffect(() => {
     if (error) {
+      setIsSuccess(false);
       errMsg(error)
       dispatch(clearErrors());
     }
 
-    if (success) {
+    if (success && isSuccess === true) {
       successMsg("Your order has been placed successfully!")
       dispatch(clearCart());
       if (checkoutUrl) {
@@ -47,7 +49,7 @@ const ConfirmOrder = () => {
         navigate("/success");
       }
     }
-  }, [dispatch, error, success, navigate]);
+  }, [dispatch, error, success, navigate, isSuccess]);
 
   const order = {
     orderItems: cartItems,
