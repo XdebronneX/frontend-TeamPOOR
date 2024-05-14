@@ -38,7 +38,7 @@ const ConfirmOrder = () => {
       dispatch(clearErrors());
     }
 
-    if (success === true) {
+    if (success) {
       successMsg("Your order has been placed successfully!")
       dispatch(clearCart());
       if (checkoutUrl) {
