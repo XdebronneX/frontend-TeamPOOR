@@ -380,7 +380,7 @@ const CreateMotorcycle = () => {
                     Create motorcycle
                   </Button>
                   <Button
-                    bg={'red.500'}
+                    bg={'blue.500'}
                     color={'white'}
                     w="full"
                     _hover={{
