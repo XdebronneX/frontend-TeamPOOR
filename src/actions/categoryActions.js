@@ -31,8 +31,11 @@ export const createCategory = (categoryData) => async (dispatch) => {
         dispatch({ type: CREATE_CATEGORY_REQUEST })
         const config = {
             headers: {
-                'Content-Type': 'multipart/form-data'
+                'Content-Type': 'multipart/form-data',
+                'Accept': 'application/json',
+                'Max-Content-Length': '100mb'
             },
+            
             withCredentials:true
         }
         const { data } = await axios.post(`${process.env.REACT_APP_API}/api/v1/add/category/new`, categoryData, config)

@@ -184,14 +184,22 @@ const NewCategory = () => {
     dispatch(createCategory(formData));
   };
 
-  const onChange = (e) => {
-    if (e.target.name === "images") {
-      const file = e.target.files[0];
-      setImage(file);
-    } else {
-      setName(e.target.value);
-    }
-  };
+    const onChange = (e) => {
+      if (e.target.name === "images") {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = () => {
+          if (reader.readyState === 2) {
+            setImage(reader.result);
+          }
+        };
+
+        reader.readAsDataURL(file);
+      } else {
+        setName(e.target.value);
+      }
+    };
 
   return (
     <aside className="bg-zinc-100 min-h-screen p-3 flex flex-row gap-4">
