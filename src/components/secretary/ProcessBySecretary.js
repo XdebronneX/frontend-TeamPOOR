@@ -184,7 +184,7 @@ const ProcessBySecretary = () => {
                                 </div>
                                 {latestStatus === 'COMPLETED' ? (
                                     <button className="btn btn-primary btn-block" onClick={() => updateBookingHandler(booking._id)} hidden>
-                                        <i className="fa fa-print" /> Update status
+                                        Update status
                                     </button>
                                 ) : <Fragment>
                                     <div className="col-12 col-lg-3 mt-5">
