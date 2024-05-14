@@ -345,17 +345,27 @@ const Registers = () => {
                                 3.3. All prices displayed on the Platform are in the local currency and are subject to change without notice. The TEAM POOR is not responsible for any discrepancies in pricing or product information provided by third-party vendors.
                             </Text>
                             <Text fontSize="lg">
-                                <strong>4. Product Warranty</strong>
+                                <strong>4. Product and Service Warranty Policy</strong>
                                 <br />
-                                4.1. The TEAM POOR: System for Managing Motorcycle Parts and Services warrants that all products sold through the Platform are free from defects in materials and workmanship under normal use for a period of 7 days from the date of purchase, unless otherwise specified.
+                                4.1. There is no product warranty for items purchased through our physical and online store. All products are sold as-is and are subject to the specifications and descriptions listed at the time of purchase.
                                 <br />
-                                4.2. During the Warranty Period, if the Product fails to conform to the above warranty, Customer may submit a warranty claim to TEAM POOR. Customer must provide proof of purchase and a description of the defect.
+                                4.2. Customers who purchase products from our physical store and utilize our mechanic service for installation are entitled to a service warranty.
                                 <br />
-                                4.3. If the TEAM POOR determines that the Product is defective within the Warranty Period, TEAM POOR shall, at its option, repair or replace the defective Product, or refund the purchase price.
+                                4.3. The service warranty extends for a period of 7 days from the date of installation.
                                 <br />
-                                4.4. This warranty does not cover damage caused by misuse, abuse, accident, unauthorized modification, or improper installation of the Product. This warranty also does not cover normal wear and tear.
+                                4.4. During the 7-day service warranty period, if any product installed by our mechanic is found to be broken or damaged due to the installation process, we will replace the broken product free of charge.
                                 <br />
-                                4.5. TEAM POOR'S liability under this warranty shall be limited to the repair, replacement, or refund of the purchase price of the defective Product. In no event shall Manufacturer be liable for any incidental, consequential, or punitive damages.
+                                4.5. Our mechanic will reattach the new product to the customer's motorcycle at no additional cost.
+                                <br />
+                                4.6. After the 7-day service warranty period, the service warranty will expire, and any subsequent issues will not be covered.
+                                <br />
+                                4.7. The service warranty does not cover damage or breakage caused by misuse, accidents, or negligence on the part of the customer.
+                                <br />
+                                4.8. Any modifications or alterations made to the product after installation void the service warranty.
+                                <br />
+                                4.9. Customers must report any issues with installed products within the 7-day service warranty period to be eligible for a replacement.
+                                <br />
+                                4.10. Claims will be assessed by our team to determine eligibility for a replacement under the service warranty.
                             </Text>
                             <Text fontSize="lg">
                                 <strong>5. Limitation of Liability</strong>
