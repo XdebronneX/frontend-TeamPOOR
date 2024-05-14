@@ -125,7 +125,7 @@ const TaskDetails = () => {
                                     <p className="mb-4"><b>Address:</b>{booking.region}, {booking.province}, {booking.city}, {booking.barangay}, {booking.address}, {booking.postalcode}</p>
                                     <hr />
                                     <h4 className="mb-4">Motorcycle Details</h4>
-                                    <p><b>Bran name:</b> {booking && booking.brand}</p>
+                                    <p><b>Brand name:</b> {booking && booking.brand}</p>
                                     <p><b>Year model:</b> {booking && booking.year}</p>
                                     <p><b>Plate number:</b> {booking && booking.plateNumber}</p>
                                     <p><b>Engine number:</b> {booking && booking.engineNumber}</p>
