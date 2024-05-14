@@ -125,7 +125,7 @@ const MotorcyclesList = () => {
         plateNumber: motorcycle.plateNumber,
         imageMotorcycle: motorcycle.imageMotorcycle ? (
           <img
-            src={row.imageMotorcycle.url}
+            src={motorcycle.imageMotorcycle.url}
             alt="Motorcycle Image"
             style={{ width: '100px', height: '100px' }}
           />
