@@ -208,11 +208,18 @@ const ProductDetails = () => {
                   </Text>
 
                   <Button
-                    className="py-2 bg-red-500 rounded-full w-50"
+                    className={
+                      product.stock > 0
+                        ? "py-2 bg-red-500 rounded-full w-50"
+                        : "py-2 bg-zinc-500 rounded-full w-50"
+                    }
                     onClick={addToCart}
                     colorScheme="#ef4444"
+                    disabled={product.stock > 0 ? false : true}
                   >
-                    <Text className="text-white">ADD TO CART</Text>
+                    <Text className="text-white">
+                      {product.stock > 0 ? "ADD TO CART" : "NOT AVAILABLE"}
+                    </Text>
                   </Button>
                 </div>
 
