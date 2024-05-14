@@ -215,7 +215,7 @@ const ProductDetails = () => {
                     }
                     onClick={addToCart}
                     colorScheme="#ef4444"
-                    disabled={product.stock > 0 ? false : true}
+                    disabled={product.stock <= 0}
                   >
                     <Text className="text-white">
                       {product.stock > 0 ? "ADD TO CART" : "NOT AVAILABLE"}
