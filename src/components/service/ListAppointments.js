@@ -300,7 +300,7 @@ const ListAppointments = () => {
                           {selectedItemForReview.mechanic.lastname}
                         </p>
                         <img
-                          src={selectedItemForReview.mechanic.avatar.url}
+                          src={selectedItemForReview?.mechanic?.avatar?.url}
                           alt={`${selectedItemForReview.mechanic.firstname} ${selectedItemForReview.mechanic.lastname}`}
                           height="250"
                           width="250"
