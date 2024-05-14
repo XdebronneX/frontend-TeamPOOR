@@ -18,25 +18,28 @@ const ConfirmOrder = () => {
   const { error, success, checkoutUrl } = useSelector(
     (state) => state.newOrder
   );
-  const [isSuccess, setIsSuccess] = useState(false);
+  
   const total = cartItems.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
   );
 
+  const errMsg = (message = '') => toast.error(message, {
+    position: toast.POSITION.BOTTOM_CENTER
+  });
+
+  const successMsg = (message = '') => toast.success(message, {
+    position: toast.POSITION.BOTTOM_CENTER
+  });
+
   useEffect(() => {
     if (error) {
-      setIsSuccess(false);
-      toast.error(error.message || error, {
-        position: toast.POSITION.BOTTOM_CENTER,
-      });
+      errMsg(error)
       dispatch(clearErrors());
     }
 
-    if (success && isSuccess === true) {
-      toast.success("Your order has been placed successfully!", {
-        position: toast.POSITION.BOTTOM_CENTER,
-      });
+    if (success) {
+      successMsg("Your order has been placed successfully!")
       dispatch(clearCart());
       if (checkoutUrl) {
         window.location.href = checkoutUrl;
@@ -44,7 +47,7 @@ const ConfirmOrder = () => {
         navigate("/success");
       }
     }
-  }, [dispatch, error, success, navigate, isSuccess]);
+  }, [dispatch, error, success, navigate]);
 
   const order = {
     orderItems: cartItems,
@@ -69,7 +72,6 @@ const ConfirmOrder = () => {
     const checkoutBtn = document.getElementById("checkout_btn");
     if (checkoutBtn) checkoutBtn.disabled = true;
     dispatch(createOrder(order));
-    setIsSuccess(true);
   };
 
   return (
