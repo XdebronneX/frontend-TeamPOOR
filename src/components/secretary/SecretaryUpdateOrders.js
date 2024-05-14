@@ -63,6 +63,10 @@ const SecretaryUpdateOrders = () => {
             badgeColor = 'success';
             badgeText = 'Received';
             break;
+        case 'PAID':
+            badgeColor = 'success';
+            badgeText = 'Paid';
+            break;
         case 'COMPLETED':
             badgeColor = 'success';
             badgeText = 'Completed';
@@ -158,7 +162,7 @@ const SecretaryUpdateOrders = () => {
                                 </div>
                                 {latestStatus === 'COMPLETED' ? (
                                     <button className="btn btn-primary btn-block" onClick={() => updateOrderHandler(order._id)} hidden>
-                                        <i className="fa fa-print" /> Update status
+                                        Update status
                                     </button>
                                 ) : <Fragment>
                                     <div className="col-12 col-lg-3 mt-5">
