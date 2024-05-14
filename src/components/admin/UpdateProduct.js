@@ -59,8 +59,8 @@ const UpdateProduct = () => {
       setDescription(product.description);
       setPrice(product.price);
       setType(product.type);
-      setBrand(product.brand);
-      setCategory(product.category);
+      setBrand(product.brand._id);
+      setCategory(product.category._id);
       setOldImages(product.images);
     }
 
