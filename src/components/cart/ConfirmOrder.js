@@ -24,25 +24,6 @@ const ConfirmOrder = () => {
     0
   );
 
-  // useEffect(() => {
-  //     if (error) {
-  //         setIsSuccess(false);
-  //         toast.error(error.message || error, {
-  //             position: toast.POSITION.BOTTOM_CENTER,
-  //         });
-  //         dispatch(clearErrors());
-  //     }
-
-  //     if (success && isSuccess === true) {
-  //         toast.success("Your order has been placed successfully!", {
-  //             position: toast.POSITION.BOTTOM_CENTER,
-  //         });
-  //         dispatch(clearCart());
-  //         navigate("/success");
-  //     }
-  // }, [dispatch, error, success, navigate, isSuccess]);
-
-  // console.log('URL sa paymongo', checkoutUrl);
   useEffect(() => {
     if (error) {
       setIsSuccess(false);
