@@ -123,19 +123,9 @@ const MotorcyclesList = () => {
         year: motorcycle.year,
         brand: motorcycle.brand,
         plateNumber: motorcycle.plateNumber,
-        imageMotorcycle: motorcycle.imageMotorcycle ? (
-          <img
-            src={motorcycle.imageMotorcycle.url}
-            alt="Motorcycle Image"
-            style={{ width: '100px', height: '100px' }}
-          />
-        ) : (
-          <img
-            src="your_default_image_url"
-            alt="Default Image"
-            style={{ width: '100px', height: '100px' }}
-          />
-        ),
+        imageMotorcycle: motorcycle.imageMotorcycle
+          ? motorcycle.imageMotorcycle.url
+          : 'your_default_image_url',
         edit: (
           <Fragment>
             <Link to={`/admin/motorcycle/${motorcycle._id}`}>
