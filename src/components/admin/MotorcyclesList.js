@@ -99,6 +99,11 @@ const MotorcyclesList = () => {
           sort: "asc",
         },
         {
+          label: 'Motorcycle',
+          field: 'imageMotorcycle',
+          sort: 'disabled',
+        },
+        {
           label: "Edit",
           field: "edit",
           sort: "disabled",
@@ -118,6 +123,19 @@ const MotorcyclesList = () => {
         year: motorcycle.year,
         brand: motorcycle.brand,
         plateNumber: motorcycle.plateNumber,
+        imageMotorcycle: motorcycle.imageMotorcycle ? (
+          <img
+            src={row.imageMotorcycle.url}
+            alt="Motorcycle Image"
+            style={{ width: '100px', height: '100px' }}
+          />
+        ) : (
+          <img
+            src="your_default_image_url"
+            alt="Default Image"
+            style={{ width: '100px', height: '100px' }}
+          />
+        ),
         edit: (
           <Fragment>
             <Link to={`/admin/motorcycle/${motorcycle._id}`}>
