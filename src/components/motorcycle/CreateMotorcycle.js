@@ -282,10 +282,6 @@ const CreateMotorcycle = () => {
                       defaultValue=""
                       rules={{
                         required: "type is required",
-                        minLength: {
-                          value: 5,
-                          message: "type must be at least 5 characters long",
-                        },
                         maxLength: {
                           value: 30,
                           message: "type must not exceed 30 characters",
@@ -313,10 +309,6 @@ const CreateMotorcycle = () => {
                       defaultValue=""
                       rules={{
                         required: "fuel is required",
-                        minLength: {
-                          value: 5,
-                          message: "fuel must be at least 5 characters long",
-                        },
                         maxLength: {
                           value: 30,
                           message: "fuel must not exceed 30 characters",
@@ -386,6 +378,16 @@ const CreateMotorcycle = () => {
                 <Stack spacing={10} pt={2}>
                   <Button type="submit" colorScheme={"red"} variant={"solid"}>
                     Create motorcycle
+                  </Button>
+                  <Button
+                    bg={'red.500'}
+                    color={'white'}
+                    w="full"
+                    _hover={{
+                      bg: 'red',
+                    }}
+                    onClick={() => navigate('/my-motorcycles', { replace: true })}>
+                    Cancel
                   </Button>
                 </Stack>
               </Stack>
