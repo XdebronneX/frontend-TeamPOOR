@@ -82,7 +82,7 @@ const ProductsList = () => {
         {
           label: "Product ID",
           field: "id",
-          sort: "asc",
+          sort: "desc",
         },
         {
           label: "Name",
