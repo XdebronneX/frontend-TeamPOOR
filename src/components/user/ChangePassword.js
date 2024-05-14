@@ -68,14 +68,6 @@ const ChangePassword = () => {
         }
     }, [dispatch, error, navigate, isUpdated]);
 
-    // const submitHandler = (e) => {
-    //     e.preventDefault();
-    //     const formData = new FormData();
-    //     formData.set('oldPassword', oldPassword);
-    //     formData.set('password', password);
-    //     dispatch(updatePassword(formData));
-    // };
-
     const submitHandler = handleSubmit((data) => {
         const formData = new FormData();
         formData.set('oldPassword', data.oldPassword);
@@ -101,40 +93,6 @@ const ChangePassword = () => {
                 <Heading lineHeight={1.1} fontSize={{ base: '2xl', md: '3xl' }}>
                     Enter new password
                 </Heading>
-                {/* <FormControl id="oldPassword" isRequired>
-                    <FormLabel>Current Password</FormLabel>
-                    <InputGroup>
-                        <Input
-                            type={showPassword1 ? 'text' : 'password'}
-                            value={oldPassword}
-                            onChange={(e) => setOldPassword(e.target.value)}
-                        />
-                        <InputRightElement h={'full'}>
-                            <Button
-                                variant={'ghost'}
-                                onClick={() => setShowPassword1((showPassword1) => !showPassword1)}>
-                                {showPassword1 ? <ViewIcon /> : <ViewOffIcon />}
-                            </Button>
-                        </InputRightElement>
-                    </InputGroup>
-                </FormControl>
-                <FormControl id="password" isRequired>
-                    <FormLabel>New Password</FormLabel>
-                    <InputGroup>
-                        <Input
-                            type={showPassword ? 'text' : 'password'}
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                        <InputRightElement h={'full'}>
-                            <Button
-                                variant={'ghost'}
-                                onClick={() => setShowPassword((showPassword) => !showPassword)}>
-                                {showPassword ? <ViewIcon /> : <ViewOffIcon />}
-                            </Button>
-                        </InputRightElement>
-                    </InputGroup>
-                </FormControl> */}
                 <FormControl id="oldPassword" isRequired isInvalid={errors.oldPassword}>
                     <FormLabel>Current Password</FormLabel>
                     <InputGroup>
