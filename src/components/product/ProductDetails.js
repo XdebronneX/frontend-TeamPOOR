@@ -213,7 +213,7 @@ const ProductDetails = () => {
                         ? "py-2 bg-red-500 rounded-full w-50"
                         : "py-2 bg-zinc-500 rounded-full w-50"
                     }
-                    onClick={addToCart}
+                    onClick={product.stock > 0 ? addToCart : null}
                     colorScheme="#ef4444"
                     disabled={product.stock <= 0}
                   >
