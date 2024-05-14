@@ -58,9 +58,17 @@ const Home = () => {
           {/* <Button>Download</Button> */}
 
           <div className="flex flex-row items-center gap-4">
-            <div className="py-2 px-3 rounded-full bg-red-500 w-fit mt-4  duration-700 ease-in-out transition-transform transform-gpu hover:scale-110">
-              <Text className="text-white font-bold text-lg">Download Apk</Text>
-            </div>
+            <a
+              href="https://drive.usercontent.google.com/download?id=1Wic8DnFYKnpzkb-6E-NvbjGCePhf525d&export=download&authuser=0"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="py-2 px-3 rounded-full bg-red-500 w-fit mt-4 duration-700 ease-in-out transition-transform transform-gpu hover:scale-110">
+                <Text className="text-white font-bold text-lg">
+                  Download Apk
+                </Text>
+              </div>
+            </a>
 
             {/* <div>
               <Text>Show Now </Text>
