@@ -16,7 +16,7 @@ const ConfirmOrder = () => {
     (state) => state.cart
   );
   const { error, success, checkoutUrl } = useSelector((state) => state.newOrder);
-  const [isSuccess, setIsSuccess] = useState(false);
+  // const [isSuccess, setIsSuccess] = useState(false);
   const total = cartItems.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
@@ -67,7 +67,7 @@ const ConfirmOrder = () => {
     const checkoutBtn = document.getElementById("checkout_btn");
     if (checkoutBtn) checkoutBtn.disabled = true;
     dispatch(createOrder(order));
-    setIsSuccess(true);
+    // setIsSuccess(true);
   };
 
   return (
