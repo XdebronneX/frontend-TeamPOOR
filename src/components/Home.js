@@ -18,6 +18,8 @@ import { viewAllUsers } from "../actions/userActions";
 import { getAllProducts } from "../actions/productActions";
 import { getAllServices } from "../actions/serviceActions";
 import { BsBoxSeam } from "react-icons/bs";
+import { CiLocationOn } from "react-icons/ci";
+import { LuDownload } from "react-icons/lu";
 
 const Home = () => {
   const [show, setShow] = React.useState(false);
@@ -25,8 +27,12 @@ const Home = () => {
 
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.authUser);
-  const { products, loading: loadingProducts } = useSelector((state) => state.allProducts);
-  const { services, loading: loadingServices } = useSelector((state) => state.allServices);
+  const { products, loading: loadingProducts } = useSelector(
+    (state) => state.allProducts
+  );
+  const { services, loading: loadingServices } = useSelector(
+    (state) => state.allServices
+  );
 
   useEffect(() => {
     dispatch(getAllProducts());
@@ -79,27 +85,25 @@ const Home = () => {
           <div className="flex flex-row justify-around items-center px-10 py-4">
             <div className="flex flex-row gap-4 items-center duration-700 ease-in-out transition-transform transform-gpu hover:scale-110">
               <div className="p-4 rounded-full bg-red-50 items-center flex">
-                <Icon as={AiOutlineUsergroupAdd} color="red.500" boxSize={6} />
+                <Icon as={CiLocationOn} color="red.500" boxSize={6} />
               </div>
 
               <div className="flex flex-col">
                 <span className="font-extrabold text-lg text-red-500">
-                123
+                  Taguig City
                 </span>
-                <span className="text-normal font-bold">Total User</span>
+                <span className="text-normal font-bold">Location</span>
               </div>
             </div>
 
             <div className="flex flex-row gap-4 items-center duration-700 ease-in-out transition-transform transform-gpu hover:scale-110">
               <div className="p-4 rounded-full bg-red-50 items-center flex">
-                <Icon as={BsBoxSeam} color="red.500" boxSize={6} />
+                <Icon as={LuDownload} color="red.500" boxSize={6} />
               </div>
 
               <div className="flex flex-col">
-                <span className="font-extrabold text-lg text-red-500">
-                123
-                </span>
-                <span className="text-normal font-bold">Total Orders</span>
+                <span className="font-extrabold text-lg text-red-500">1K+</span>
+                <span className="text-normal font-bold">Total Downloads</span>
               </div>
             </div>
 
