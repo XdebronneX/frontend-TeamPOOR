@@ -184,7 +184,7 @@ const SecretaryUpdateOrders = () => {
                                             </select>
                                         </div>
                                         <button className="btn btn-primary btn-block" onClick={() => updateOrderHandler(order._id)}>
-                                            <i className="fa fa-print" /> Update status
+                                            Update status
                                         </button>
                                     </div>
                                 </Fragment>
