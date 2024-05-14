@@ -32,8 +32,6 @@ export const createCategory = (categoryData) => async (dispatch) => {
         const config = {
             headers: {
                 'Content-Type': 'multipart/form-data',
-                'Accept': 'application/json',
-                'Max-Content-Length': '100mb'
             },
             
             withCredentials:true
