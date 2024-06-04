@@ -104,6 +104,8 @@ const Header = () => {
   const LogoutHandler = () => {
     dispatch(Logout());
     // navigate("/");
+    sessionStorage.clear();
+    localStorage.clear();
   };
 
   const ProfileHandler = () => {
