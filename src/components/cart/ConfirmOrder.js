@@ -16,11 +16,32 @@ const ConfirmOrder = () => {
     (state) => state.cart
   );
   const { error, success, checkoutUrl } = useSelector((state) => state.newOrder);
-  const [isSuccess, setIsSuccess] = useState(false);
   const total = cartItems.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
   );
+
+  // useEffect(() => {
+  //   if (error) {
+  //     setIsSuccess(false);
+  //     toast.error(error.message || error, {
+  //       position: toast.POSITION.BOTTOM_CENTER,
+  //     });
+  //     dispatch(clearErrors());
+  //   }
+
+  //   if (success && isSuccess === true) {
+  //     toast.success("Your order has been placed successfully!", {
+  //       position: toast.POSITION.BOTTOM_CENTER,
+  //     });
+  //     dispatch(clearCart());
+  //     if (checkoutUrl) {
+  //       window.location.href = checkoutUrl;
+  //     } else {
+  //       navigate("/success");
+  //     }
+  //   }
+  // }, [dispatch, error, success, navigate, isSuccess]);
 
   useEffect(() => {
     if (error) {
@@ -31,7 +52,7 @@ const ConfirmOrder = () => {
       dispatch(clearErrors());
     }
 
-    if (success && isSuccess === true) {
+    if (success) {
       toast.success("Your order has been placed successfully!", {
         position: toast.POSITION.BOTTOM_CENTER,
       });
@@ -42,7 +63,7 @@ const ConfirmOrder = () => {
         navigate("/success");
       }
     }
-  }, [dispatch, error, success, navigate, isSuccess]);
+  }, [dispatch, error, success, navigate]);
 
   const order = {
     orderItems: cartItems,
@@ -67,7 +88,6 @@ const ConfirmOrder = () => {
     const checkoutBtn = document.getElementById("checkout_btn");
     if (checkoutBtn) checkoutBtn.disabled = true;
     dispatch(createOrder(order));
-    setIsSuccess(true);
   };
 
   return (
