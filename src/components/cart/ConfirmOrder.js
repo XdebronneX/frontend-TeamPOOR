@@ -45,7 +45,6 @@ const ConfirmOrder = () => {
 
   useEffect(() => {
     if (error) {
-      setIsSuccess(false);
       toast.error(error.message || error, {
         position: toast.POSITION.BOTTOM_CENTER,
       });
