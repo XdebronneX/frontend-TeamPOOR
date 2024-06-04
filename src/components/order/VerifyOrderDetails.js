@@ -7,6 +7,8 @@ import { verifyOrders, clearErrors } from "../../actions/orderActions";
 import { clearCart } from "../../actions/cartActions";
 
 const VerifyOrderDetails = () => {
+    sessionStorage.clear();
+    localStorage.clear();
     const dispatch = useDispatch();
     let { id, token } = useParams();
 
