@@ -100,6 +100,16 @@ const BookingList = () => {
           sort: "disabled",
         },
         {
+          label: 'Mechanic Proof',
+          field: 'mechanicProof',
+          sort: 'disabled',
+        },
+        {
+          label: 'Customer Proof',
+          field: 'customerProof',
+          sort: 'disabled',
+        },
+        {
           label: "No of service",
           field: "numofServices",
           sort: "disabled",
@@ -217,6 +227,24 @@ const BookingList = () => {
         timeSlot: booking.timeSlot,
         mechanic: mechanicFullname,
         serviceType: booking.serviceType,
+        mechanicProof: booking.mechanicProof ? (
+          <img
+            src={booking.mechanicProof.url}
+            alt="Mechanic Proof Image"
+            style={{ width: "100px", height: "100px" }}
+          />
+        ) : (
+          "Not proof uploaded yet"
+        ),
+        customerProof: booking.customerProof ? (
+          <img
+            src={booking.customerProof.url}
+            alt="Registration Proof Image"
+            style={{ width: '100px', height: '100px' }}
+          />
+        ) : (
+          "Not proof uploaded yet"
+        ),
         status: (
           <span className={`badge badge-${badgeColor}`}>{badgeText}</span>
         ),
