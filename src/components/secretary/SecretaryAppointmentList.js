@@ -215,7 +215,7 @@ const SecretaryAppointmentList = () => {
                     </Link>
                 ),
                 parts: (
-                    <Link to={`/secretary/additional/${booking._id}`}>
+                    <Link to={`/services/additional/${booking._id}`}>
                         <Button colorScheme="yellow" size="sm" ml="3" leftIcon={<VscDiffAdded />}>
                             Additional
                         </Button>

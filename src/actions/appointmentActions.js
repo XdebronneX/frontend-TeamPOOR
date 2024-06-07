@@ -146,7 +146,7 @@ export const updateAdditional=  (id, bookingData) => async (dispatch) => {
             withCredentials:true
         }
 
-        const { data } = await axios.put(`${process.env.REACT_APP_API}/api/v1/secretary/additional/${id}`, bookingData, config)
+        const { data } = await axios.put(`${process.env.REACT_APP_API}/api/v1/services/additional/${id}`, bookingData, config)
 
         dispatch({
             type: UPDATE_APPOINTMENT_SUCCESS,

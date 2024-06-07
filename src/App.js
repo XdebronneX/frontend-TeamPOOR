@@ -210,7 +210,7 @@ function App() {
         <Route path="/secretary/appointment/list" element={<ProtectedRoute isSecretary={true}><SecretaryAppointmentList /></ProtectedRoute>} />
         <Route path="/secretary/appointment/:id" element={<ProtectedRoute isSecretary={true} ><ProcessBySecretary /></ProtectedRoute>} />
         <Route path="/secretary/assign/mechanic/:id" element={<ProtectedRoute isSecretary={true} ><AssignBySecretary/></ProtectedRoute>} />
-        <Route path="/secretary/additional/:id" element={<ProtectedRoute isSecretary={true} ><Additional /></ProtectedRoute>} />
+        <Route path="/services/additional/:id" element={<ProtectedRoute><Additional /></ProtectedRoute>} />
         <Route path="/backjob/reschedule/appointment/:id" element={<ProtectedRoute isSecretary={true} ><RescheduleBooking /></ProtectedRoute>} />
 
         <Route path="/create/my-address" element={<ProtectedRoute><CreateAddresses /></ProtectedRoute>} exact="true" />

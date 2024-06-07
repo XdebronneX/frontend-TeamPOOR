@@ -130,6 +130,11 @@ const BookingList = () => {
           sort: "disabled",
         },
         {
+          label: 'Additional',
+          field: 'parts',
+          sort: 'disabled'
+        },
+        {
           label: "Actions",
           field: "actions",
           sort: "disabled",
@@ -247,6 +252,13 @@ const BookingList = () => {
         ),
         status: (
           <span className={`badge badge-${badgeColor}`}>{badgeText}</span>
+        ),
+        parts: (
+          <Link to={`/services/additional/${booking._id}`}>
+            <Button colorScheme="yellow" size="sm" ml="3" leftIcon={<VscDiffAdded />}>
+              Additional
+            </Button>
+          </Link>
         ),
         actions: (
           <Flex>
