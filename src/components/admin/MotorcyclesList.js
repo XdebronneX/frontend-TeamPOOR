@@ -117,9 +117,10 @@ const MotorcyclesList = () => {
       rows: [],
     };
 
-    motorcycles.forEach((motorcycle) => {
+    motorcycles.forEach((motorcycle, index) => {
       data.rows.push({
-        id: motorcycle._id,
+        // id: motorcycle._id,
+        id: index + 1,
         year: motorcycle.year,
         brand: motorcycle.brand,
         plateNumber: motorcycle.plateNumber,

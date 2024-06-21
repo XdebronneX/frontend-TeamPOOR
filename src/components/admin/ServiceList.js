@@ -117,11 +117,12 @@ const ServiceList = () => {
       rows: [],
     };
 
-    services.forEach((service) => {
+    services.forEach((service, index) => {
       const statusLabel = service.isAvailable ? "Available" : "Not Available";
 
       data.rows.push({
-        id: service._id,
+        // id: service._id,
+        id: index + 1,
         name: service.name,
         description: service.description,
         price: `${service.price.toLocaleString()}`,

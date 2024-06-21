@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { createAddresses, clearErrors } from "../../actions/addressActions";
 import { CREATE_ADDRESSES_RESET } from "../../constants/addressConstants";
-// import { toast } from "react-toastify";
 import MetaData from '../layout/MetaData';
 import {
     Box,

@@ -101,9 +101,10 @@ const BrandsList = () => {
       rows: [],
     };
 
-    brands.forEach((brand) => {
+    brands.forEach((brand, index) => {
       data.rows.push({
-        id: brand._id,
+        // id: brand._id,
+        id: index + 1,
         name: brand.name,
         edit: (
           <Fragment>

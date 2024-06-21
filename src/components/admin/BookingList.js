@@ -130,9 +130,15 @@ const BookingList = () => {
           sort: "disabled",
         },
         {
-          label: 'Additional',
+          label: 'Additional Parts',
           field: 'parts',
           sort: 'disabled'
+        },
+        {
+          label: 'Additional Services',
+          field: 'services',
+          sort:
+            'disabled'
         },
         {
           label: "Actions",
@@ -148,7 +154,7 @@ const BookingList = () => {
       rows: [],
     };
 
-    allbookings.forEach((booking) => {
+    allbookings.forEach((booking, index) => {
       const appointmentStatus = booking.appointmentStatus || [];
       const sortedStatus = appointmentStatus.sort(
         (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
@@ -225,7 +231,8 @@ const BookingList = () => {
         ? `${booking.mechanic.firstname} ${booking.mechanic.lastname}`
         : "No mechanic assigned yet";
       data.rows.push({
-        id: booking._id,
+        // id: booking._id,
+        id: index + 1,
         numofServices: booking.appointmentServices.length,
         amount: `₱${booking.totalPrice}`,
         appointmentDate: formattedApppoinmentDate,
@@ -254,9 +261,16 @@ const BookingList = () => {
           <span className={`badge badge-${badgeColor}`}>{badgeText}</span>
         ),
         parts: (
-          <Link to={`/services/additional/${booking._id}`}>
+          <Link to={`/parts/additional/${booking._id}`}>
             <Button colorScheme="yellow" size="sm" ml="3" leftIcon={<VscDiffAdded />}>
               Additional
+            </Button>
+          </Link>
+        ),
+        services: (
+          <Link to={`/services/additional/${booking._id}`}>
+            <Button colorScheme="yellow" size="sm" ml="3" leftIcon={<VscDiffAdded />}>
+              Additional Services
             </Button>
           </Link>
         ),

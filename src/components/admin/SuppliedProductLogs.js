@@ -53,7 +53,7 @@ const SuppliedProductLogs = () => {
     };
 
     if (suppliedHistoryLog && suppliedHistoryLog.length > 0) {
-      suppliedHistoryLog.forEach((supplied) => {
+      suppliedHistoryLog.forEach((supplied, index) => {
         const createdAt = new Date(supplied.dateDelivered);
         const formattedDateTime = `${createdAt.toLocaleDateString("en-US", {
           year: "numeric",
@@ -69,7 +69,8 @@ const SuppliedProductLogs = () => {
 
         // Push supplied details only once
         data.rows.push({
-          id: supplied._id,
+          // id: supplied._id,
+          id: index + 1,
           by: supplierName,
           createdAt: formattedDateTime,
           view: (

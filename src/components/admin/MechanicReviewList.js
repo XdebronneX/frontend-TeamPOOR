@@ -60,7 +60,7 @@ const MechanicReviewList = () => {
       rows: [],
     };
 
-    feedbacks?.forEach((feedback) => {
+    feedbacks?.forEach((feedback, index) => {
       const mechanicName = feedback.mechanic
         ? `${feedback.mechanic.firstname} ${feedback.mechanic.lastname}`
         : "No Mechanic";
@@ -78,7 +78,8 @@ const MechanicReviewList = () => {
       const comment = feedback.comment ? feedback.comment : "No Comment";
 
       data.rows.push({
-        id: feedback._id,
+        // id: feedback._id,
+        id: index + 1,
         mechanicName,
         rating,
         comment,

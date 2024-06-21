@@ -167,8 +167,7 @@ const Products = () => {
                 </ul>
               </div> */}
 
-              {products
-                .filter((product) => product.category !== null && product.category === category)
+              {products?.filter((product) => product.category !== null && product.category === category)
                 .map((product) => (
                   <Box className="bg-white border hover:scale-105 rounded transition delay-150 duration-300 ease-in-out " key={product._id}>
                     {product.images && product.images[0] && (
@@ -250,7 +249,7 @@ const Products = () => {
 
             </div>
             <h4 className="text-2xl font-bold">Products</h4>
-            {products.length > 0 ? (
+            {products?.length > 0 ? (
               <Fragment>
                 <div className="grid grid-cols-1 xl:grid-cols-5 md:grid-cols-3 gap-4 mt-5">
                 {products.map((product) => (

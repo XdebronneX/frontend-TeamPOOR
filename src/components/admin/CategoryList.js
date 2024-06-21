@@ -102,9 +102,10 @@ const CategoryList = () => {
       rows: [],
     };
 
-    categories.forEach((category) => {
+    categories.forEach((category, index) => {
       data.rows.push({
-        id: category._id,
+        // id: category._id,
+        id: index + 1,
         name: category.name,
         edit: (
           <Fragment>

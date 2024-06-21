@@ -1,22 +1,3 @@
-// import React from "react";
-// import { Spinner, Box } from '@chakra-ui/react';
-
-// const Loader = ({ size = "xl", color = "red.500", speed = "0.4s" }) => {
-//     return (
-//         <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
-//             <Spinner
-//                 thickness="4px"
-//                 speed={speed} 
-//                 emptyColor="gray.200"
-//                 color={color}
-//                 size={size}
-//             />
-//         </Box>
-//     );
-// }
-
-// export default Loader;
-
 import React from "react";
 import { Box } from '@chakra-ui/react';
 import SyncLoader from 'react-spinners/SyncLoader';

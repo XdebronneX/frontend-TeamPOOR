@@ -123,9 +123,10 @@ const ProductsList = () => {
       rows: [],
     };
 
-    products.forEach((product) => {
+    products.forEach((product, index) => {
       data.rows.push({
-        id: product._id,
+        // id: product._id,
+        id: index + 1,
         name: product.name,
         description: product.description,
         // type: product.type,

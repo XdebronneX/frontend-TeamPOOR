@@ -117,7 +117,7 @@ const OrdersList = () => {
       rows: [],
     };
 
-    alllistorders.forEach((order) => {
+    alllistorders.forEach((order, index) => {
       const orderStatus = order.orderStatus || [];
       const sortedStatus = orderStatus.sort(
         (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
@@ -182,7 +182,8 @@ const OrdersList = () => {
       });
 
       data.rows.push({
-        id: order._id,
+        // id: order._id,
+        id: index + 1,
         date: formattedDateOrdered,
         numofItems: order.orderItems.length,
         amount: `₱ ${order.totalPrice.toLocaleString()}`,

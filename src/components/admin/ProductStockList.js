@@ -3,10 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAdminProducts,
-  deleteProduct,
   clearErrors,
 } from "../../actions/productActions";
-import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
 import { MDBDataTable } from "mdbreact";
 import Loader from "../layout/Loader";
 import Sidebar from "./Sidebar";
@@ -75,7 +73,7 @@ const ProductStockList = () => {
       rows: [],
     };
 
-    products.forEach((product) => {
+    products.forEach((product, index) => {
       let status = "";
 
       if (product.stock === 0) {
@@ -87,7 +85,8 @@ const ProductStockList = () => {
       }
 
       data.rows.push({
-        id: product._id,
+        // id: product._id,
+        id: index + 1,
         name: product.name,
         brand: product.brand.name,
         stock: product.stock.toLocaleString(),

@@ -93,6 +93,7 @@ import SupplierHistory from "./components/admin/SupplierLogHistory";
 import SuppliedProductLogs from "./components/admin/SuppliedProductLogs";
 import SuppliedDetails from "./components/admin/SuppliedDetails";
 import RescheduleBooking from "./components/secretary/ReschuduleBooking";
+import AddServices from "./components/secretary/AddServices";
 function App() {
   useEffect(() => {
     store.dispatch(LoadUser())
@@ -210,8 +211,10 @@ function App() {
         <Route path="/secretary/appointment/list" element={<ProtectedRoute isSecretary={true}><SecretaryAppointmentList /></ProtectedRoute>} />
         <Route path="/secretary/appointment/:id" element={<ProtectedRoute isSecretary={true} ><ProcessBySecretary /></ProtectedRoute>} />
         <Route path="/secretary/assign/mechanic/:id" element={<ProtectedRoute isSecretary={true} ><AssignBySecretary/></ProtectedRoute>} />
-        <Route path="/services/additional/:id" element={<ProtectedRoute><Additional /></ProtectedRoute>} />
+        <Route path="/parts/additional/:id" element={<ProtectedRoute><Additional /></ProtectedRoute>} />
         <Route path="/backjob/reschedule/appointment/:id" element={<ProtectedRoute isSecretary={true} ><RescheduleBooking /></ProtectedRoute>} />
+
+        <Route path="/services/additional/:id" element={<ProtectedRoute><AddServices /></ProtectedRoute>} />
 
         <Route path="/create/my-address" element={<ProtectedRoute><CreateAddresses /></ProtectedRoute>} exact="true" />
         <Route path="/my-addresses" element={<ProtectedRoute><ListOfAddresses /></ProtectedRoute>} exact="true" />

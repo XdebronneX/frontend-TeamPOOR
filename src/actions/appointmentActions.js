@@ -146,6 +146,30 @@ export const updateAdditional=  (id, bookingData) => async (dispatch) => {
             withCredentials:true
         }
 
+        const { data } = await axios.put(`${process.env.REACT_APP_API}/api/v1/parts/additional/${id}`, bookingData, config)
+
+        dispatch({
+            type: UPDATE_APPOINTMENT_SUCCESS,
+            payload: data.success
+        })
+    } catch (error) {
+        dispatch({
+            type: UPDATE_APPOINTMENT_FAIL,
+            payload: error.response.data.message
+        })
+    }
+}
+
+export const updateAdditionalServices = (id, bookingData) => async (dispatch) => {
+    try {
+        dispatch({ type: UPDATE_APPOINTMENT_REQUEST })
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            withCredentials: true
+        }
+
         const { data } = await axios.put(`${process.env.REACT_APP_API}/api/v1/services/additional/${id}`, bookingData, config)
 
         dispatch({
@@ -221,6 +245,25 @@ export const deleteBooking = (id) => async (dispatch) => {
         })
     }
 }
+
+export const deleteAddedServices = (appointmentId, serviceId) => async (dispatch) => {
+    try {
+        dispatch({ type: DELETE_APPOINTMENT_REQUEST })
+        const { data } = await axios.delete(`${process.env.REACT_APP_API}/api/v1/appointment/${appointmentId}/services/${serviceId}`, { withCredentials: true })
+
+        dispatch({
+            type: DELETE_APPOINTMENT_SUCCESS,
+            payload: data.success
+
+        })
+    } catch (error) {
+        dispatch({
+            type: DELETE_APPOINTMENT_RESET,
+            payload: error.response.data.message
+        })
+    }
+}
+
 
 export const updateBooking = (id, bookingData) => async (dispatch) => {
     try {

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import CheckoutSteps from "./CheckoutSteps";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,28 +20,6 @@ const ConfirmOrder = () => {
     (acc, item) => acc + item.price * item.quantity,
     0
   );
-
-  // useEffect(() => {
-  //   if (error) {
-  //     setIsSuccess(false);
-  //     toast.error(error.message || error, {
-  //       position: toast.POSITION.BOTTOM_CENTER,
-  //     });
-  //     dispatch(clearErrors());
-  //   }
-
-  //   if (success && isSuccess === true) {
-  //     toast.success("Your order has been placed successfully!", {
-  //       position: toast.POSITION.BOTTOM_CENTER,
-  //     });
-  //     dispatch(clearCart());
-  //     if (checkoutUrl) {
-  //       window.location.href = checkoutUrl;
-  //     } else {
-  //       navigate("/success");
-  //     }
-  //   }
-  // }, [dispatch, error, success, navigate, isSuccess]);
 
   useEffect(() => {
     if (error) {

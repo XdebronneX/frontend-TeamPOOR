@@ -112,9 +112,10 @@ const SuppliersList = () => {
       rows: [],
     };
 
-    suppliers.forEach((supplier) => {
+    suppliers.forEach((supplier, index) => {
       data.rows.push({
-        id: supplier._id,
+        // id: supplier._id,
+        id: index + 1,
         firstname: supplier.firstname,
         lastname: supplier.lastname,
         email: supplier.email,

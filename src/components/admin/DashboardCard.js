@@ -1,36 +1,3 @@
-// import React from 'react';
-// import { Box, Text, Button } from '@chakra-ui/react';
-// import { Link } from 'react-router-dom';
-
-// const DashboardCard = ({ title, value, link }) => {
-//     return (
-//         <Box
-//             bg="white"
-//             p={4}
-//             borderRadius="md"
-//             boxShadow="lg"
-//             transition="box-shadow 0.3s"
-//             _hover={{ boxShadow: 'xl' }}
-//         >
-//             <Text fontSize="lg" fontWeight="bold" mb={2}>
-//                 {title}
-//             </Text>
-//             <Text fontSize="2xl" color="primary.500">
-//                 {value}
-//             </Text>
-//             {link && (
-//                 <Link to={link} style={{ textDecoration: 'none' }}>
-//                     <Button mt={4} colorScheme="teal" size="sm">
-//                         View Details
-//                     </Button>
-//                 </Link>
-//             )}
-//         </Box>
-//     );
-// };
-
-// export default DashboardCard;
-
 import React from 'react';
 import { Box, Text, Button, Link as ChakraLink } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
