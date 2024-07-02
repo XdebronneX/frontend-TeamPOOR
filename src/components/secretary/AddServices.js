@@ -919,7 +919,7 @@ const AddServices = () => {
                                                             icon={<CloseIcon />}
                                                             colorScheme="red"
                                                             variant="ghost"
-                                                            onClick={() => handleServiceRemove(serviceId)}
+                                                            onClick={() => handleServiceRemove(item.service._id)}
                                                         />
                                                     </div>
                                                 </div>
