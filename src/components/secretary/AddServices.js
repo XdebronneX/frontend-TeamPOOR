@@ -775,7 +775,7 @@ const AddServices = () => {
     const navigate = useNavigate();
     const { loading: appointmentLoading, booking = {} } = useSelector((state) => state.appointmentDetails);
     const { loading: serviceLoading, services } = useSelector((state) => state.allServices);
-    const { error, isUpdated, success } = useSelector((state) => state.adminAppointment);
+    const { error, isUpdated } = useSelector((state) => state.adminAppointment);
 
     const errMsg = (message = '') => toast.error(message, {
         position: toast.POSITION.BOTTOM_CENTER
@@ -799,11 +799,8 @@ const AddServices = () => {
             successMsg('Additional services updated successfully!');
             dispatch({ type: UPDATE_APPOINTMENT_RESET });
         }
-        if (success) {
-            successMsg("Additional service remove");
-            dispatch({ type: DELETE_APPOINTMENT_RESET });
-        }
-    }, [dispatch, error, isUpdated,success, id, navigate]);
+
+    }, [dispatch, error, isUpdated, id, navigate]);
 
     const calculateTotalPrice = () => {
         let totalPrice = 0;
@@ -827,6 +824,28 @@ const AddServices = () => {
         });
     };
 
+    // const handleServiceRemove = (serviceId) => {
+    //     // Find the appointment service that corresponds to serviceId
+    //     const appointmentService = booking.appointmentServices.find(item => item.service._id === serviceId);
+
+    //     if (!appointmentService) {
+    //         errMsg("Appointment service not found");
+    //         return;
+    //     }
+
+    //     // Extract the _id of the appointmentService
+    //     const appointmentServiceId = appointmentService._id;
+
+    //     // Remove serviceId from selectedServices state
+    //     setSelectedServices(prevSelectedServices =>
+    //         prevSelectedServices.filter(id => id !== serviceId)
+    //     );
+
+    //     // Dispatch action to remove service from appointmentServices
+    //     dispatch(deleteAddedServices(id, appointmentServiceId));
+    //     dispatch(getAppointDetails(id));
+    // };
+
     const handleServiceRemove = (serviceId) => {
         // Find the appointment service that corresponds to serviceId
         const appointmentService = booking.appointmentServices.find(item => item.service._id === serviceId);
@@ -846,7 +865,12 @@ const AddServices = () => {
 
         // Dispatch action to remove service from appointmentServices
         dispatch(deleteAddedServices(id, appointmentServiceId));
+
+        // Update local state to reflect the deletion
+        const updatedAppointmentServices = booking.appointmentServices.filter(item => item.service._id !== serviceId);
+        booking.appointmentServices = updatedAppointmentServices;
     };
+
 
     const additionalHandler = () => {
         if (selectedServices.length === 0) {

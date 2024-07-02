@@ -172,7 +172,8 @@ export const adminAppointmentReducer = (state = {}, action) => {
             return {
                 ...state,
                 loading: false,
-                isDeleted: action.payload
+                isDeleted: action.payload,
+                appointmentServices: state.appointmentServices.filter(service => service._id !== action.payload.serviceId),
             }
 
         case UPDATE_APPOINTMENT_FAIL:
