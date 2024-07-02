@@ -253,9 +253,7 @@ export const deleteAddedServices = (appointmentId, serviceId) => async (dispatch
 
         dispatch({
             type: DELETE_APPOINTMENT_SUCCESS,
-            // payload: data.success
-            payload: { serviceId, success: data.success }
-
+            payload: data.success
         })
     } catch (error) {
         dispatch({

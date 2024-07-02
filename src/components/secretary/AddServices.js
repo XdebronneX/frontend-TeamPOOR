@@ -775,7 +775,7 @@ const AddServices = () => {
     const navigate = useNavigate();
     const { loading: appointmentLoading, booking = {} } = useSelector((state) => state.appointmentDetails);
     const { loading: serviceLoading, services } = useSelector((state) => state.allServices);
-    const { error, isUpdated } = useSelector((state) => state.adminAppointment);
+    const { error, isUpdated, success } = useSelector((state) => state.adminAppointment);
 
     const errMsg = (message = '') => toast.error(message, {
         position: toast.POSITION.BOTTOM_CENTER
@@ -799,7 +799,11 @@ const AddServices = () => {
             successMsg('Additional services updated successfully!');
             dispatch({ type: UPDATE_APPOINTMENT_RESET });
         }
-    }, [dispatch, error, isUpdated, id, navigate]);
+        if (success) {
+            showSuccessToast("Additional service remove");
+            dispatch({ type: DELETE_APPOINTMENT_RESET });
+        }
+    }, [dispatch, error, isUpdated,success, id, navigate]);
 
     const calculateTotalPrice = () => {
         let totalPrice = 0;
