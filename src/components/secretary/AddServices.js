@@ -800,7 +800,7 @@ const AddServices = () => {
             dispatch({ type: UPDATE_APPOINTMENT_RESET });
         }
         if (success) {
-            showSuccessToast("Additional service remove");
+            successMsg("Additional service remove");
             dispatch({ type: DELETE_APPOINTMENT_RESET });
         }
     }, [dispatch, error, isUpdated,success, id, navigate]);
