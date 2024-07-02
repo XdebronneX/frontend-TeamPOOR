@@ -1023,6 +1023,7 @@
 
 // export default AddServices;
 
+//** working with delete july 2*/
 import React, { Fragment, useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import Loader from '../layout/Loader';
@@ -1151,7 +1152,7 @@ const AddServices = () => {
                             <div className="row d-flex justify-content-around">
                                 <div className="col-12 col-lg-7 order-details">
                                     <h2 className="my-5">Appointment # {booking._id}</h2>
-                                    <h4 className="my-4">Order Items:</h4>
+                                    <h4 className="my-4">Order Itemssssssssssss:</h4>
                                     <div className="space-y-3">
                                         {booking &&
                                             booking.appointmentServices &&
