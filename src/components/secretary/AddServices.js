@@ -761,7 +761,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAppointDetails, updateAdditionalServices, deleteAddedServices, clearErrors } from '../../actions/appointmentActions'; // Update import
-import { UPDATE_APPOINTMENT_RESET } from '../../constants/appointmentConstants';
+import { UPDATE_APPOINTMENT_RESET, DELETE_APPOINTMENT_RESET, } from '../../constants/appointmentConstants';
 import { getAllServices } from '../../actions/serviceActions';
 import { FiSearch } from "react-icons/fi";
 import { Flex, Button, Input, HStack, Stack, Box, Text, InputGroup, InputLeftElement, VStack, Image, IconButton } from '@chakra-ui/react';
@@ -843,6 +843,7 @@ const AddServices = () => {
         // Dispatch action to remove service from appointmentServices
         dispatch(deleteAddedServices(id, appointmentServiceId));
         dispatch(getAppointDetails(id));
+        dispatch({ type: DELETE_APPOINTMENT_RESET });
     };
 
     const additionalHandler = () => {
