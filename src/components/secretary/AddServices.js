@@ -842,6 +842,7 @@ const AddServices = () => {
 
         // Dispatch action to remove service from appointmentServices
         dispatch(deleteAddedServices(id, appointmentServiceId));
+        dispatch(getAppointDetails(id));
     };
 
     const additionalHandler = () => {
