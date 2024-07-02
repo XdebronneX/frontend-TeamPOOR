@@ -473,11 +473,11 @@ const Profile = () => {
                     field: 'plateNumber',
                     sort: 'asc',
                 },
-                {
-                    label: 'Model',
-                    field: 'model',
-                    sort: 'disabled',
-                },
+                // {
+                //     label: 'Model',
+                //     field: 'model',
+                //     sort: 'disabled',
+                // },
                 {
                     label: 'Year',
                     field: 'year',
@@ -516,7 +516,7 @@ const Profile = () => {
                 });
                 data.rows.push({
                     date: formattedDate,
-                    model: row.model,
+                    // model: row.model,
                     year: row.year,
                     brand: row.brand,
                     plateNumber: row.plateNumber,
