@@ -141,7 +141,7 @@ const ProcessBySecretary = () => {
                                             {badgeText}
                                         </span>
                                     </p>
-                                    <h4 className="my-4">Order Items:</h4>
+                                    <h4 className="my-4">Services:</h4>
                                     <div className="space-y-3">
                                         {booking &&
                                             booking.appointmentServices &&
