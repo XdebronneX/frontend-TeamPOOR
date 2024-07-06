@@ -364,11 +364,6 @@ const SecretaryAppointmentList = () => {
                     sort: 'disabled',
                 },
                 {
-                    label: 'No of Items',
-                    field: 'numofItems',
-                    sort: 'disabled',
-                },
-                {
                     label: 'Status',
                     field: 'status',
                     sort: 'disabled',
@@ -475,7 +470,6 @@ const SecretaryAppointmentList = () => {
                 timeSlot: booking.timeSlot,
                 mechanic: mechanicFullname,
                 serviceType: booking.serviceType,
-                numofItems: booking.parts,
                 mechanicProof: booking.mechanicProof ? (
                     <img
                         src={booking.mechanicProof.url}
