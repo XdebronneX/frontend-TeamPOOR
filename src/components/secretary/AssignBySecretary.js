@@ -117,13 +117,13 @@ const AssignBySecretary = () => {
                                     <p><b>Phone:</b> {booking && booking.phone}</p>
                                     <p className="mb-4"><b>Address:</b>{booking.region}, {booking.province}, {booking.city}, {booking.barangay}, {booking.address}, {booking.postalcode}</p>
                                     <hr />
-                                    <h4 className="my-4">Order Status:</h4>
+                                    <h4 className="my-4">Appointment Status:</h4>
                                     <p>
                                         <span className={`badge badge-${badgeColor}`}>
                                             {badgeText}
                                         </span>
                                     </p>
-                                    <h4 className="my-4">Order Items:</h4>
+                                    <h4 className="my-4">Services:</h4>
                                     <div className="space-y-3">
                                         {booking &&
                                             booking.appointmentServices &&
