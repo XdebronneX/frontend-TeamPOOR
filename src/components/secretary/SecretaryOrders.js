@@ -77,45 +77,48 @@ const SecretaryOrders = () => {
                 let badgeText = '';
 
                 switch (latestStatus) {
-                    case 'Pending':
-                    case 'TOPAY':
-                        badgeColor = 'primary';
-                        badgeText = 'Pending';
+                    case "TOPAY":
+                        badgeColor = "primary";
+                        badgeText = "To Pay";
                         break;
-                    case 'TOSHIP':
-                        badgeColor = 'info';
-                        badgeText = 'To Ship';
+                    case "Pending":
+                        badgeColor = "primary";
+                        badgeText = "Pending";
                         break;
-                    case 'TORECEIVED':
-                        badgeColor = 'primary';
-                        badgeText = 'Out Of Delivery';
+                    case "TOSHIP":
+                        badgeColor = "info";
+                        badgeText = "To Ship";
                         break;
-                    case 'FAILEDATTEMPT':
-                        badgeColor = 'warning';
-                        badgeText = 'Failed Attempt';
+                    case "TORECEIVED":
+                        badgeColor = "primary";
+                        badgeText = "Out Of Delivery";
                         break;
-                    case 'CANCELLED':
-                        badgeColor = 'danger';
-                        badgeText = 'Cancelled';
+                    case "FAILEDATTEMPT":
+                        badgeColor = "warning";
+                        badgeText = "Failed Attempt";
                         break;
-                    case 'RETURNED':
-                        badgeColor = 'danger';
-                        badgeText = 'Returned';
+                    case "CANCELLED":
+                        badgeColor = "danger";
+                        badgeText = "Cancelled";
                         break;
-                    case 'DELIVERED':
-                        badgeColor = 'success';
-                        badgeText = 'Received';
+                    case "RETURNED":
+                        badgeColor = "danger";
+                        badgeText = "Returned";
                         break;
-                    case 'PAID':
-                        badgeColor = 'success';
-                        badgeText = 'Paid';
+                    case "DELIVERED":
+                        badgeColor = "success";
+                        badgeText = "Received";
                         break;
-                    case 'COMPLETED':
-                        badgeColor = 'success';
-                        badgeText = 'Completed';
+                    case "COMPLETED":
+                        badgeColor = "success";
+                        badgeText = "Completed";
+                        break;
+                    case "PAID":
+                        badgeColor = "success";
+                        badgeText = "Paid";
                         break;
                     default:
-                        badgeText = 'No status';
+                        badgeText = "No status";
                 }
                 const formattedDateOrdered = new Date(order.dateOrdered).toLocaleDateString('en-US', {
                     year: 'numeric',
