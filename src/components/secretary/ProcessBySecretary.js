@@ -135,7 +135,7 @@ const ProcessBySecretary = () => {
                                     <p><b>Type of fuel:</b> {booking && booking.fuel}</p>
                                     <p><b>Vehicle category:</b> {booking && booking.type}</p>
                                     <hr />
-                                    <h4 className="my-4">Order Status:</h4>
+                                    <h4 className="my-4">Appointment Status:</h4>
                                     <p>
                                         <span className={`badge badge-${badgeColor}`}>
                                             {badgeText}
