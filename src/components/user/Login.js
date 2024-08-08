@@ -145,7 +145,7 @@ const Login = () => {
                                     alt={'Login Image'}
                                     objectFit={'cover'}
                                     display={{ base: 'none', md: 'block' }}
-                                    src={'/images/loginlog.jpg'} // Update this path to the correct path of your image
+                                    src={'/images/loginlogo.jpg'} // Update this path to the correct path of your image
                                     sx={{
                                         width: "100%", // Set the width to 100% for responsiveness
                                         height: "1000px", // Set a fixed height for the image
