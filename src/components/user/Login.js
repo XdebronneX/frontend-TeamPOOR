@@ -140,19 +140,19 @@ const Login = () => {
                                 </Box>
                             </Stack>
                         </Flex>
-                        <Flex flex={1}>
+                            <Flex flex={1}>
                                 <Image
                                     alt={'Login Image'}
                                     objectFit={'cover'}
                                     display={{ base: 'none', md: 'block' }}
-                                    src={'https://source.unsplash.com/random?motorbike'}
+                                    src={'/images/loginlog.jpg'} // Update this path to the correct path of your image
                                     sx={{
                                         width: "100%", // Set the width to 100% for responsiveness
                                         height: "1000px", // Set a fixed height for the image
                                     }}
                                 />
+                            </Flex>
 
-                        </Flex>
                     </Stack>
                 </>
             )}
