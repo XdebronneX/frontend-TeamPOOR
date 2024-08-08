@@ -100,20 +100,10 @@ const Registers = () => {
                     alt={'Login Image'}
                     objectFit={'cover'}
                     display={{ base: 'none', md: 'block' }}
-                    src={'https://source.unsplash.com/random?motorbike'}
+                    src={'/images/loginlogo.jpg'} // Update this path to the correct path of your image
                     sx={{
-                        backgroundImage: "url(https://source.unsplash.com/random?motorbike)",
-                        backgroundRepeat: "no-repeat",
-                        backgroundColor: (t) =>
-                            t.palette && t.palette.grey
-                                ? t.palette.mode === "light"
-                                    ? t.palette.grey[50]
-                                    : t.palette.grey[900]
-                                : undefined,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
                         width: "100%", // Set the width to 100% for responsiveness
-                        height: "1000px", // Set a fixed height for the background image
+                        height: "1000px", // Set a fixed height for the image
                     }}
                 />
             </Flex>
