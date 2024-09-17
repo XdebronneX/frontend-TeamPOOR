@@ -376,7 +376,7 @@ const OrderDetails = () => {
               {latestStatus === "COMPLETED" && (
                 <button
                   className="btn btn-primary btn-block mt-3"
-                  onClick={() => handlePrint()} // Use arrow function to invoke handlePrint
+                  onClick={() => handlePrint()}
                 >
                   <i className="fa fa-print mr-1" /> Print Receipt
                 </button>
@@ -526,8 +526,8 @@ const OrderDetails = () => {
                       <p>Comment</p>
                       <Textarea
                         placeholder="Insert comment here..."
-                        value={comment} // Bind value to comment state
-                        onChange={handleCommentChange} // Call handleCommentChange on change
+                        value={comment}
+                        onChange={handleCommentChange}
                       />
                     </div>
                   </div>

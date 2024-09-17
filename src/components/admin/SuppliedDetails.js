@@ -26,12 +26,10 @@ const SuppliedDetails = () => {
         }
     }, [dispatch, error, id, navigate]);
 
-    // Check if loading or suppliedDetails is not available
     if (loading || !suppliedDetails) {
         return <Loader />;
     }
 
-    // Calculate total price only if products are available
     const totalPrice = suppliedDetails.products?.reduce((acc, curr) => acc + (curr.price * curr.quantity), 0) || 0;
 
     return (

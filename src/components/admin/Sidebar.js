@@ -26,8 +26,8 @@ import { FaStar } from "react-icons/fa6";
 
 const NavItem = ({ icon, text, to, subItems }) => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const location = useLocation(); // Get the current location
-  const isActive = location.pathname === to; // Check if the current location matches the 'to' prop
+  const location = useLocation();
+  const isActive = location.pathname === to; 
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
@@ -94,7 +94,7 @@ const NavItem = ({ icon, text, to, subItems }) => {
 const Sidebar = () => {
   const { alllistorders } = useSelector((state) => state.allOrders);
   const { allbookings } = useSelector((state) => state.allAppointment);
-  // Calculate the total number of orders
+
   const totalOrdersCount = alllistorders?.length;
   const totalAppointmentsCount = allbookings?.length;
 
@@ -171,7 +171,6 @@ const Sidebar = () => {
       ),
       to: "/admin/appointment/list",
     },
-    // { icon: FaUsers, text: 'Appointment', to: '/admin/appointment/list' },
     { icon: FaStar, text: "Product Reviews", to: "/admin/reviews" },
     {
       icon: FaStar,

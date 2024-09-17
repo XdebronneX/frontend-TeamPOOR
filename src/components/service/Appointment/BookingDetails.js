@@ -65,7 +65,6 @@ const BookingDetails = () => {
 
     if (isUpdated) {
       navigate("/appointment/list");
-      // successMsg("Appointment Completed");
       dispatch({ type: UPDATE_ORDER_RESET });
     }
   }, [dispatch, error, isUpdated, appointmentId, navigate]);
@@ -165,7 +164,6 @@ const BookingDetails = () => {
     return date.toLocaleString("en-US", options);
   };
 
-  // console.log('books', booking);
   return (
     <div className="bg-zinc-100 min-h-screen flex justify-center items-center">
       <div className="md:flex md:flex-row justify-between space-x-5">

@@ -32,23 +32,17 @@ const Carousel = () => {
     const cards = [
         {
             image: "https://images.unsplash.com/photo-1449426468159-d96dbf08f19f?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            // title: 'First slide label',
-            // text: 'Nulla vitae elit libero, a pharetra augue mollis interdum.',
         },
         {
             image: "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&q=80&w=1170&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            // title: 'Second slide label',
-            // text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         },
         {
             image: "https://images.unsplash.com/photo-1547054728-fcb8828cc832?auto=format&fit=crop&q=80&w=1170&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            // title: 'Third slide label',
-            // text: 'Praesent commodo cursus magna, vel scelerisque nisl consectetur.',
         },
     ];
 
     return (
-        <Box width="100%"> {/* Ensure the parent container stretches to full width */}
+        <Box width="100%">
             <Box position="relative" height="300px" overflow="hidden">
                 <link
                     rel="stylesheet"
@@ -94,7 +88,7 @@ const Carousel = () => {
                             backgroundRepeat="no-repeat"
                             backgroundSize="cover"
                             backgroundImage={`url(${card.image})`}
-                            width="100%" // Ensure the image stretches to full width
+                            width="100%"
                             
                         >
                             <Container maxW="sm" height="300px" position="relative">
@@ -102,7 +96,7 @@ const Carousel = () => {
                                     spacing={6}
                                     w="full"
                                     maxW="lg"
-                                    h="100%" // Make the caption div 100% height
+                                    h="100%"
                                     display="flex"
                                     flexDirection="column"
                                     alignItems="center"

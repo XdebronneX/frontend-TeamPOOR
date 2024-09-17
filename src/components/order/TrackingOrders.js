@@ -6,8 +6,7 @@ const TrackingOrders = ({ orderStatus }) => {
         label: status.status,
         message: status.message
     }));
-
-    // Get the current step index based on the latest status
+    
     const currentStepIndex = orderStatus.findIndex(status => status.status === 'COMPLETED') + 1;
     const currentStep = currentStepIndex > 0 ? currentStepIndex : 1;
 

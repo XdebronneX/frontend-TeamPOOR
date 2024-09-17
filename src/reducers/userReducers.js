@@ -314,7 +314,6 @@ export const updateNotifsReducer = (state = {}, action) => {
     }
 };
 
-// ADMIN ACCESS CONTROL
 export const allUsersReducer = (state = { users: [] }, action) => {
     switch (action.type) {
         case ALL_USERS_REQUEST:

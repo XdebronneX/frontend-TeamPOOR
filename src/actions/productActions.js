@@ -84,7 +84,7 @@ export const getAllProducts = (keyword = "", price, category) => async (dispatch
             link = `${process.env.REACT_APP_API}/api/v1/showAllProducts?keyword=${keyword}&category=${category}`
         }
         const { data } = await axios.get(link);
-        // console.log(link);
+
         dispatch({
             type: ALL_PRODUCTS_SUCCESS,
             payload: data,

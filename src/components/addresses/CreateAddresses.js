@@ -53,7 +53,7 @@ const CreateAddresses = () => {
             duration: 3000,
             isClosable: true,
         });
-        reset(); // Reset form after successful submission
+        reset();
         dispatch({ type: CREATE_ADDRESSES_RESET });
         navigate("/my-addresses");
     };

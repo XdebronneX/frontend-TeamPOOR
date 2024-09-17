@@ -19,7 +19,7 @@ const CustomerInfo = () => {
   const { customerInfo } = useSelector((state) => state.serviceCart);
   const [selectedMotorcycle, setSelectedMotorcycle] = useState("");
   useEffect(() => {
-    dispatch(myMotorcycle()); // Fetch user's motorcycles here
+    dispatch(myMotorcycle());
   }, [dispatch]);
 
   const handleMotorcycleChange = (event) => {
@@ -34,7 +34,7 @@ const CustomerInfo = () => {
       if (user.phone) {
         setPhone(user.phone);
       }
-      // Find the user's default address
+
       const defaultAddress = userAddresses.find((address) => address.isDefault);
       if (defaultAddress) {
         setAddress({
@@ -45,7 +45,7 @@ const CustomerInfo = () => {
           city: defaultAddress.city,
           barangay: defaultAddress.barangay,
         });
-        // console.log('defaultAdd', defaultAddress);
+
       }
     }
   }, [user, userAddresses]);
@@ -57,16 +57,13 @@ const CustomerInfo = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    // Find the selected motorcycle details
     const selectedMotorcycleDetails = userMotorcycles.find(
       (motorcycle) => motorcycle._id === selectedMotorcycle
     );
 
-    // Extract necessary details from the selected motorcycle
     const { fuel, brand, year, plateNumber, engineNumber, type } =
       selectedMotorcycleDetails;
 
-    // Remaining code remains the same
     const regionCode = address.region;
     const provinceCode = address.province;
     const cityCode = address.city;

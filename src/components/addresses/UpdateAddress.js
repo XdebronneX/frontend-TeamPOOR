@@ -35,7 +35,6 @@ const UpdateAddress = () => {
     const inputRef = useRef();
     const toast = useToast();
 
-    // const { user } = useSelector((state) => state.authUser);
     const { addresses } = useSelector((state) => state.addressDetails);
     const { error, isUpdated, loading } = useSelector((state) => state.userControl);
     const [address, setAddress] = useState("");
@@ -278,7 +277,7 @@ const UpdateAddress = () => {
                             _hover={{
                                 bg: "blue.700",
                             }}
-                            type="submit" // Add this line
+                            type="submit"
                             disabled={loading ? true : false}
                         >
                             {loading ? "Updating..." : "Update"}

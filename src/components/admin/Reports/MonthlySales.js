@@ -11,19 +11,16 @@ import {
 } from "recharts";
 
 const MonthlySales = ({ data, error }) => {
-  // Function to format date
   const formatDate = (date) => {
     const options = { month: "long" };
     return new Date(date).toLocaleDateString(undefined, options);
   };
 
-  // Prepare data for chart
   const chartData = data.map((item) => ({
-    month: formatDate(new Date(item._id.year, item._id.month - 1, 1)), // Format date
-    totalSales: item.totalPrice, // Use total price as total sales
+    month: formatDate(new Date(item._id.year, item._id.month - 1, 1)),
+    totalSales: item.totalPrice, 
   }));
 
-  // Check for error
   if (error) {
     return (
       <div style={{ textAlign: "center", padding: "20px" }}>
@@ -32,7 +29,6 @@ const MonthlySales = ({ data, error }) => {
     );
   }
 
-  // Check for valid data
   if (!data || !Array.isArray(data) || data.length === 0) {
     return (
       <div style={{ textAlign: "center", padding: "20px" }}>
@@ -66,7 +62,6 @@ const MonthlySales = ({ data, error }) => {
           margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
         >
           <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />{" "}
-          {/* Adjusted CartesianGrid */}
           <XAxis dataKey="month" />
           <YAxis />
           <Tooltip formatter={(value) => `Php ${value.toLocaleString()}`} />

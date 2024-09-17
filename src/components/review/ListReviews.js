@@ -4,28 +4,9 @@ import { FaStar } from "react-icons/fa";
 const ListReviews = ({ reviews }) => {
   return (
     <Box className="bg-zinc-100 rounded-xl p-3 space-y-2">
-      {/* <Divider /> */}
 
       {reviews &&
         reviews.map((review) => (
-          // <Box key={review._id} className="review-card my-3">
-          //   <Text className="review_user" fontWeight="bold" mb="2">
-          //     by {review.user.firstname} {review.user.lastname}
-          //   </Text>
-
-          //   <Box className="flex flex-row items-center rating-outer">
-          //     {[...Array(5)].map((_, index) => (
-          //       <FaStar
-          //         key={index}
-          //         color={index + 1 <= review.rating ? "#FCCD00" : "gray.300"}
-          //       />
-          //     ))}
-          //   </Box>
-
-          //   <Text className="review_comment">{review.comment}</Text>
-
-          //   <Divider my="2" />
-          // </Box>
           <div className="space-y-3">
             <div className="flex flex-row gap-3">
               <Avatar size="md" src={review.user.avatar.url} />

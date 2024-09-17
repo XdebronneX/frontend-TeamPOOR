@@ -53,10 +53,8 @@ const ListOfAddresses = () => {
             dispatch(clearErrors());
         }
         if (isUpdated) {
-            // dispatch(myAddresses());
             showSuccessToast("Set new default address!");
             setTimeout(() => {
-                // navigate("/my-addresses", { replace: true });
                 dispatch({ type: UPDATE_ADDRESSES_RESET });
             });
         }

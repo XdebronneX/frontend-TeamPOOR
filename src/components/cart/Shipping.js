@@ -38,7 +38,7 @@ const Shipping = () => {
       if (user.phone) {
         setPhone(user.phone);
       }
-      // Find the user's default address
+
       const defaultAddress = userAddresses.find((address) => address.isDefault);
       if (defaultAddress) {
         setAddress({

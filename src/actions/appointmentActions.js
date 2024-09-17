@@ -208,7 +208,6 @@ export const assignMechBySec = (id, bookingData) => async (dispatch) => {
     }
 }
 
-//** Admin control */
 export const allAppointments = () => async (dispatch) => {
     try {
         dispatch({ type: ALL_APPOINTMENTS_REQUEST });
@@ -253,7 +252,6 @@ export const deleteAddedServices = (appointmentId, serviceId) => async (dispatch
 
         dispatch({
             type: DELETE_APPOINTMENT_SUCCESS,
-            // payload: data.success
             payload: { serviceId, success: data.success }
         })
     } catch (error) {

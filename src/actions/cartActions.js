@@ -29,17 +29,14 @@ export const removeItemFromCart = id => async (dispatch, getState) => {
 export const autoremoveItemFromCart = (id) => (dispatch, getState) => {
     const { cartItems } = getState().cart;
 
-    // Check if the item is in the cart
     const isItemInCart = cartItems.find((item) => item.product === id);
 
     if (isItemInCart) {
-        // Dispatch the action to remove the item from the cart
         dispatch({
             type: AUTO_REMOVE_ITEM_CART,
             payload: id,
         });
 
-        // Remove the item from local storage
         const updatedCartItems = cartItems.filter((item) => item.product !== id);
         localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
     }

@@ -9,9 +9,7 @@ import { ToastContainer } from 'react-toastify';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
-
-// import 'bootstrap-css-only/css/bootstrap.min.css';
-import './index.css' // add tailwind css
+import './index.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -46,7 +46,6 @@ const UpdateService = () => {
 
   useEffect(() => {
     if (!service || service._id !== id) {
-      // Add condition to check if service exists
       dispatch(getServiceDetails(id));
     } else {
       setName(service.name);

@@ -59,7 +59,7 @@ const Additional = () => {
 
     const handleQuantityChange = (productId, newQuantity) => {
         if (newQuantity < 1) {
-            return; // Ensure quantity is always at least 1
+            return;
         }
         setProductQuantities({ ...productQuantities, [productId]: newQuantity });
     };
@@ -75,7 +75,7 @@ const Additional = () => {
             return {
                 productId: productId,
                 productName: product.name,
-                brandName: product.brand.name, // Assuming `brand` is an object with `name` property
+                brandName: product.brand.name,
                 quantity: productQuantities[productId] || 0,
             };
         });
@@ -87,7 +87,6 @@ const Additional = () => {
         dispatch(updateAdditional(id, formData));
     };
 
-    // Filter products based on search term
     const filteredProducts = products.filter(product =>
         product.name.toLowerCase().includes(searchTerm.toLowerCase())
     );

@@ -6,7 +6,7 @@ const MostBrand = ({ mostPurchasedBrand }) => {
         const r = Math.floor(Math.random() * 256);
         const g = Math.floor(Math.random() * 256);
         const b = Math.floor(Math.random() * 256);
-        const alpha = 0.8; // Set alpha value to 0.8 (semi-transparent)
+        const alpha = 0.8;
         return `rgba(${r}, ${g}, ${b}, ${alpha})`;
     };
 

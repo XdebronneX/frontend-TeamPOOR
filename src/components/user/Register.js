@@ -100,10 +100,10 @@ const Registers = () => {
                     alt={'Login Image'}
                     objectFit={'cover'}
                     display={{ base: 'none', md: 'block' }}
-                    src={'/images/loginlogo.jpg'} // Update this path to the correct path of your image
+                    src={'/images/loginlogo.jpg'}
                     sx={{
-                        width: "100%", // Set the width to 100% for responsiveness
-                        height: "1000px", // Set a fixed height for the image
+                        width: "100%",
+                        height: "1000px", 
                     }}
                 />
             </Flex>
@@ -207,10 +207,10 @@ const Registers = () => {
                                                         aria-invalid={errors.phone ? 'true' : 'false'}
                                                         onChange={(e) => {
                                                             let inputValue = e.target.value;
-                                                            const formattedNumber = inputValue.replace(/[^0-9]/g, ''); // Remove non-numeric characters
-                                                            const maxLength = 10; // Maximum length of formatted number (10 digits)
+                                                            const formattedNumber = inputValue.replace(/[^0-9]/g, ''); 
+                                                            const maxLength = 10; 
                                                             if (formattedNumber.length <= maxLength) {
-                                                                field.onChange(formattedNumber); // Update the field value with only numeric characters
+                                                                field.onChange(formattedNumber);
                                                             }
                                                         }}
                                                     />
@@ -287,9 +287,7 @@ const Registers = () => {
                                     _hover={{
                                         bg: 'blue.700',
                                     }}
-                                    // Set opacity based on isChecked state
                                     opacity={!isChecked ? 0.5 : 1}
-                                    // Disable the button when isChecked is false
                                     disabled={!isChecked}
                                 >
                                     Sign up
@@ -305,7 +303,6 @@ const Registers = () => {
                 </Stack>
             </Flex>
 
-            {/* Terms and Conditions Modal */}
             <Modal isOpen={showModal1} onClose={toggleModal1} size="xl">
                 <ModalOverlay />
                 <ModalContent>

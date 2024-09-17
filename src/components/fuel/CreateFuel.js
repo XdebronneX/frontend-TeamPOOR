@@ -26,8 +26,8 @@ const CreateFuel = () => {
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
   const [totalCost, setTotalCost] = useState("");
-  const [odometer, setOdometer] = useState(""); // State to store odometer reading
-  const [odometerMilestone, setOdometerMilestone] = useState(1000); // Initial milestone
+  const [odometer, setOdometer] = useState("");
+  const [odometerMilestone, setOdometerMilestone] = useState(1000);
   const { createdFuel, error, loading } = useSelector((state) => state.newFuel);
   const { userMotorcycles } = useSelector((state) => state.myMotor);
   const {
@@ -37,7 +37,6 @@ const CreateFuel = () => {
     control,
   } = useForm({ mode: "all" });
 
-  // Handle success and error notifications
   const handleSuccess = (message = "") =>
     toast.success(message, {
       position: toast.POSITION.BOTTOM_CENTER,
@@ -49,7 +48,7 @@ const CreateFuel = () => {
     });
 
   useEffect(() => {
-    dispatch(myMotorcycle()); // Fetch user's motorcycles here
+    dispatch(myMotorcycle());
   }, [dispatch]);
 
   useEffect(() => {
@@ -105,7 +104,6 @@ const CreateFuel = () => {
   };
 
   const submitHandler = (data) => {
-    // Submit form data
     const formData = new FormData();
     formData.set("date", data.date);
     formData.set("odometer", data.odometer);

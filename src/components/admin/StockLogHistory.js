@@ -16,7 +16,6 @@ const StockLogHistory = () => {
     (state) => state.allStockLogs
   );
 
-  // console.log('logsock', stockLogs);
   useEffect(() => {
     dispatch(getStockLogs());
     if (loading) {

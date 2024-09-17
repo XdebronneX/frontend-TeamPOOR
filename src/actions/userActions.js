@@ -145,7 +145,6 @@ export const LoginUsers = (email, password) => async (dispatch) => {
     }
 }
 
-// Load user profile
 export const LoadUser = () => async (dispatch) => {
     try {
         dispatch({
@@ -164,7 +163,6 @@ export const LoadUser = () => async (dispatch) => {
     }
 }
 
-// Update information
 export const updateProfile = (userData) => async (dispatch) => {
     try {
         dispatch({ type: UPDATE_PROFILE_REQUEST })
@@ -187,7 +185,6 @@ export const updateProfile = (userData) => async (dispatch) => {
     }
 }
 
-// Update password
 export const updatePassword = (passwords) => async (dispatch) => {
     try {
         dispatch({ type: UPDATE_PASSWORD_REQUEST });
@@ -215,7 +212,6 @@ export const updatePassword = (passwords) => async (dispatch) => {
     }
 };
 
-// Forgot password
 export const forgotPassword = (email) => async (dispatch) => {
     try {
         dispatch({ type: FORGOT_PASSWORD_REQUEST });
@@ -243,7 +239,6 @@ export const forgotPassword = (email) => async (dispatch) => {
     }
 };
 
-// Reset password
 export const resetPassword = (token, passwords) => async (dispatch) => {
     try {
         dispatch({ type: NEW_PASSWORD_REQUEST });
@@ -305,7 +300,6 @@ export const updateNotifs = (id) => async (dispatch) => {
     }
 }
 
-//View all users by admin
 export const viewAllUsers = () => async (dispatch) => {
     try {
         dispatch({ type: ALL_USERS_REQUEST })
@@ -342,7 +336,6 @@ export const viewAllSuppliers = () => async (dispatch) => {
     }
 }
 
-// Update user - ADMIN
 export const updateUser = (id, userData) => async (dispatch) => {
     try {
         dispatch({ type: UPDATE_USER_REQUEST })
@@ -365,7 +358,6 @@ export const updateUser = (id, userData) => async (dispatch) => {
     }
 }
 
-// View user details
 export const getUserDetails = (id) => async (dispatch) => {
     try {
         dispatch({ type: USER_DETAILS_REQUEST })
@@ -387,7 +379,6 @@ export const getUserDetails = (id) => async (dispatch) => {
     }
 }
 
-// Delete user - ADMIN
 export const deleteUser = (id) => async (dispatch) => {
     try {
         dispatch({ type: DELETE_USER_REQUEST })

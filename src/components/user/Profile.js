@@ -480,11 +480,6 @@ const Profile = () => {
                     field: 'plateNumber',
                     sort: 'asc',
                 },
-                // {
-                //     label: 'Model',
-                //     field: 'model',
-                //     sort: 'disabled',
-                // },
                 {
                     label: 'Year',
                     field: 'year',

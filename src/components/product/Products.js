@@ -23,7 +23,6 @@ const Products = () => {
     (state) => state.allProducts
   );
   const { categories } = useSelector((state) => state.allCategories);
-  // console.log("catALll", categories)
   const handleError = (message) => {
     toast({
       title: "Error!",
@@ -143,30 +142,6 @@ const Products = () => {
             </div>
 
             <div className="grid grid-cols-1 xl:grid-cols-6 md:grid-cols-3 gap-4 mt-5">
-              {/* <div className="mt-5">
-                <h4 className="mb-3">Categories</h4>
-                <ul className="pl-0">
-                  {categories.map((category) => (
-                    <li
-                      style={{ cursor: "pointer", listStyleType: "none" }}
-                      key={category._id}
-                      onClick={() => setCategory(category._id)}
-                    >
-                      <div className="flex items-center">
-                        {category.images && (
-                          <img
-                            src={category.images.url}
-                            alt={category.name}
-                            className="w-8 h-8 mr-2 rounded-full"
-                          />
-                        )}
-                        <span>{category.name}</span>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div> */}
-
               {products?.filter((product) => product.category !== null && product.category === category)
                 .map((product) => (
                   <Box className="bg-white border hover:scale-105 rounded transition delay-150 duration-300 ease-in-out " key={product._id}>
@@ -306,26 +281,6 @@ const Products = () => {
                         <p className="text-red-500 text-lg font-bold">
                           ₱{product.price.toFixed(2)}
                         </p>
-                        {/* <button
-                          type="button"
-                          className={
-                            product.stock > 0
-                              ? "items-center justify-center bg-red-500 text-white font-semibold rounded-full px-3 p-2"
-                              : "items-center justify-center bg-zinc-500 text-white font-semibold rounded-full px-3 p-2"
-                          }
-                          onClick={() => SingleProductHandler(product._id)}
-                        >
-                          {product.stock > 0 ? (
-                            <Text className="flex flex-row items-center">
-                              <p>+ </p>
-                              <CgShoppingCart />
-                            </Text>
-                          ) : (
-                            <Text className="flex flex-row items-center">
-                              OUT OF STOCK
-                            </Text>
-                          )}
-                        </button> */}
                       </div>
                     </div>
                   </a>

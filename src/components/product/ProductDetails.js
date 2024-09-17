@@ -144,11 +144,6 @@ const ProductDetails = () => {
                   transitionTime={500}
                   thumbWidth={100}
                   thumbHeight={80}
-                  //   style={{
-                  //     border: "1px solid #ccc",
-                  //     borderRadius: "5px",
-                  //     height: "65%",
-                  //   }}
                 >
                   {product.images &&
                     product.images.map((image) => (

@@ -7,11 +7,9 @@ const MostLoyalUser = ({ totalPurchasedByUser }) => {
       return;
     }
 
-    // Extract user names and total purchased amounts
     const labels = totalPurchasedByUser.map((user) => user.user.lastname);
     const data = totalPurchasedByUser.map((user) => user.totalPurchased);
 
-    // Create chart data
     const chartData = {
       labels: labels,
       datasets: [
@@ -25,7 +23,6 @@ const MostLoyalUser = ({ totalPurchasedByUser }) => {
       ],
     };
 
-    // Create chart options
     const chartOptions = {
       scales: {
         y: {

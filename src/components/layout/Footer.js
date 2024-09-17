@@ -38,8 +38,6 @@ const Footer = () => {
             bg={useColorModeValue('red.400', 'gray.900')}
             color={useColorModeValue('gray.700', 'gray.200')}
             position="sticky"
-            // bottom="0" // Adjust this value to set the desired distance from the bottom
-            // zIndex="100" // Adjust the z-index as needed
             >
             <Container as={Stack} maxW={'6xl'} py={10}>
                 <SimpleGrid

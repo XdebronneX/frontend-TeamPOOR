@@ -55,8 +55,6 @@ const Home = () => {
             Download now and unlock endless possibilities.
           </Text>
 
-          {/* <Button>Download</Button> */}
-
           <div className="flex flex-row items-center gap-4">
             <a
               href="https://drive.usercontent.google.com/download?id=1Wic8DnFYKnpzkb-6E-NvbjGCePhf525d&export=download&authuser=0"
@@ -69,16 +67,12 @@ const Home = () => {
                 </Text>
               </div>
             </a>
-
-            {/* <div>
-              <Text>Show Now </Text>
-            </div> */}
           </div>
         </div>
         <div className="col-span-2">
           <img
             style={{
-              maxHeight: "calc(100vh)", // Adjusted to 150vh
+              maxHeight: "calc(100vh)",
               width: "100%",
               objectFit: "contain",
             }}

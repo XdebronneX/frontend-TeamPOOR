@@ -53,13 +53,12 @@ const Cart = () => {
   };
 
   useEffect(() => {
-    // Check for out-of-stock items
     cartItems.forEach((item) => {
       if (item.stock === 0) {
         setNotificationMessage(
           "One or more items in your cart are out of stock."
         );
-        setTimeout(() => setNotificationMessage(null), 10000); // Clear the notification after 5 seconds
+        setTimeout(() => setNotificationMessage(null), 10000);
         dispatch(autoremoveItemFromCart(item.product));
       }
     });
@@ -67,7 +66,6 @@ const Cart = () => {
 
   return (
     <div className="pt-4 bg-zinc-100 min-h-screen">
-      {/* Notification display */}
       {notificationMessage && (
         <Alert status="info" mb={4}>
           <AlertIcon />
@@ -95,7 +93,6 @@ const Cart = () => {
         </div>
       ) : (
         <div
-          // className="container flex flex-row gap-4"
           className="container grid grid-cols-1 sm:grid-cols-3 gap-4"
         >
           <div className="col-span-2 bg-white p-3 rounded-xl space-y-3">
@@ -204,7 +201,6 @@ const Cart = () => {
             <div className=" bg-white justify-center rounded-xl p-3 space-y-4">
               <div>
                 <p className="font-bold text-xl">Order Summary</p>
-                {/* <p className="text-zinc-500">Select payment method below.</p> */}
               </div>
 
               <div className="border-b border-zinc-200" />

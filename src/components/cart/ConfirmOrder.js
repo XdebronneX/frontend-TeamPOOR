@@ -79,7 +79,6 @@ const ConfirmOrder = () => {
         <div className="bg-white justify-center rounded-xl p-3 col-span-2 space-y-4">
           <div>
             <p className="font-bold text-xl">Delivery Address</p>
-            {/* <p className="text-zinc-500">Select payment method below.</p> */}
           </div>
 
           <div className="border-b border-zinc-200" />
@@ -105,7 +104,6 @@ const ConfirmOrder = () => {
         <div className="bg-white justify-center rounded-xl p-3 space-y-4">
           <div>
             <p className="font-bold text-xl">Payment Information</p>
-            {/* <p className="text-zinc-500">Select payment method below.</p> */}
           </div>
 
           <div className="border-b border-zinc-200" />

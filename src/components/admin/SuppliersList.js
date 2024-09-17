@@ -125,7 +125,7 @@ const SuppliersList = () => {
             <Button
               colorScheme="red"
               size="sm"
-              ml="3" // Adjust this value for spacing
+              ml="3"
               onClick={() => deleteUserHandler(supplier._id)}
               leftIcon={<FaTrashAlt />}
             >

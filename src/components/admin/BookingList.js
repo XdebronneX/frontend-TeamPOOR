@@ -226,7 +226,6 @@ const BookingList = () => {
         day: "2-digit",
       });
 
-      // Populate the mechanic field to get the details
       const mechanicFullname = booking.mechanic
         ? `${booking.mechanic.firstname} ${booking.mechanic.lastname}`
         : "No mechanic assigned yet";

@@ -7,11 +7,9 @@ const BestMechanics = ({ mostRatedMechanics }) => {
             return;
         }
 
-        // Extract mechanic names and average ratings
         const labels = mostRatedMechanics.map((feedback) => feedback.mechanicName);
         const data = mostRatedMechanics.map((feedback) => feedback.averageRating);
 
-        // Create chart data
         const chartData = {
             labels: labels,
             datasets: [
@@ -25,7 +23,6 @@ const BestMechanics = ({ mostRatedMechanics }) => {
             ],
         };
 
-        // Create chart options
         const chartOptions = {
             scales: {
                 y: {
@@ -52,7 +49,7 @@ const BestMechanics = ({ mostRatedMechanics }) => {
             },
             plugins: {
                 legend: {
-                    display: false, // Hide legend as it's unnecessary for a single dataset
+                    display: false,
                 },
             },
         };

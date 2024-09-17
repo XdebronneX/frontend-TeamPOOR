@@ -29,10 +29,6 @@ import {
     VERIFY_ORDER_SUCCESS,
     VERIFY_ORDER_FAIL,
 
-    // CONTINUE_ORDER_REQUEST,
-    // CONTINUE_ORDER_SUCCESS,
-    // CONTINUE_ORDER_FAIL,
-
     ORDER_CONTINUE_REQUEST,
     ORDER_CONTINUE_SUCCESS,
     ORDER_CONTINUE_FAIL,
@@ -89,7 +85,6 @@ export const verifyOrders = (token, id) => async (dispatch) => {
     }
 };
 
-// Get curretly logged in user orders
 export const myOrders = () => async dispatch => {
     try {
         dispatch({ type: MY_ORDERS_REQUEST })
@@ -129,7 +124,6 @@ export const getOldOrder = (id) => async (dispatch) => {
     }
 }
 
-// Get order details
 export const getOrderDetails = (id) => async (dispatch) => {
     try {
         dispatch({ type: ORDER_DETAILS_REQUEST });

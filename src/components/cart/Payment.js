@@ -47,7 +47,6 @@ const Payment = () => {
             </div>
 
             <div className="space-y-3">
-              {/* cash on delivery */}
               <button
                 className=" bg-slate-200 p-2 rounded-xl w-full"
                 onClick={() => setPaymentMethod("Cash On Delivery")}
@@ -69,8 +68,6 @@ const Payment = () => {
                   />
                 </div>
               </button>
-
-              {/* gcash payment */}
               <button
                 className=" bg-slate-200 p-2 rounded-xl w-full"
                 onClick={() => setPaymentMethod("GCash")}

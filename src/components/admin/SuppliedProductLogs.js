@@ -16,7 +16,7 @@ const SuppliedProductLogs = () => {
   const { error, loading, suppliedHistoryLog } = useSelector(
     (state) => state.allSupplied
   );
-  // console.log(suppliedHistoryLog);
+
   useEffect(() => {
     dispatch(getSuppliedLogs());
     if (loading) {
@@ -28,11 +28,6 @@ const SuppliedProductLogs = () => {
   const setSuppliedData = () => {
     const data = {
       columns: [
-        // {
-        //     label: 'Idddddd',
-        //     field: 'id',
-        //     sort: 'asc',
-        // },
         {
           label: "Date Delivered",
           field: "createdAt",
@@ -61,13 +56,11 @@ const SuppliedProductLogs = () => {
           day: "2-digit",
         })}`
 
-        // Check if supplier exists and has the firstname property
         const supplierName =
           supplied.supplier && supplied.supplier.firstname
             ? supplied.supplier.firstname
             : "Unknown";
 
-        // Push supplied details only once
         data.rows.push({
           // id: supplied._id,
           id: index + 1,

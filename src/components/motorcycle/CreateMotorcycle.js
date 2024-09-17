@@ -4,7 +4,6 @@ import { useForm, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { createMotorcycle, clearErrors } from "../../actions/motorcycleActions";
 import { CREATE_MOTORCYCLES_RESET } from "../../constants/motorcycleConstants";
-import { toast } from "react-toastify";
 import {
   Box,
   Button,
@@ -327,7 +326,6 @@ const CreateMotorcycle = () => {
                     />
                   </FormControl>
                 </Box>
-                {/* Motorcycle Image */}
                 <FormControl id="imageMotorcycle">
                   <FormLabel>Motorcycle Image</FormLabel>
                   <Avatar src={imageMotorcycle} />

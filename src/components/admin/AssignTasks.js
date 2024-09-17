@@ -114,7 +114,6 @@ const AssignTasks = () => {
     dispatch(assignMech(id, formData));
   };
 
-  // console.log(booking)
 
   return (
     <aside className="bg-zinc-100 min-h-screen p-3 flex flex-row gap-4">

@@ -153,7 +153,6 @@ const AppointmentSummary = () => {
                     <div key={index} className="border-bottom mb-3 pb-3">
                       <div className="row align-items-center">
                         <div className="col-md-3">
-                          {/* Check if service has images array */}
                           {service.images && service.images.length > 0 ? (
                             <img
                               src={service.images[0].url}

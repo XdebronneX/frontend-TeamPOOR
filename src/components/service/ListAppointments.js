@@ -247,7 +247,7 @@ const ListAppointments = () => {
     const formData = new FormData();
     formData.set("comment", comment);
     formData.set("rating", rating);
-    dispatch(newReviewMechanic(selectedItemForReview._id, formData)); // Pass the appointment ID
+    dispatch(newReviewMechanic(selectedItemForReview._id, formData));
   };
 
   const notify = (error) => {
@@ -261,8 +261,6 @@ const ListAppointments = () => {
       position: toast.POSITION.BOTTOM_CENTER,
     });
   };
-
-  // console.log(selectedItemForReview);
 
   return (
     <div className="bg-zinc-100 min-h-screen py-3">
@@ -311,13 +309,13 @@ const ListAppointments = () => {
                         <div className="flex flex-row justify-center items-center">
                           <Rating
                             onClick={(value) => handleRatingChange(value)}
-                            ratingValue={rating} // Pass rating value
-                            size={30} // Adjust the size if needed
-                            fillColor="orange" // Adjust the color of filled stars
-                            emptyColor="gray" // Adjust the color of empty stars
-                            strokeColor="black" // Adjust the color of star borders
-                            strokeWidth={0} // Adjust the width of star borders
-                            starCount={5} // Adjust the total number of stars
+                            ratingValue={rating}
+                            size={30}
+                            fillColor="orange"
+                            emptyColor="gray"
+                            strokeColor="black"
+                            strokeWidth={0}
+                            starCount={5}
                             showTooltip
                             tooltipArray={[
                               "Terrible",
@@ -333,8 +331,8 @@ const ListAppointments = () => {
                           <p>Comment</p>
                           <Textarea
                             placeholder="Insert comment here..."
-                            value={comment} // Bind value to comment state
-                            onChange={handleCommentChange} // Call handleCommentChange on change
+                            value={comment}
+                            onChange={handleCommentChange}
                           />
                         </div>
                       </div>

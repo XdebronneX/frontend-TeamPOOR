@@ -30,8 +30,6 @@ const StepLink = ({ to, isActive, children }) => {
 
                     <p className="font-semibold">{children}</p>
                 </div>
-
-                {/* <div className="p-1 bg-red-500 w-full h-1 " /> */}
             </div>
         </Link>
     );

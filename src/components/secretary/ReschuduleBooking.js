@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const RescheduleBooking = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { id } = useParams(); // Using useParams to get the id parameter from the URL
+    const { id } = useParams();
     const { loading, error } = useSelector((state) => state.allAppointment);
 
     const [booking, setBooking] = useState({

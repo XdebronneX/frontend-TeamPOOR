@@ -68,7 +68,6 @@ export const myMotorcycle = () => async (dispatch) => {
     }
 };
 
-//View all motorcycles by admin
 export const viewAllMotorcycles = () => async (dispatch) => {
     try {
         dispatch({ type: ALL_MOTORCYCLES_REQUEST })
@@ -87,7 +86,6 @@ export const viewAllMotorcycles = () => async (dispatch) => {
     }
 }
 
-// Update motorcycle - ADMIN
 export const updateMotorcycle = (id, motorcycleData) => async (dispatch) => {
     try {
         dispatch({ type: UPDATE_MOTORCYCLES_REQUEST })
@@ -110,7 +108,6 @@ export const updateMotorcycle = (id, motorcycleData) => async (dispatch) => {
     }
 }
 
-// View motorcycle details
 export const getMotorcycleDetails = (id) => async (dispatch) => {
     try {
         dispatch({ type: MOTORCYCLE_DETAILS_REQUEST })
@@ -132,7 +129,6 @@ export const getMotorcycleDetails = (id) => async (dispatch) => {
     }
 }
 
-// Delete motorcycle - ADMIN
 export const deleteMotorcycle = (id) => async (dispatch) => {
     try {
         dispatch({ type: DELETE_MOTORCYCLES_REQUEST })

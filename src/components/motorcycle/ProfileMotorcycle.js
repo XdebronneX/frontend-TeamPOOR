@@ -36,11 +36,6 @@ const ProfileMotorcycle = () => {
   const setMotors = () => {
     const data = {
       columns: [
-        // {
-        //   label: 'ID',
-        //   field: 'id',
-        //   sort: 'asc',
-        // },
         {
           label: "Date Registered",
           field: "date",
@@ -61,11 +56,6 @@ const ProfileMotorcycle = () => {
           field: "brand",
           sort: "disabled",
         },
-        // {
-        //   label: 'Engine Number',
-        //   field: 'engineNumber',
-        //   sort: 'asc',
-        // },
         {
           label: "Type",
           field: "type",
@@ -81,11 +71,6 @@ const ProfileMotorcycle = () => {
           field: "imageMotorcycle",
           sort: "disabled",
         },
-        // {
-        //   label: 'Plate Number Image',
-        //   field: 'imagePlateNumber',
-        //   sort: 'asc',
-        // },
       ],
       rows: [],
     };
@@ -106,7 +91,6 @@ const ProfileMotorcycle = () => {
           year: row.year,
           brand: row.brand,
           plateNumber: row.plateNumber,
-          // engineNumber: row.engineNumber,
           type: row.type,
           fuel: row.fuel,
           imageMotorcycle: row.imageMotorcycle ? (
@@ -122,19 +106,6 @@ const ProfileMotorcycle = () => {
               style={{ width: "100px", height: "100px" }}
             />
           ),
-          // imagePlateNumber: row.imagePlateNumber ? (
-          //   <img
-          //     src={row.imagePlateNumber.url}
-          //     alt="Registration Proof Image"
-          //     style={{ width: '100px', height: '100px' }}
-          //   />
-          // ) : (
-          //   <img
-          //     src="your_default_image_url"
-          //     alt="Default Image"
-          //     style={{ width: '100px', height: '100px' }}
-          //   />
-          // ),
         });
       });
     }

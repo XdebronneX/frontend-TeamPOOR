@@ -40,7 +40,7 @@ export const newMotorcycleReducer = (state = { motorcycle: {}, createdMotorcycle
             return {
                 ...state,
                 loading: false,
-                createdMotorcycle: true, // Set to true when a motorcycle is created
+                createdMotorcycle: true,
                 motorcycle: action.payload,
             };
 
@@ -54,7 +54,7 @@ export const newMotorcycleReducer = (state = { motorcycle: {}, createdMotorcycle
         case CREATE_MOTORCYCLES_RESET:
             return {
                 ...state,
-                createdMotorcycle: false, // Reset the createdMotorcycle flag
+                createdMotorcycle: false,
             };
 
         case CLEAR_ERRORS:
@@ -98,7 +98,6 @@ export const myMotorcycleReducer = (state = { userMotorcycles: [] }, action) => 
     }
 };
 
-// ADMIN ACCESS CONTROL
 export const allMotorcyclesReducer = (state = { motorcycles: [] }, action) => {
     switch (action.type) {
         case ALL_MOTORCYCLES_REQUEST:

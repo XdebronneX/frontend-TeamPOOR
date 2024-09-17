@@ -135,15 +135,6 @@ const ListOfFuel = () => {
           fillingStation: row.fillingStation,
           notes: row.notes,
           date: formattedDateTime,
-          // edit: (
-          //     <Fragment>
-          //         <Link to={`/user/fuel/${row._id}`}>
-          //             <Button colorScheme="blue" size="sm" ml="3" leftIcon={<FaPencilAlt />}>
-          //                 Edit
-          //             </Button>
-          //         </Link>
-          //     </Fragment>
-          // ),
           delete: (
             <Fragment>
               <Button

@@ -9,7 +9,6 @@ import {
     useColorModeValue,
 } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
-import TruckAnimation from "./TruckAnimation"; // I
 
 const SuccessOrder = () => {
     sessionStorage.clear();

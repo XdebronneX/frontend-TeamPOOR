@@ -111,8 +111,6 @@ const ProcessBySecretary = () => {
         dispatch(updateBysecretary(id, formData));
     };
 
-    // console.log(booking)
-
     return (
         <Fragment>
             <div className="row">

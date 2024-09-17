@@ -38,7 +38,6 @@ const ServicesChoose = () => {
   };
 
   const handleContinue = () => {
-    // Saving selected services to Redux store
     const selectedServicesData = services.filter((service) =>
       selectedServices.includes(service._id)
     );
@@ -49,18 +48,13 @@ const ServicesChoose = () => {
         selectedTypeData,
       })
     );
-
-    // Navigating to customer info page
     navigate("/customer-info");
   };
 
-  // Filter services based on the selected type
   const filteredServices = services.filter((service) => {
     if (selectedType === "") {
-      // If no type is selected, display all services
       return true;
     } else {
-      // If a specific type is selected, display services of that type and type 3
       const type = parseInt(selectedType);
       return service.type === type || service.type === 3;
     }

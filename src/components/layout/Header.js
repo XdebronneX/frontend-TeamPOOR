@@ -52,7 +52,7 @@ const Header = () => {
   const [clickedUnreadNotifications, setClickedUnreadNotifications] = useState([]);
 
   useEffect(() => {
-    // Calculate new orders for today
+
     if (alllistorders) {
       const today = new Date();
       const todayOrders = alllistorders.filter((order) => {
@@ -63,7 +63,7 @@ const Header = () => {
           orderDate.getFullYear() === today.getFullYear()
         );
       });
-      // Filter clicked notifications for today's orders
+
       const todayClickedNotifications = clickedNotifications.filter(orderId => {
         return todayOrders.some(order => order._id === orderId);
       });
@@ -73,11 +73,10 @@ const Header = () => {
   }, [alllistorders, clickedNotifications]);
 
   useEffect(() => {
-    // Retrieve clicked notifications from local storage
+
     const clickedNotificationsFromStorage = localStorage.getItem("saveNotif");
     if (clickedNotificationsFromStorage) {
       const parsedClickedNotifications = JSON.parse(clickedNotificationsFromStorage);
-      // Filter clicked notifications to keep only those for orders from today
       const todayClickedNotifications = parsedClickedNotifications.filter(orderId => {
         return newOrders.some(order => order._id === orderId);
       });
@@ -103,7 +102,7 @@ const Header = () => {
 
   const LogoutHandler = () => {
     dispatch(Logout());
-    // navigate("/");
+    navigate("/");
   };
 
   const ProfileHandler = () => {

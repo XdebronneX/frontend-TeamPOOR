@@ -6,12 +6,6 @@ import BarLoader from 'react-spinners/BarLoader';
 const Loader = () => {
     return (
         <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
-            {/* <SyncLoader
-                color="#E50000"
-                loading
-                margin={7}
-                speedMultiplier={1}
-            /> */}
             <BarLoader
                 color="#E50000"
                 height={5}
