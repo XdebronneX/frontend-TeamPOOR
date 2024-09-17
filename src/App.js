@@ -227,7 +227,6 @@ function App() {
 
         <Route path="/admin/mechanic/list-reviews" element={<ProtectedRoute isAdmin={true} ><MechanicReviewList /></ProtectedRoute>} />
       </Routes>
-      {/* <Footer /> */}
     </div>
   );
 }
